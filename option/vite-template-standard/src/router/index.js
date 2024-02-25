@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'FrontView',
+    name: '前台',
     component: () => import('../views/FrontView.vue'),
     children: [
       {
@@ -18,39 +18,43 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: '登入頁',
     component: () => import('../views/LoginView.vue')
   },
   {
     path: '/admin',
-    name: 'Dashboard',
-    component: () => import('../views/Dashboard/DashboardView.vue'),
+    name: '後台',
+    component: () => import('../views/Admin/AdminView.vue'),
     children: [
       {
         path: 'blog',
-        component: () => import('../views/Dashboard/BlogView.vue')
+        component: () => import('../views/Admin/BlogView.vue')
       },
       {
         path: 'cart',
-        component: () => import('../views/Dashboard/CartView.vue')
+        component: () => import('../views/Admin/CartView.vue')
       },
       {
         path: 'cupon',
-        component: () => import('../views/Dashboard/CuponView.vue')
+        component: () => import('../views/Admin/CuponView.vue')
       },
       {
         path: 'order',
-        component: () => import('../views/Dashboard/OrderView.vue')
+        component: () => import('../views/Admin/OrderView.vue')
       },
       {
         path: 'post',
-        component: () => import('../views/Dashboard/PostView.vue')
+        component: () => import('../views/Admin/PostView.vue')
       },
       {
         path: 'product',
-        component: () => import('../views/Dashboard/ProductView.vue')
+        component: () => import('../views/Admin/ProductView.vue')
       }
     ]
+  },
+  {
+    path: '/admin/:pathMatch(.*)*',
+    redirect: { name: '登入頁' }
   }
 ]
 
