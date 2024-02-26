@@ -22,17 +22,33 @@
 
 <script>
 import axios from 'axios'
-// const { VITE_API } = import.meta.env
+const { VITE_API } = import.meta.env
 export default {
   data () {
     return {
-      // url: VITE_API
+      url: VITE_API
     }
   },
   methods: {
+    checkLogin (params) { // 驗證可以寫這邊，子路由都可以被驗證
+      console.log(this.url)
+      axios
+        .post(`${this.url}/api/user/check`)
+        // 成功的結果
+        .then((res) => {
+          console.log(res)
+          // this.getProduct()
+        })
+        // 失敗結果
+        .catch((error) => {
+          console.dir(error) // 用dir可以展開資訊
+          alert('未登入')
+          this.$router.push('/login')
+        })
+    },
     logout () {
       axios
-        .post(`${import.meta.env.VITE_API}/logout`)
+        .post(`${this.url}/logout`)
         // 成功的結果
         .then((res) => {
           console.log(res)
@@ -45,6 +61,13 @@ export default {
           console.dir(error.response.data.message) // 用dir可以展開資訊
         })
     }
+  },
+  mounted () {
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+    // console.log(token);
+    axios.defaults.headers.common.Authorization = token
+    this.checkLogin()
   }
 }
 </script>
