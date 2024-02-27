@@ -39,12 +39,14 @@
       </tbody>
     </table>
     <OrderModal ref="orderModal" :order="tempOrder" @update-paid="updatePaid" />
+    <!-- <DelModal ref="delModal" :item="tempOrder" @del-item="delOrder" /> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import OrderModal from '../../components/OrderModal.vue'
+import DelModal from '../../components/DelModal.vue'
 
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
@@ -58,13 +60,37 @@ export default {
     }
   },
   components: {
-    OrderModal
+    OrderModal,
+    DelModal
   },
   methods: {
+    getOrders (currentPage = 1) {
+      this.currentPage = currentPage
+      const url = `${this.url}/api/${this.path}/admin/orders?page=${currentPage}`
+      this.isLoading = true
+      axios.get(url, this.tempProduct).then((response) => {
+        this.orders = response.data.orders
+        this.pagination = response.data.pagination
+        // this.isLoading = false
+      }).catch((error) => {
+        // this.isLoading = false
+        // this.pushMessage({
+        //   style: 'danger',
+        //   title: '錯誤訊息',
+        //   content: error.response.data.message,
+        // })
+        alert(error)
+      })
+    },
     openModal (item) {
       this.tempOrder = { ...item }
       const orderComponent = this.$refs.orderModal
       orderComponent.openModal()
+    },
+    openDelOrderModal (item) {
+      this.tempOrder = { ...item }
+      const delComponent = this.$refs.delModal
+      delComponent.openModal()
     },
     updatePaid (item) {
       const api = `${this.url}/api/${this.path}/admin/order/${item.id}`
@@ -80,14 +106,31 @@ export default {
           console.log(res)
           const orderComponent = this.$refs.orderModal
           orderComponent.hideModal()
-          // this.getOrders(this.currentPage)
+          this.getOrders(this.currentPage)
         })
         // 失敗結果
         .catch((error) => {
           console.log(error.response.data.message)
           alert('未成功更新訂單資料')
         })
+    },
+    delOrder () {
+      const url = `${this.url}/api/${this.path}/admin/order/${this.tempOrder.id}`
+      axios
+        .delete(url)
+        .then(() => {
+          const delComponent = this.$refs.delModal
+          delComponent.hideModal()
+
+          this.getOrders(this.currentPage)
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
     }
+  },
+  created () {
+    this.getOrders()
   }
 }
 </script>
