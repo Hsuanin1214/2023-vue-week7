@@ -43,7 +43,7 @@ export default {
         .catch((error) => {
           console.dir(error) // 用dir可以展開資訊
           alert('未登入')
-          this.$router.push('/login')
+          this.$router.push('/')
         })
     },
     logout () {
@@ -53,7 +53,7 @@ export default {
         .then((res) => {
           console.log(res)
           alert('登出成功')
-          document.cookie = 'hexToken=; expires=; path=/'
+          document.cookie = 'hexToken=; expires=; path=/' // 清除cookie
           this.$router.push('/')
         })
         // 失敗結果
