@@ -1,5 +1,5 @@
-// 管理modal的開關功能
-import Modal from 'bootstrap/js/dist/modal'
+// 管理modal的開關功能，可以直接引用
+import BsModal from 'bootstrap/js/dist/modal'
 
 export default {
   methods: {
@@ -11,6 +11,6 @@ export default {
     }
   },
   mounted () {
-    this.modal = new Modal(this.$ref.modal)
+    this.modal = new BsModal(this.$refs.modal)
   }
 }
