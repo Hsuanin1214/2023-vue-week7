@@ -108,8 +108,8 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-					<!-- 修改的資訊會再傳到父層 -->
-          <button type="button" class="btn btn-primary" @click="$emit('update-paid', tempOrder)"> 
+<!-- 修改的資訊會再傳到父層 -->
+          <button type="button" class="btn btn-primary" @click="$emit('update-paid', tempOrder)">
             修改付款狀態
           </button>
         </div>
@@ -123,7 +123,7 @@ import modalMixin from '@/mixins/modalMixin'
 
 export default {
   props: {
-    order: { //父層傳入單一訂單
+    order: { // 父層傳入單一訂單
       type: Object,
       default () {
         return {} // 每次傳都會生成新物件，避免不同組件的汙染
