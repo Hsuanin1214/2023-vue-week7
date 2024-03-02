@@ -96,7 +96,7 @@ export default {
   methods: {
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
-      const url = `${this.url}api/${this.path}/admin/orders?page=${currentPage}`
+      const url = `${this.url}/api/${this.path}/admin/orders?page=${currentPage}`
       this.isLoading = true
       axios
         .get(url)

@@ -174,7 +174,7 @@ export default {
         .delete(deleteUrl)
         .then((res) => {
           alert(res.data.message)
-          this.$refs.delModal.closeModal()
+          this.$refs.dModal.closeModal()
           this.getProducts() // 更新所有產品
         })
         .catch((error) => {
