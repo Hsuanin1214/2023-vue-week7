@@ -9,7 +9,7 @@
               type="email"
               class="form-control"
               id="username"
-              placeholder="name@example.com"
+              placeholder="信箱"
               required
               autofocus
               v-model="user.username"
@@ -21,7 +21,7 @@
               type="password"
               class="form-control"
               id="password"
-              placeholder="Password"
+              placeholder="密碼"
               v-model="user.password"
               required
             />

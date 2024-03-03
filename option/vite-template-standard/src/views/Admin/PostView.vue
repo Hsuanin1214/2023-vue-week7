@@ -1,5 +1,5 @@
 <template>
-  <h2>產品列表</h2>
+  <h2>貼文</h2>
 </template>
 
 <script>
