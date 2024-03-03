@@ -53,7 +53,9 @@
     <!-- 分頁元件 -->
     <pagination-component :pages="pagination" :get-products="getProducts"></pagination-component>
     <!-- Modal -->
-    <product-modal-component :is-new="isNew" :temp-product="tempProduct" :update-product="updateProduct" ref="pModal"></product-modal-component>
+    <product-modal-component :is-new="isNew" :temp-product="tempProduct" :update-product="updateProduct"
+    :confirm-update="confirmUpdate"
+    ref="pModal"></product-modal-component>
     <delete-modal-component :del-product="delProduct" ref="dModal" @del-item="delProduct"></delete-modal-component>
     <!-- Modal -->
   </div>
@@ -96,22 +98,6 @@ export default {
     }
   },
   methods: {
-    // checkLogin () {
-    //   console.log(url)
-    //   axios
-    //     .post(`${url}/api/user/check`)
-    //     // 成功的結果
-    //     .then((res) => {
-    //       console.log(res)
-    //       this.getProducts()
-    //     })
-    //     // 失敗結果
-    //     .catch((error) => {
-    //       console.dir(error) // 用dir可以展開資訊
-    //       alert('未登入')
-    //       window.location = "login.html"
-    //     });
-    // },
     openModal (status, item) {
       console.log(item)
       if (status === 'new') {
@@ -150,6 +136,11 @@ export default {
           console.log(error)
           this.$router.push('/')
         })
+    },
+    confirmUpdate () {
+      if (this.tempProduct.id) {
+        this.updateProduct()
+      }
     },
     updateProduct () {
       let updateOrNewUrl = `${url}/api/${path}/admin/product/${this.tempProduct.id}`

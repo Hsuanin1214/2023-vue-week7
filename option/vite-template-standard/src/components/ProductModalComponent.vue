@@ -21,177 +21,212 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="mb-2">
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control mb-2"
-                    placeholder="請輸入圖片連結"
-                    v-model="editProduct.imageUrl"
-                  />
-                </div>
-                <img class="img-fluid" :src="editProduct.imageUrl" alt="" />
-              </div>
-              <h3 class="mb-3">多圖新增</h3>
-              <!-- 檢查是否為陣列 -->
-              <div v-if="Array.isArray(editProduct.imagesUrl)">
-                <div
-                  class="mb-1"
-                  v-for="(img, key) in editProduct.imagesUrl"
-                  :key="key + 123"
-                >
+        <v-form v-slot="{meta,errors}" @submit="confirmUpdate" ref="form">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="mb-2">
                   <div class="mb-3">
                     <input
-                      v-model="editProduct.imagesUrl[key]"
                       type="text"
-                      class="form-control"
+                      class="form-control mb-2"
                       placeholder="請輸入圖片連結"
+                      v-model="editProduct.imageUrl"
                     />
                   </div>
-                  <img class="img-fluid" :src="img" alt="" />
+                  <img class="img-fluid" :src="editProduct.imageUrl" alt="" />
                 </div>
-              </div>
-              <button
-                v-if="
-                  editProduct.imagesUrl.length == 0 ||
-                  editProduct.imagesUrl[editProduct.imagesUrl.length - 1]
-                "
-                class="btn btn-outline-primary btn-sm d-block w-100"
-                @click="editProduct.imagesUrl.push('')"
-              >
-                <!-- 最後一個有值的情況下 -->
-                新增
-              </button>
-              <!-- <div v-else> -->
-              <div v-else>
-                <button
-                  class="btn btn-outline-danger btn-sm d-block w-100"
-                  @click="editProduct.imagesUrl.pop()"
-                >
-                  刪除
-                </button>
-              </div>
-            </div>
-            <div class="col-sm-8">
-              <div class="mb-3">
-                <label for="title" class="form-label">標題</label>
-                <input
-                  id="title"
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入標題"
-                  v-model="editProduct.title"
-                />
-              </div>
-
-              <div class="row">
-                <div class="mb-3 col-md-6">
-                  <label for="category" class="form-label">分類</label>
-                  <input
-                    id="category"
-                    type="text"
-                    class="form-control"
-                    placeholder="請輸入分類"
-                    v-model="editProduct.category"
-                  />
-                </div>
-                <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">單位</label>
-                  <input
-                    id="unit"
-                    type="text"
-                    class="form-control"
-                    placeholder="請輸入單位"
-                    v-model="editProduct.unit"
-                  />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="mb-3 col-md-6">
-                  <label for="origin_price" class="form-label">原價</label>
-                  <input
-                    id="origin_price"
-                    type="number"
-                    min="0"
-                    class="form-control"
-                    placeholder="請輸入原價"
-                    v-model="editProduct.origin_price"
-                  />
-                </div>
-                <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">售價</label>
-                  <input
-                    id="price"
-                    type="number"
-                    min="0"
-                    class="form-control"
-                    placeholder="請輸入售價"
-                    v-model="editProduct.price"
-                  />
-                </div>
-              </div>
-              <hr />
-
-              <div class="mb-3">
-                <label for="description" class="form-label">產品描述</label>
-                <textarea
-                  id="description"
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入產品描述"
-                  v-model="editProduct.description"
-                >
-                </textarea>
-              </div>
-              <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
-                <textarea
-                  id="description"
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入說明內容"
-                  v-model="editProduct.content"
-                >
-                </textarea>
-              </div>
-              <div class="mb-3">
-                <div class="form-check">
-                  <input
-                    id="is_enabled"
-                    v-model="editProduct.is_enabled"
-                    class="form-check-input"
-                    type="checkbox"
-                    :true-value="1"
-                    :false-value="0"
-                  />
-                  <label class="form-check-label" for="is_enabled"
-                    >是否啟用</label
+                <h3 class="mb-3">多圖新增</h3>
+                <!-- 檢查是否為陣列 -->
+                <div v-if="Array.isArray(editProduct.imagesUrl)">
+                  <div
+                    class="mb-1"
+                    v-for="(img, key) in editProduct.imagesUrl"
+                    :key="key + 123"
                   >
+                    <div class="mb-3">
+                      <input
+                        v-model="editProduct.imagesUrl[key]"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入圖片連結"
+                      />
+                    </div>
+                    <img class="img-fluid" :src="img" alt="" />
+                  </div>
+                </div>
+                <button
+                  v-if="
+                    editProduct.imagesUrl.length == 0 ||
+                    editProduct.imagesUrl[editProduct.imagesUrl.length - 1]
+                  "
+                  class="btn btn-outline-primary btn-sm d-block w-100"
+                  @click="editProduct.imagesUrl.push('')"
+                >
+                  <!-- 最後一個有值的情況下 -->
+                  新增
+                </button>
+                <!-- <div v-else> -->
+                <div v-else>
+                  <button
+                    class="btn btn-outline-danger btn-sm d-block w-100"
+                    @click="editProduct.imagesUrl.pop()"
+                  >
+                    刪除
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="mb-3">
+                  <label for="title" class="form-label">甜點名稱</label>
+                  <v-field
+                    id="title"
+                    name="甜點名稱"
+                    type="text"
+                    class="form-control"
+                    :class="{ 'is-invalid': errors['甜點名稱'] }"
+                    placeholder="請輸入甜點名稱"
+                    v-model="editProduct.title"
+                    rules="required"
+                  ></v-field>
+                  <error-message name="甜點名稱" class="invalid-feedback"></error-message>
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="category" class="form-label">甜點類型</label>
+                    <v-field
+                      id="category"
+                      name="甜點類型"
+                      type="text"
+                      class="form-control"
+                      :class="{ 'is-invalid': errors['甜點類型'] }"
+                      placeholder="請輸入甜點類型"
+                      v-model="editProduct.category"
+                      rules="required"
+                    ></v-field>
+                    <error-message name="甜點類型" class="invalid-feedback"></error-message>
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">甜點單位</label>
+                    <v-field
+                      id="unit"
+                      name="甜點單位"
+                      type="text"
+                      class="form-control"
+                      :class="{ 'is-invalid': errors['甜點單位'] }"
+                      placeholder="請輸入甜點單位"
+                      v-model="editProduct.unit"
+                      rules="required"
+                      ></v-field>
+                      <error-message name="甜點單位" class="invalid-feedback"></error-message>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="origin_price" class="form-label">甜點原價</label>
+                    <v-field
+                      id="origin_price"
+                      name="甜點原價"
+                      type="number"
+                      min="0"
+                      class="form-control"
+                      :class="{ 'is-invalid': errors['甜點原價'] }"
+                      placeholder="請輸入甜點原價"
+                      v-model="editProduct.origin_price"
+                      rules="required"
+                      ></v-field>
+                      <error-message name="甜點原價,必須是大於零的整數" class="invalid-feedback"></error-message>
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">甜點售價</label>
+                    <v-field
+                      id="price"
+                      name="甜點售價"
+                      type="number"
+                      min="0"
+                      class="form-control"
+                      :class="{ 'is-invalid': errors['甜點售價'] }"
+                      placeholder="請輸入甜點售價，必須是大於零的整數"
+                      v-model="editProduct.price"
+                      rules="required"
+                      ></v-field>
+                      <error-message name="甜點售價" class="invalid-feedback"></error-message>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="mb-3">
+                  <label for="description" class="form-label">甜點介紹</label>
+                  <v-field
+                    id="description"
+                    rows="10"
+                    name="甜點介紹"
+                    type="text"
+                    class="form-control"
+                    :class="{ 'is-invalid': errors['甜點介紹'] }"
+                    placeholder="請輸入甜點介紹"
+                    v-model="editProduct.description"
+                    rules="required"
+                    as="textarea"
+                  >
+                  </v-field>
+                  <error-message name="甜點介紹" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3">
+                  <label for="content" class="form-label">原料介紹</label>
+                  <v-field
+                    id="description"
+                    rows="10"
+                    name="原料介紹"
+                    type="text"
+                    class="form-control"
+                    :class="{ 'is-invalid': errors['原料介紹'] }"
+                    placeholder="請輸入原料介紹"
+                    v-model="editProduct.content"
+                    rules="required"
+                    as="textarea"
+                  >
+                  </v-field>
+                  <error-message name="原料介紹" class="invalid-feedback"></error-message>
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input
+                      id="is_enabled"
+                      v-model="editProduct.is_enabled"
+                      class="form-check-input"
+                      type="checkbox"
+                      :true-value="1"
+                      :false-value="0"
+                    />
+                    <label class="form-check-label" for="is_enabled"
+                      >是否啟用</label
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-            data-bs-dismiss="modal"
-          >
-            取消
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click.prevent="updateProduct"
-          >
-            確認
-          </button>
-        </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              取消
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click.prevent="updateProduct"
+              :disabled="!meta.valid"
+            >
+              確認
+            </button>
+          </div>
+        </v-form>
       </div>
     </div>
   </div>
@@ -201,7 +236,7 @@ import BsModal from 'bootstrap/js/dist/modal'
 
 // 會有refs bootstrap 問題]
 export default {
-  props: ['tempProduct', 'updateProduct', 'isNew'],
+  props: ['tempProduct', 'updateProduct', 'confirmUpdate', 'isNew'],
   data () {
     return {
       productModal: null,
