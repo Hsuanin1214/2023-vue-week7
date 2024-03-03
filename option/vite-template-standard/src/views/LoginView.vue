@@ -14,7 +14,7 @@
               autofocus
               v-model="user.username"
             />
-            <label for="username"></label>
+            <label for="username">請輸入帳號</label>
           </div>
           <div class="form-floating">
             <input
@@ -25,7 +25,7 @@
               v-model="user.password"
               required
             />
-            <label for="password">Password</label>
+            <label for="password">請輸入密碼</label>
           </div>
           <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
             登入
