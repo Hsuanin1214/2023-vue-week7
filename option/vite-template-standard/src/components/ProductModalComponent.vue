@@ -130,12 +130,11 @@
                       id="origin_price"
                       name="甜點原價"
                       type="number"
-                      min="0"
                       class="form-control"
                       :class="{ 'is-invalid': errors['甜點原價'] }"
                       placeholder="請輸入甜點原價"
                       v-model="editProduct.origin_price"
-                      rules="required"
+                      rules="required|integer|min_value:1"
                       ></v-field>
                       <error-message name="甜點原價,必須是大於零的整數" class="invalid-feedback"></error-message>
                   </div>
@@ -145,12 +144,11 @@
                       id="price"
                       name="甜點售價"
                       type="number"
-                      min="0"
                       class="form-control"
                       :class="{ 'is-invalid': errors['甜點售價'] }"
                       placeholder="請輸入甜點售價，必須是大於零的整數"
                       v-model="editProduct.price"
-                      rules="required"
+                      rules="required|integer|min_value:1"
                       ></v-field>
                       <error-message name="甜點售價" class="invalid-feedback"></error-message>
                   </div>
