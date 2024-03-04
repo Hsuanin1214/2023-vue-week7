@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="container">
       <div class="text-end mt-4">
         <button class="btn btn-primary" @click="openModal('new')">
@@ -19,6 +18,11 @@
           </tr>
         </thead>
         <tbody>
+          <!-- <tr v-if="isLoading"> -->
+            <!-- <td colspan="100%"> 使用 colspan="100%" 以確保遮罩可以覆蓋所有列 -->
+              <loading-component :isLoading="isLoading"></loading-component>
+            <!-- </td> -->
+          <!-- </tr> -->
           <tr v-for="product in products" :key="product.id">
             <td>{{ product.category }}</td>
             <td>{{ product.title }}</td>
@@ -67,6 +71,7 @@ import axios from 'axios'
 import PaginationComponent from '../../components/PaginationComponent.vue'
 import ProductModalComponent from '../../components/ProductModalComponent.vue'
 import DeleteModalComponent from '../../components/DelModalComponent.vue'
+import LoadingComponent from '../../components/LoadingComponent.vue'
 
 const { VITE_API, VITE_PATH } = import.meta.env
 // 因為有其他元件也會使用到，因此將url相關資訊寫在全域
@@ -79,7 +84,8 @@ export default {
   components: {
     PaginationComponent,
     ProductModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    LoadingComponent
   },
   data () {
     return {
@@ -94,7 +100,9 @@ export default {
       },
       pagination: {},
       url: VITE_API,
-      path: VITE_PATH
+      path: VITE_PATH,
+      isLoading: true,
+      isFullPage: true
     }
   },
   methods: {
@@ -129,6 +137,7 @@ export default {
           const { products, pagination } = res.data
           this.products = products
           this.pagination = pagination
+          this.isLoading = !this.isLoading
           console.log(this.products)
         })
         .catch((error) => {
