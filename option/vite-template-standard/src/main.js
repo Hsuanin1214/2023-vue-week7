@@ -15,6 +15,7 @@ import * as rules from '@vee-validate/rules'
 import { setLocale, localize } from '@vee-validate/i18n'
 
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+//
 
 import App from './App.vue'
 import router from './router'
@@ -37,9 +38,7 @@ setLocale('zhTW')
 const app = createApp(App)
 
 app.component('v-form', Form)
-
 app.component('v-field', Field)
-
 app.component('error-message', ErrorMessage)
 
 app.use(createPinia())
