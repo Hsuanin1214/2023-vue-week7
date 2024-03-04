@@ -1,7 +1,7 @@
 <template>
   <div class="bg-body-tertiary" id="sidebar-wrapper">
     <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-      <img src="https://imgur.com/a6LRmbN.jpg" alt="Bootstrap" width="30" height="24"> 後台
+      <img src="https://imgur.com/a6LRmbN.jpg" alt="logo" width="30" height="24"> 後台
     </div>
     <div class="list-group list-group-flush my-3">
       <RouterLink to="/admin/product" class="list-group-item list-group-item-action bg-transparent active">產品管理</RouterLink>
