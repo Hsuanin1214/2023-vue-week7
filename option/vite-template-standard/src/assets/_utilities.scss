@@ -1,0 +1,11 @@
+//vee-validate error message
+.invalid-feedback,.form-control.is-invalid{
+    color: $error-color; /* 將顏色更改為紅色 */
+}
+.form-control.is-invalid {
+    border-color: $error-color; 
+}
+.form-control.is-invalid:focus{
+    border-color: $error-color;
+    box-shadow: 0 0 0 0.25rem rgba($error-container, 1)
+}

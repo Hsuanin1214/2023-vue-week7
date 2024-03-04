@@ -3,34 +3,40 @@
     <div class="row justify-content-center">
       <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
       <div class="col-8">
-        <form id="form" class="form-signin" @submit.prevent="submitLogin">
+        <v-form id="form" v-slot="{meta,errors}" ref="form" class="form-signin" @submit="submitLogin">
           <div class="form-floating mb-3">
-            <input
+            <label for="username">帳號</label>
+            <v-field
+              id="username"
+              name="帳號"
               type="email"
               class="form-control"
-              id="username"
-              placeholder="信箱"
-              required
+              :class="{ 'is-invalid': errors['帳號'] }"
+              placeholder="請輸入帳號"
               autofocus
               v-model="user.username"
-            />
-            <label for="username">請輸入帳號</label>
+              rules="required"
+            ></v-field>
+            <error-message name="帳號" class="invalid-feedback"></error-message>
           </div>
           <div class="form-floating">
-            <input
+            <label for="password">密碼</label>
+            <v-field
+              id="password"
+              name="密碼"
               type="password"
               class="form-control"
-              id="password"
-              placeholder="密碼"
+              :class="{ 'is-invalid': errors['密碼'] }"
+              placeholder="請輸入密碼"
               v-model="user.password"
-              required
-            />
-            <label for="password">請輸入密碼</label>
+              rules="required"
+            ></v-field>
+            <error-message name="密碼" class="invalid-feedback"></error-message>
           </div>
-          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
+          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" :disabled="!meta.valid">
             登入
           </button>
-        </form>
+        </v-form>
       </div>
     </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2021~∞ - 六角學院</p>
@@ -72,7 +78,7 @@ export default {
         })
         // 失敗結果
         .catch((error) => {
-          console.dir(error) // 用dir可以展開資訊
+          console.dir(error.response.data.message) // 用dir可以展開資訊
         })
     }
   },
