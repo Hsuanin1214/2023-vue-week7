@@ -19,7 +19,8 @@
         <!-- 分頁元件 -->
         <pagination-component :pages="page" :get-items="getCoupons" class="mt-2"></pagination-component>
       </div>
-      <v-form class="col-7" v-slot="{meta,errors}" @submit="confirmUpdate" ref="form">
+      <loading-component :isLoading="isLoading" v-if="isLoading"></loading-component>
+      <v-form class="col-7" v-slot="{meta,errors}" @submit="confirmUpdate" ref="form" v-else>
         <!-- <div ref='couponModal' class="col-7"> -->
           <div v-if="isNoClick" class="d-flex justify-content-center align-items-center">目前未選擇任何優惠券</div>
           <div v-else>
@@ -95,9 +96,11 @@
 import { mapActions, mapState } from 'pinia'
 import couponStore from '../../stores/couponStore.js'
 import PaginationComponent from '../../components/PaginationComponent.vue'
+import LoadingComponent from '../../components/LoadingComponent.vue'
 export default {
   components: {
-    PaginationComponent
+    PaginationComponent,
+    LoadingComponent
   },
   data () {
     return {
@@ -107,7 +110,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(couponStore, ['coupons', 'page']),
+    ...mapState(couponStore, ['coupons', 'page', 'isLoading']),
     due_date: {
       get () {
         const date = new Date(this.tempCoupon.due_date * 1000)

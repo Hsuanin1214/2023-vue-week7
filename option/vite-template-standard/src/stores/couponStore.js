@@ -8,10 +8,13 @@ export default defineStore('couponStore', {
   state: () => (
     {
       coupons: [],
-      page: {}
+      page: {},
+      totalCount: 0,
+      isLoading: false
     }),
   actions: {
     getCoupons (page = 1) {
+      this.isLoading = !this.isLoading
       // 給參數預設值
       const getUrl = `${VITE_API}/api/${VITE_PATH}/admin/coupons?page=${page}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
       axios
