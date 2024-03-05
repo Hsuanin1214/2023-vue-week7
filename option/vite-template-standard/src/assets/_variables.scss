@@ -313,11 +313,11 @@ $cyans: (
 // scss-docs-start theme-color-variables
 $primary:       $primary-color;
 $secondary:     $secondary-color;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
+$success:       $tertiary-color;
+$info:          $outline-color;
+$warning:       $pimary-container;
+$danger:        $error-color;
+$light:         $background;
 $dark:          $gray-900 !default;
 // scss-docs-end theme-color-variables
 
