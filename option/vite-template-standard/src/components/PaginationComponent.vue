@@ -6,7 +6,7 @@
           class="page-link"
           href="#"
           aria-label="Previous"
-          @click.prevent="getProducts(pages.current_page - 1)"
+          @click.prevent="getItems(pages.current_page - 1)"
         >
           <span aria-hidden="true">&laquo;</span>
         </a>
@@ -17,7 +17,7 @@
         :key="index + 123"
         :class="{ active: item === pages.current_page }"
       >
-        <a class="page-link" href="#" @click.prevent="getProducts(item)">
+        <a class="page-link" href="#" @click.prevent="getItems(item)">
           {{ item }}
         </a>
       </li>
@@ -26,7 +26,7 @@
           class="page-link"
           href="#"
           aria-label="Next"
-          @click.prevent="getProducts(pages.current_page + 1)"
+          @click.prevent="getItems(pages.current_page + 1)"
         >
           <span aria-hidden="true">&raquo;</span>
         </a>
@@ -42,6 +42,6 @@ export default {
   data () {
     return {}
   },
-  props: ['pages', 'getProducts']
+  props: ['pages', 'getItems']
 }
 </script>
