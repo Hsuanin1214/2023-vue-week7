@@ -55,7 +55,7 @@
       </table>
     </div>
     <!-- 分頁元件 -->
-    <pagination-component :pages="pagination" :get-products="getProducts"></pagination-component>
+    <pagination-component :pages="pagination" :get-items="getProducts"></pagination-component>
     <!-- Modal -->
     <product-modal-component :is-new="isNew" :temp-product="tempProduct" :update-product="updateProduct"
     :confirm-update="confirmUpdate"
