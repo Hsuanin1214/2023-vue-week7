@@ -101,7 +101,7 @@ export default {
       pagination: {},
       url: VITE_API,
       path: VITE_PATH,
-      isLoading: true,
+      isLoading: false,
       isFullPage: true
     }
   },
@@ -128,6 +128,7 @@ export default {
       }
     },
     getProducts (page = 1) {
+      this.isLoading = !this.isLoading
       // 給參數預設值
       const getUrl = `${url}/api/${path}/admin/products?page=${page}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
       axios
