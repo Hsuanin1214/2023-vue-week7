@@ -23,7 +23,7 @@
               <loading-component :isLoading="isLoading"></loading-component>
             <!-- </td> -->
           <!-- </tr> -->
-          <tr v-for="product in products" :key="product.id">
+          <tr v-for="product in products" :key="product.id + 1">
             <td>{{ product.category }}</td>
             <td>{{ product.title }}</td>
             <td class="text-end">{{ product.origin_price }}</td>

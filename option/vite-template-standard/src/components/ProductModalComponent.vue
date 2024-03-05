@@ -216,9 +216,8 @@
               取消
             </button>
             <button
-              type="button"
+              type="submit"
               class="btn btn-primary"
-              @click.prevent="updateProduct"
               :disabled="!meta.valid"
             >
               確認
