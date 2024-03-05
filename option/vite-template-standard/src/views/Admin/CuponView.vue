@@ -10,14 +10,14 @@
     <div class="row">
       <div class="list-item-container col-5">
         <ul class="list-group" v-for="coupon in coupons" :key="coupon.id + 1">
-          <li class="list-group-item" @click="openCoupon(coupon)">
-            <span class="badge text-bg-secondary">{{coupon.is_enabled == 1 ? '開啟' : '關閉'}}</span>
+          <li class="list-group-item me-2" @click="openCoupon(coupon)">
+            <span class="badge text-bg-secondary me-2">{{coupon.is_enabled == 1 ? '開啟' : '關閉'}}</span>
             {{coupon.title}}
             <span class="arrow">&rsaquo;</span>
           </li>
         </ul>
         <!-- 分頁元件 -->
-        <!-- <pagination-component :pages="pagination" :get-products="getCoupons"></pagination-component> -->
+        <pagination-component :pages="page" :get-items="getCoupons" class="mt-2"></pagination-component>
       </div>
       <v-form class="col-7" v-slot="{meta,errors}" @submit="confirmUpdate" ref="form">
         <!-- <div ref='couponModal' class="col-7"> -->
@@ -82,7 +82,7 @@
             </div>
             <div class="d-flex">
               <button type="submit" class="btn btn-outline-primary me-2" :disabled="!meta.valid">確認</button>
-              <button type="button" class="btn btn-outline-primary">刪除</button>
+              <button type="button" class="btn btn-outline-primary" @click="delProduct( tempCoupon.id)">刪除</button>
             </div>
           </div>
         <!-- </div> -->
@@ -94,11 +94,11 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import couponStore from '../../stores/couponStore.js'
-// import PaginationComponent from '../../components/PaginationComponent.vue'
+import PaginationComponent from '../../components/PaginationComponent.vue'
 export default {
-  // components: {
-  //   PaginationComponent
-  // },
+  components: {
+    PaginationComponent
+  },
   data () {
     return {
       tempCoupon: {},
@@ -122,7 +122,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(couponStore, ['getCoupons', 'switchStatus', 'updateCoupons']),
+    ...mapActions(couponStore, ['getCoupons', 'switchStatus', 'updateCoupons', 'delProduct']),
     openCoupon (item) {
       this.isNoClick = false
       this.tempCoupon = item
@@ -135,7 +135,6 @@ export default {
         : 'new'
     },
     confirmUpdate () {
-      console.log(this.status)
       if (this.tempCoupon.id) {
         console.log('edit')
         this.updateCoupons('edit', this.tempCoupon)

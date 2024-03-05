@@ -45,6 +45,18 @@ export default defineStore('couponStore', {
           alert(error.response.data.message)
         })
     },
+    delProduct (id) {
+      const deleteUrl = `${VITE_API}/api/${VITE_PATH}/admin/coupon/${id}`
+      axios
+        .delete(deleteUrl)
+        .then((res) => {
+          alert(res.data.message)
+          this.getCoupons() // 更新所有產品
+        })
+        .catch((error) => {
+          alert(error.response.data.message)
+        })
+    },
     switchStatus (event, data) {
       const current = event.target.checked ? 1 : 0
       const newData = { ...data, is_enabled: current }
