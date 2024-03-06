@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid h-100">
+  <div class="container-fluid h-100 bg-secondary-container">
     <div class="row h-100">
       <div class="col-md-3">
-        <nav class="sticky-top h-100 px-2 py-4" style="max-height: 100vh;">
+        <nav class="sticky-top h-100 px-2 py-4 text-bg-secondary" style="max-height: 100vh;">
           <NavbarComponent/>
         </nav>
       </div>

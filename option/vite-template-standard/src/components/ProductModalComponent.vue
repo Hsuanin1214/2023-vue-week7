@@ -69,7 +69,7 @@
                 <!-- <div v-else> -->
                 <div v-else>
                   <button
-                    class="btn btn-outline-danger btn-sm d-block w-100"
+                    class="btn btn-outline-success btn-sm d-block w-100"
                     @click="editProduct.imagesUrl.pop()"
                   >
                     刪除

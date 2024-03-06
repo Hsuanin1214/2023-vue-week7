@@ -55,7 +55,7 @@
                     檢視
                   </button>
                   <button
-                    class="btn btn-outline-danger btn-sm"
+                    class="btn btn-outline-success btn-sm"
                     type="button"
                     @click="openDelOrderModal(item)"
                   >

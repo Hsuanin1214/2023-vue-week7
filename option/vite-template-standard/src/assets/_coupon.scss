@@ -1,0 +1,50 @@
+.form-switch {
+    padding-left: 0;
+}
+
+.list-item-container {
+    max-width: 300px;
+    /* margin: auto; */
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+// .list-group-item .list-group-icon {
+//     background-color: $secondary-container;
+//     /* This is Bootstrap's $gray-200 */
+//     border-radius: 50%;
+//     padding: 10px;
+//     margin-right: 10px;
+// }
+
+// .list-group-item .list-group-icon {
+//     width: 35px;
+//     /* Specify width for the icon */
+//     height: 35px;
+//     /* Specify height for the icon */
+//     background-color: $secondary-container;
+//     /* This is Bootstrap's $gray-200 */
+//     border-radius: 50%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .list-group-item .list-group-icon::before {
+//     content: '15%';
+//     /* FontAwesome check icon - ensure FontAwesome is included if you use this */
+//     font-family: 'FontAwesome';
+//     /* Specify FontAwesome as the font family */
+//     font-size: 16px;
+//     /* Adjust icon size */
+// }
+
+.list-group-item .arrow {
+    font-size: 1.5em;
+    /* Adjust the size of the arrow */
+}
