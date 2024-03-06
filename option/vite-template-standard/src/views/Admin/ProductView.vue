@@ -1,6 +1,13 @@
 <template>
   <div>
     <div class="container">
+      <h2>商品管理</h2>
+      <select class="form-select text-start mt-4" v-model="filter" @change="filterProduct">
+            <option value="全部">全部</option>
+            <option v-for="category in categories" :key="category + 1" :value="category">
+                {{ category }}
+            </option>
+      </select>
       <div class="text-end mt-4">
         <button class="btn btn-primary" @click="openModal('new')">
           建立新的產品
@@ -102,7 +109,9 @@ export default {
       url: VITE_API,
       path: VITE_PATH,
       isLoading: false,
-      isFullPage: true
+      isFullPage: true,
+      filter: '蛋糕',
+      categories: ['慕斯', '法式點心', '蛋糕', '塔類', '奶酪', '甜甜圈']
     }
   },
   methods: {
@@ -127,10 +136,15 @@ export default {
         this.$refs.dModal.openModal()
       }
     },
+    filterProduct () {
+      this.getProducts()
+    },
     getProducts (page = 1) {
       this.isLoading = !this.isLoading
+      const categoryQuery = this.filter !== '全部' ? this.filter : ''
       // 給參數預設值
-      const getUrl = `${url}/api/${path}/admin/products?page=${page}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
+      const getUrl = `${url}/api/${path}/admin/products?page=${page}&category=${categoryQuery}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
+      console.log(getUrl)
       axios
         .get(getUrl)
         .then((res) => {
