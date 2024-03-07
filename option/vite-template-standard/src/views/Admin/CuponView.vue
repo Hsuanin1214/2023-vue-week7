@@ -11,7 +11,7 @@
       <div class="list-item-container col-5">
         <ul class="list-group" v-for="coupon in coupons" :key="coupon.id + 1">
           <li class="list-group-item me-2" @click="openCoupon(coupon)">
-            <span class="badge text-bg-secondary me-2">{{coupon.is_enabled == 1 ? '開啟' : '關閉'}}</span>
+            <span class="badge text-bg-primary me-2">{{coupon.is_enabled == 1 ? '開啟' : '關閉'}}</span>
             {{coupon.title}}
             <span class="arrow">&rsaquo;</span>
           </li>
@@ -82,8 +82,8 @@
               </div>
             </div>
             <div class="d-flex">
-              <button type="submit" class="btn btn-outline-primary me-2" :disabled="!meta.valid">確認</button>
-              <button type="button" class="btn btn-outline-primary" @click="delProduct( tempCoupon.id)">刪除</button>
+              <button type="submit" class="btn btn-outline-success me-2" :disabled="!meta.valid">確認</button>
+              <button type="button" class="btn btn-outline-info" @click="delProduct( tempCoupon.id)">刪除</button>
             </div>
           </div>
         <!-- </div> -->

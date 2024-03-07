@@ -9,7 +9,7 @@
   >
     <div class="modal-dialog">
       <div class="modal-content border-0">
-        <div class="modal-header bg-danger text-white">
+        <div class="modal-header bg-warning text-primary">
           <h5 id="delProductModalLabel" class="modal-title">
             <span>刪除產品</span>
           </h5>
@@ -27,7 +27,7 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-outline-secondary"
+            class="btn btn-outline-info"
             data-bs-dismiss="modal"
           >
             取消

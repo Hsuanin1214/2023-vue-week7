@@ -3,7 +3,7 @@
     <h2>訂單</h2>
     <table class="table mt-4">
       <thead>
-        <tr>
+        <tr class="fw-bolder">
           <th>購買時間</th>
           <th>Email</th>
           <th>購買款項</th>
@@ -48,14 +48,14 @@
               <td>
                 <div class="btn-group">
                   <button
-                    class="btn btn-outline-primary btn-sm"
+                    class="btn btn-outline-success btn-sm"
                     type="button"
                     @click="openModal(item)"
                   >
                     檢視
                   </button>
                   <button
-                    class="btn btn-outline-success btn-sm"
+                    class="btn btn-outline-info btn-sm"
                     type="button"
                     @click="openDelOrderModal(item)"
                   >

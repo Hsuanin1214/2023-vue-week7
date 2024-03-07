@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+    <div class="row justify-content-center align-items-center w-50 rounded-4 py-3 my-3 bg-warning">
+      <h3 class="h3 mb-3 fw-bolder text-center text-secondary">請先登入</h3>
       <div class="col-8">
         <v-form id="form" v-slot="{meta,errors}" ref="form" class="form-signin" @submit="submitLogin">
           <div class="form-floating mb-3">

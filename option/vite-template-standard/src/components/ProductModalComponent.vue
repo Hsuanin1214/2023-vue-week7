@@ -9,7 +9,7 @@
   >
     <div class="modal-dialog modal-xl">
       <div class="modal-content border-0">
-        <div class="modal-header bg-dark text-white">
+        <div class="modal-header bg-primary text-light fw-bolder">
           <h5 id="productModalLabel" class="modal-title">
             <span v-if="isNew">新增產品</span>
             <span v-else>編輯產品</span>
@@ -36,7 +36,7 @@
                   </div>
                   <img class="img-fluid" :src="editProduct.imageUrl" alt="" />
                 </div>
-                <h3 class="mb-3">多圖新增</h3>
+                <h3 class="mb-3">新增相關照片</h3>
                 <!-- 檢查是否為陣列 -->
                 <div v-if="Array.isArray(editProduct.imagesUrl)">
                   <div
@@ -60,7 +60,7 @@
                     editProduct.imagesUrl.length == 0 ||
                     editProduct.imagesUrl[editProduct.imagesUrl.length - 1]
                   "
-                  class="btn btn-outline-primary btn-sm d-block w-100"
+                  class="btn btn-outline-success btn-sm d-block w-100"
                   @click="editProduct.imagesUrl.push('')"
                 >
                   <!-- 最後一個有值的情況下 -->
@@ -69,7 +69,7 @@
                 <!-- <div v-else> -->
                 <div v-else>
                   <button
-                    class="btn btn-outline-success btn-sm d-block w-100"
+                    class="btn btn-outline-info btn-sm d-block w-100"
                     @click="editProduct.imagesUrl.pop()"
                   >
                     刪除
@@ -210,14 +210,14 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-outline-secondary"
+              class="btn btn-outline-info"
               data-bs-dismiss="modal"
             >
               取消
             </button>
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-outline-success"
               :disabled="!meta.valid"
             >
               確認

@@ -5,7 +5,7 @@
       <span>目前共有兩張優惠券</span>
     </div>
     <div>
-      <button type="button">新增優惠券</button>
+      <button type="button" class="btn">新增優惠券</button>
     </div>
     <div class="box d-flex">
       <div class="coupon">

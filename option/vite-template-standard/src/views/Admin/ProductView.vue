@@ -2,26 +2,26 @@
   <div>
     <div class="container">
       <h2>商品管理</h2>
+      <div class="text-end mt-4">
+        <button class="btn btn-primary" @click="openModal('new')">
+          增加新品項
+        </button>
+      </div>
       <select class="form-select text-start mt-4" v-model="filter" @change="filterProduct">
             <option value="全部">全部</option>
             <option v-for="category in categories" :key="category + 1" :value="category">
                 {{ category }}
             </option>
       </select>
-      <div class="text-end mt-4">
-        <button class="btn btn-primary" @click="openModal('new')">
-          建立新的產品
-        </button>
-      </div>
       <table class="table mt-4">
         <thead>
           <tr>
-            <th width="120">分類</th>
-            <th>產品名稱</th>
-            <th width="120">原價</th>
-            <th width="120">售價</th>
-            <th width="100">是否啟用</th>
-            <th width="120">編輯</th>
+            <th class="fw-bolder text-center">分類</th>
+            <th class="fw-bolder text-center">產品名稱</th>
+            <th class="fw-bolder text-center">原價</th>
+            <th class="fw-bolder text-center">售價</th>
+            <th class="fw-bolder text-center">是否啟用</th>
+            <th class="fw-bolder text-center">編輯</th>
           </tr>
         </thead>
         <tbody>
@@ -31,26 +31,26 @@
             <!-- </td> -->
           <!-- </tr> -->
           <tr v-for="product in products" :key="product.id + 1">
-            <td>{{ product.category }}</td>
-            <td>{{ product.title }}</td>
+            <td class="text-center">{{ product.category }}</td>
+            <td class="text-center">{{ product.title }}</td>
             <td class="text-end">{{ product.origin_price }}</td>
             <td class="text-end">{{ product.price }}</td>
-            <td>
-              <span class="text-success" v-if="product.is_enabled">啟用</span>
+            <td class="text-primary text-center">
+              <span v-if="product.is_enabled">啟用</span>
               <span v-else>未啟用</span>
             </td>
-            <td>
+            <td class="text-center">
               <div class="btn-group">
                 <button
                   type="button"
-                  class="btn btn-outline-primary btn-sm"
+                  class="btn btn-outline-success btn-sm"
                   @click="openModal('edit', product)"
                 >
                   編輯
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-success btn-sm"
+                  class="btn btn-outline-info btn-sm"
                   @click="openModal('delete', product)"
                 >
                   刪除
