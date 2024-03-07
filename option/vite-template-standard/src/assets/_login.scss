@@ -1,0 +1,76 @@
+.login-box {
+    background: $primary-color;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+}
+.login-title {
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: $pimary-container;
+}
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
+input[type=email] {
+    background-color: $primary-color;
+    border: none;
+    border-bottom: 2px solid $surface;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    color: $secondary-container;
+}
+input[type=password] {
+    background-color: $primary-color;
+    border: none;
+    border-bottom: 2px solid $surface;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    color: $secondary-container;
+}
+.form-group {
+margin: 30px;
+}
+.form-control:focus {
+    box-shadow: none;
+    background-color: $primary-color;
+    color: $secondary-container;
+}
+.form-control-label {
+    font-size: 15px;
+    color: $secondary-container;
+    letter-spacing: 1px;
+}
+.btn:disabled {
+    color: $surface-variant !important;
+}
+.btn-outline-primary-login {    
+    border-color: $surface-variant!important;
+    color: $surface-variant;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.btn-outline-primary-login:hover {
+    background-color: $pimary-container!important;
+    background-image: -webkit-linear-gradient(160deg, $pimary-container 0%, $primary-color 100%)!important;
+    background-image: -moz-linear-gradient(160deg, $pimary-container 0%, $primary-color 100%)!important;
+    background-image: -o-linear-gradient(160deg, $pimary-container 0%, $primary-color 100%)!important;
+    background-image: linear-gradient(160deg, $pimary-container 0%, $primary-color 100%)!important;
+
+    color: $background!important;
+}
+.login-button {
+    padding-right: 0px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+.login-text {
+    padding-left: 0px;
+    color: #A2A4A4;
+}

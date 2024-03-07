@@ -1,27 +1,30 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center align-items-center w-50 rounded-4 py-3 my-3 bg-warning">
-      <h3 class="h3 mb-3 fw-bolder text-center text-secondary">請先登入</h3>
-      <div class="col-8">
-        <v-form id="form" v-slot="{meta,errors}" ref="form" class="form-signin" @submit="submitLogin">
-          <div class="form-floating mb-3">
-            <label for="username">帳號</label>
-            <v-field
+    <div class="row justify-content-center" style="margin:20px;">
+      <div class="col-lg-6 col-md-8 login-box p-5">
+        <div class="col-lg-12 login-title">
+          登入後台
+        </div>
+        <div class="col-lg-12 login-form">
+          <v-form id="form" v-slot="{meta,errors}" ref="form" class="form-signin" @submit="submitLogin">
+            <div class="form-group">
+              <label class="form-control-label">帳號</label>
+              <v-field
               id="username"
               name="帳號"
               type="email"
               class="form-control"
               :class="{ 'is-invalid': errors['帳號'] }"
               placeholder="請輸入帳號"
-              autofocus
               v-model="user.username"
               rules="required"
-            ></v-field>
-            <error-message name="帳號" class="invalid-feedback"></error-message>
-          </div>
-          <div class="form-floating">
-            <label for="password">密碼</label>
-            <v-field
+              ></v-field>
+              <error-message name="帳號" class="invalid-feedback"></error-message>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">  密碼
+              </label>
+              <v-field
               id="password"
               name="密碼"
               type="password"
@@ -32,12 +35,13 @@
               rules="required"
             ></v-field>
             <error-message name="密碼" class="invalid-feedback"></error-message>
+            </div>
+            <div class="col-12 login-btn justify-content-center d-flex">
+              <button class="btn btn-outline-primary-login" type="submit" :disabled="!meta.valid">登入</button>
+            </div>
+            </v-form>
           </div>
-          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" :disabled="!meta.valid">
-            登入
-          </button>
-        </v-form>
-      </div>
+        </div>
     </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2021~∞ - 六角學院</p>
   </div>
@@ -85,3 +89,11 @@ export default {
   mounted () {}
 }
 </script>
+<style scoped>
+.invalid-feedback {
+    color: #baeaff;
+}
+.form-control.is-invalid {
+    border-bottom: 2px solid #baeaff; /* 紅色底線 */
+}
+</style>
