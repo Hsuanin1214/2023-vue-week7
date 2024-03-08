@@ -14,7 +14,7 @@
     margin-top: 25px;
     text-align: left;
 }
-input[type=email] {
+.input-login-user {
     background-color: $primary-color;
     border: none;
     border-bottom: 2px solid $surface;
@@ -22,7 +22,7 @@ input[type=email] {
     margin-bottom: 20px;
     color: $secondary-container;
 }
-input[type=password] {
+.input-login-password {
     background-color: $primary-color;
     border: none;
     border-bottom: 2px solid $surface;
@@ -33,7 +33,7 @@ input[type=password] {
 .form-group {
 margin: 30px;
 }
-.form-control:focus {
+.form-control-login:focus {
     box-shadow: none;
     background-color: $primary-color;
     color: $secondary-container;

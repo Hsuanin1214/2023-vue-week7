@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>訂單</h2>
+  <div class="container bg-background rounded-3 py-3">
+    <h2 class="pt-3 text-primary fw-bolder">訂單</h2>
     <table class="table mt-4">
       <thead>
         <tr class="fw-bolder">

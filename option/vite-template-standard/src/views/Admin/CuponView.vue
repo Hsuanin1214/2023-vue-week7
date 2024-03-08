@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container bg-background rounded-3 py-3">
     <div class="mb-3">
-      <h2>優惠券管理</h2>
+      <h2 class="pt-3 text-primary fw-bolder">優惠券管理</h2>
       <span>目前共有<span class="fs-4 text-success fw-bold mx-2">{{coupons.length}}</span>張優惠券</span>
     </div>
     <div>

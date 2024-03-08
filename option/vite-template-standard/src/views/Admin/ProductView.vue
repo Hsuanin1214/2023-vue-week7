@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div class="container">
-      <h2>商品管理</h2>
+  <div class="container bg-background rounded-3 py-3">
+    <div>
+      <h2 class="pt-3 text-primary fw-bolder">產品管理</h2>
       <div class="text-end mt-4">
-        <button class="btn btn-primary" @click="openModal('new')">
+        <button class="btn btn-secondary" @click="openModal('new')">
           增加新品項
         </button>
       </div>

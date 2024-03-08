@@ -1,6 +1,6 @@
 <template>
-  <div class="text-bg-secondary" id="sidebar-wrapper">
-    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+  <div class="bg-primary" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center py-4 text-light fs-4 fw-bold text-uppercase border-bottom">
       <img src="https://imgur.com/a6LRmbN.jpg" alt="logo" width="30" height="24"> 後台
     </div>
     <div class="list-group list-group-flush my-3">
