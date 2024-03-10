@@ -7,12 +7,16 @@ const routes = [
     component: () => import('../views/FrontView.vue'),
     children: [
       {
-        path: 'about',
-        component: () => import('../views/AboutView.vue')
+        path: '/',
+        component: () => import('../views/Front/IndexView.vue')
       },
       {
-        path: 'home',
-        component: () => import('../views/HomeView.vue')
+        path: 'about',
+        component: () => import('../views/Front/AboutView.vue')
+      },
+      {
+        path: 'products',
+        component: () => import('../views/Front/FrontProductsView.vue')
       }
     ]
   },
@@ -29,10 +33,6 @@ const routes = [
       {
         path: 'blog',
         component: () => import('../views/Admin/BlogView.vue')
-      },
-      {
-        path: 'cart',
-        component: () => import('../views/Admin/CartView.vue')
       },
       {
         path: 'cupon',

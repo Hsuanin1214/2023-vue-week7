@@ -10,6 +10,12 @@
     box-shadow: 0 0 0 0.25rem rgba($error-container, 1)
 }
 
+//img
+img {
+    object-fit: contain;
+    max-width: 100%;
+  }
+
 //background
 // .bg-and-text-secondary {
 //     color: $secondary-color;
@@ -18,17 +24,20 @@
 // .bg-secondary-container {
 //     background-color: $background;
 // }
-// .bg-surface-variant {
-//     background-color: $surface-variant;
-// }
+.bg-surface-variant {
+    background-color: $surface-variant;
+}
 .bg-background {
     background-color: $background;
+}
+.text-tertiary-container {
+    color: $tertiary-container;
 }
 
 //modal
 .text-secondary-custom{ 
     color: $secondary-container;
 }
-.bg-secondary-custom{
+.bg-secondary-custom {
     background-color: $secondary-container;
 }

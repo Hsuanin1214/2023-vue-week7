@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container bg-background">
     <div class="row justify-content-center" style="margin:20px;">
       <div class="col-lg-6 col-md-8 login-box p-5">
         <div class="col-lg-12 login-title">

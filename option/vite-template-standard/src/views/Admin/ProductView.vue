@@ -1,66 +1,69 @@
 <template>
-  <div class="container bg-background rounded-3 py-3">
-    <div>
-      <h2 class="pt-3 text-primary fw-bolder">產品管理</h2>
-      <div class="text-end mt-4">
-        <button class="btn btn-secondary" @click="openModal('new')">
-          增加新品項
-        </button>
+  <div class="row bg-background rounded-3 py-3">
+      <h2 class="col-12 pt-3 text-primary fw-bolder">產品管理</h2>
+      <div class="d-flex justify-content-between">
+        <select class="w-25 form-select text-start mt-4" v-model="filter" @change="filterProduct">
+              <option value="全部">全部</option>
+              <option v-for="category in categories" :key="category + 1" :value="category">
+                  {{ category }}
+              </option>
+        </select>
+        <div class="text-end mt-4">
+          <button class="btn btn-secondary" @click="openModal('new')">
+            增加新品項
+          </button>
+        </div>
+
       </div>
-      <select class="form-select text-start mt-4" v-model="filter" @change="filterProduct">
-            <option value="全部">全部</option>
-            <option v-for="category in categories" :key="category + 1" :value="category">
-                {{ category }}
-            </option>
-      </select>
-      <table class="table mt-4">
-        <thead>
-          <tr>
-            <th class="fw-bolder text-center">分類</th>
-            <th class="fw-bolder text-center">產品名稱</th>
-            <th class="fw-bolder text-center">原價</th>
-            <th class="fw-bolder text-center">售價</th>
-            <th class="fw-bolder text-center">是否啟用</th>
-            <th class="fw-bolder text-center">編輯</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- <tr v-if="isLoading"> -->
-            <!-- <td colspan="100%"> 使用 colspan="100%" 以確保遮罩可以覆蓋所有列 -->
-              <loading-component :isLoading="isLoading"></loading-component>
-            <!-- </td> -->
-          <!-- </tr> -->
-          <tr v-for="product in products" :key="product.id + 1">
-            <td class="text-center">{{ product.category }}</td>
-            <td class="text-center">{{ product.title }}</td>
-            <td class="text-end">{{ product.origin_price }}</td>
-            <td class="text-end">{{ product.price }}</td>
-            <td class="text-primary text-center">
-              <span v-if="product.is_enabled">啟用</span>
-              <span v-else>未啟用</span>
-            </td>
-            <td class="text-center">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-outline-success btn-sm"
-                  @click="openModal('edit', product)"
-                >
-                  編輯
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-outline-info btn-sm"
-                  @click="openModal('delete', product)"
-                >
-                  刪除
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="col-12">
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="fw-bolder text-center">分類</th>
+              <th class="fw-bolder text-center">產品名稱</th>
+              <th class="fw-bolder text-center">原價</th>
+              <th class="fw-bolder text-center">售價</th>
+              <th class="fw-bolder text-center">是否啟用</th>
+              <th class="fw-bolder text-center">編輯</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr v-if="isLoading"> -->
+              <!-- <td colspan="100%"> 使用 colspan="100%" 以確保遮罩可以覆蓋所有列 -->
+                <loading-component :isLoading="isLoading"></loading-component>
+              <!-- </td> -->
+            <!-- </tr> -->
+            <tr v-for="product in products" :key="product.id + 1">
+              <td class="text-center">{{ product.category }}</td>
+              <td class="text-center">{{ product.title }}</td>
+              <td class="text-end">{{ product.origin_price }}</td>
+              <td class="text-end">{{ product.price }}</td>
+              <td class="text-primary text-center">
+                <span v-if="product.is_enabled">啟用</span>
+                <span v-else>未啟用</span>
+              </td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-outline-success btn-sm"
+                    @click="openModal('edit', product)"
+                  >
+                    編輯
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-info btn-sm"
+                    @click="openModal('delete', product)"
+                  >
+                    刪除
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     <!-- 分頁元件 -->
     <pagination-component :pages="pagination" :get-items="getProducts"></pagination-component>
     <!-- Modal -->

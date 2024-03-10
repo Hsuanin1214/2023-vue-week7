@@ -9,8 +9,7 @@
       <RouterLink to="/admin/cupon" class="list-group-item list-group-item-action bg-transparent text-center">優惠券管理</RouterLink>
       <RouterLink to="/admin/post" class="list-group-item list-group-item-action bg-transparent text-center">貼文管理</RouterLink>
       <RouterLink to="/admin/blog" class="list-group-item list-group-item-action bg-transparent text-center">Blog</RouterLink>
-      <RouterLink to="/admin/cart" class="list-group-item list-group-item-action bg-transparent text-center">購物車</RouterLink>
-      <a href="#" @click.prevent="logout" class="list-group-item list-group-item-action bg-transparent text-center">登出</a>
+      <a href="/"  @click.prevent="logout" class="list-group-item list-group-item-action bg-transparent text-center">登出</a>
     </div>
   </div>
 </template>
