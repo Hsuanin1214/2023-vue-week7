@@ -17,6 +17,18 @@ const routes = [
       {
         path: 'products',
         component: () => import('../views/Front/FrontProductsView.vue')
+      },
+      {
+        path: 'cart',
+        component: () => import('../views/Front/FrontCartView.vue')
+      },
+      {
+        path: 'product',
+        component: () => import('../views/Front/FrontProductView.vue')
+      },
+      {
+        path: 'news',
+        component: () => import('../views/Front/NewsView.vue')
       }
     ]
   },

@@ -8,9 +8,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav d-flex flex-column">
-                <RouterLink class="nav-item nav-link me-4 text-tertiary-container" to="/about">關於嗜甜</RouterLink>
-                <RouterLink class="nav-item nav-link me-4 active text-tertiary-container" to="/products">甜點列表</RouterLink>
-                <RouterLink class="nav-item nav-link me-4 text-tertiary-container" to="/login">前往後台</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 text-warning" to="/about">關於嗜甜</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 active text-warning" to="/products">甜點列表</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 active text-warning" to="/cart">購物車</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 active text-warning" to="/news">最新消息</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 text-warning" to="/login">前往後台</RouterLink>
                 <!-- <RouterLink class="nav-item nav-link" href="./cart.html"><i class="fas fa-shopping-cart"></i></RouterLink> -->
             </div>
             </div>

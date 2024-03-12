@@ -3,15 +3,15 @@
     <div class="position-relative mb-5" style="height: 100vh;margin-left: -1vw; margin-right: -1vw;">
       <div class="position-absolute rounded-top-2" style="top: 0; bottom: 0; left: 0; right: 0; background-image: url(https://imgur.com/5pKQflA.jpg); background-position: center center; background-size: cover; opacity: 1;"></div>
       <div class="position-absolute bg-light text-vertical py-2 rounded-2" style="top:25%; left: 15%; transform: translate(-50%, -50%); writing-mode: vertical-rl; text-orientation: mixed;">
-        <h2 class="text-success fw-bolder fs-1 mx-3">甜蜜匠心，</h2>
+        <h2 class="text-secondary fw-bolder fs-1 mx-3">甜蜜匠心，</h2>
       </div>
       <div class="position-absolute bg-light text-vertical py-2 intro rounded-2" style="top:37%; transform: translate(-50%, -50%); writing-mode: vertical-rl; text-orientation: mixed;">
-        <h2 class="text-success fw-bolder fs-1 mx-3">藝術與味蕾之旅</h2>
+        <h2 class="text-secondary fw-bolder fs-1 mx-3">藝術與味蕾之旅</h2>
       </div>
       <div class="position-absolute" style="bottom: 5%; right: 3%;">
         <div class="intro text-end pe-1 d-flex flex-column align-items-end">
           <p class="text-light mb-0 fs-5 text-end border-2 border-warning">匠心製作，法日融合，每一口都是不可複製的藝術品</p>
-          <button class="btn btn-outline-warning text-warning rounded-3 mt-4 px-3">更多甜點</button>
+          <button class="btn btn-outline-warning rounded-3 mt-4 px-3">更多甜點</button>
         </div>
       </div>
     </div>
@@ -42,37 +42,37 @@
               <div class="carousel-item active">
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
-                    <h3>Lorem ipsum.</h3>
-                    <p class="my-5">“Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.”</p>
-                    <p><small>—Lorem ipsum dolor sit amet.—</small></p>
+                    <h3>鹹食養人，甜食悅人。</h3>
+                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
               </div>
               <div class="carousel-item">
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
-                    <h3>Lorem ipsum.</h3>
-                    <p class="my-5">“Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.”</p>
-                    <p><small>—Lorem ipsum dolor sit amet.—</small></p>
+                    <h3>鹹食養人，甜食悅人。</h3>
+                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
               </div>
               <div class="carousel-item">
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
-                    <h3>Lorem ipsum.</h3>
-                    <p class="my-5">“Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.”</p>
-                    <p><small>—Lorem ipsum dolor sit amet.—</small></p>
+                    <h3>鹹食養人，甜食悅人。</h3>
+                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls"  role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="carousel-control-prev-icon text-primary rounded-5 " aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="carousel-control-next-icon text-primary rounded-5" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
           </div>
@@ -154,7 +154,7 @@
                     alt="..."
                   />
                   <div class="card-body text-center">
-                    <h4>Lorem ipsum</h4>
+                    <h4>歡慶母親節活動</h4>
                     <div class="d-flex justify-content-between">
                       <p class="card-text text-muted mb-0">
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
