@@ -79,14 +79,14 @@
         </div>
       </div>
       <section class="container mb-5">
-        <h4>甜點介紹</h4>
+        <h4 class="fs-2 mb-1 fw-bolder text-secondary">甜點介紹</h4>
         <div class="row">
           <div class="col-md-6 py-3 p-4">
-            <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-4">
+            <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-5">
               <div class="col-6">
-                <h4 class="mt-4 fs-3 text-primary fw-bolder">蛋糕類</h4>
+                <h4 class="mt-4 fs-4 text-primary fw-bold">蛋糕類</h4>
                 <p class="text-primary fs-6">戚風蛋糕、乳酪蛋糕、慶生蛋糕、海綿蛋糕</p>
-                <button class="btn btn-outline-secondary rounded-4">看更多</button>
+                <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button>
               </div>
               <div class="col-6 w-50 img-fluid-test">
                 <img src="https://imgur.com/0c3DFrq.jpg" alt="蛋糕類" class="img-fluid rounded-2">
@@ -94,40 +94,40 @@
             </div>
           </div>
           <div class="col-md-6 py-3 p-4">
-            <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3  px-3 py-4">
+            <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3 px-3 py-5">
               <div class="col-6">
-                <h4 class="mt-4 fs-3 text-light fw-bolder">慕斯類</h4>
+                <h4 class="mt-4 fs-4 text-light fw-bold">慕斯類</h4>
                 <p class="text-light fs-6">巧克力慕斯、草莓立方慕斯、焦糖起司慕斯</p>
-                <button class="btn btn-outline-warning rounded-4">看更多</button>
+                <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button>
               </div>
               <div class="col-6 w-50 img-fluid-test">
-                <img src="https://imgur.com/Czk6ihe.jpg" alt="慕斯類" class="img-fluid rounded-2">
+                <img src="https://imgur.com/Czk6ihe.jpg" alt="法式慕斯" class="img-fluid rounded-2">
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 py-3 p-4">
-            <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-4">
+            <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3 px-3 py-5">
               <div class="col-6">
-                <h4 class="mt-4 fs-3 text-primary fw-bolder">塔類</h4>
-                <p class="text-primary fs-6">草莓塔、檸檬塔、抹茶塔</p>
-                <button class="btn btn-outline-secondary rounded-4">看更多</button>
+                <h4 class="mt-4 fs-4 text-light fw-bold">法式小點</h4>
+                <p class="text-light fs-6">費南雪、馬卡龍、瑪德蓮</p>
+                <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button>
               </div>
               <div class="col-6 w-50 img-fluid-test">
-                <img src="https://imgur.com/bEO0eg4.jpg" alt="草莓塔類" class="img-fluid rounded-2">
+                <img src="https://imgur.com/gakeQvo.jpg" alt="法式小點" class="img-fluid rounded-2">
               </div>
             </div>
           </div>
           <div class="col-md-6 py-3 p-4">
-            <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3  px-3 py-4">
+            <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-5">
               <div class="col-6">
-                <h4 class="mt-4 fs-3 text-light fw-bolder">法式小點</h4>
-                <p class="text-light fs-6">費南雪、馬卡龍、瑪德蓮</p>
-                <button class="btn btn-outline-warning rounded-4">看更多</button>
+                <h4 class="mt-4 fs-4 text-primary fw-bold">塔類</h4>
+                <p class="text-primary fs-6">草莓塔、檸檬塔、抹茶塔</p>
+                <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button>
               </div>
               <div class="col-6 w-50 img-fluid-test">
-                <img src="https://imgur.com/gakeQvo.jpg" alt="法式小點" class="img-fluid rounded-2">
+                <img src="https://imgur.com/bEO0eg4.jpg" alt="草莓塔類" class="img-fluid rounded-2">
               </div>
             </div>
           </div>
@@ -141,7 +141,7 @@
             <p  class="fs-6 mb-3">
               我們更新最新產品、活動資訊、營業時間等。
             </p>
-            <button class="btn btn-primary text- rounded-3 mt-4 px-3">了解更多</button>
+            <button class="btn btn-primary rounded-2 mt-4 px-3 fs-7">了解更多</button>
           </div>
           <div class="col-8 py-4 bg-primary-subtle">
             <div class="row">
