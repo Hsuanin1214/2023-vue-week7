@@ -1,17 +1,19 @@
 <template>
-  <div>
+    <div class="container px-5">
+    <h2 class="my-4 text-primary">優惠券列表</h2>
     <div>
-      <h2>優惠券管理</h2>
-      <span>目前共有兩張優惠券</span>
-    </div>
-    <div>
-      <button type="button" class="btn">新增優惠券</button>
-    </div>
-    <div class="box d-flex">
-      <div class="coupon">
-        <div>
-          <p>10% 優惠券</p>
-          <p>到期日 : 2025/10/15</p>
+      <div>
+        <span>目前共有兩張優惠券</span>
+      </div>
+      <div>
+        <button type="button" class="btn">新增優惠券</button>
+      </div>
+      <div class="box d-flex">
+        <div class="coupon">
+          <div>
+            <p>10% 優惠券</p>
+            <p>到期日 : 2025/10/15</p>
+          </div>
         </div>
       </div>
     </div>
