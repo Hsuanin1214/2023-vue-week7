@@ -137,9 +137,9 @@
         <div class="row px-2 rounded-2">
           <div class="col-4 p-4 bg-primary-subtle">
             <h4 class="fs-2 mb-1 fw-bolder text-secondary">最新消息</h4>
-            <h5 class="fs-6 mb-3 fw-bolder text-secondary">了解更多嗜甜最新消息</h5>
+            <h5 class="fs-6 mb-3 fw-bolder text-secondary">更多嗜甜最新消息、甜點小知識</h5>
             <p  class="fs-6 mb-3">
-              我們更新最新產品、活動資訊、營業時間等。
+              本店更新的最新產品、活動資訊、營業時間等，或是關於甜點的小知識。
             </p>
             <button class="btn btn-primary text- rounded-3 mt-4 px-3">了解更多</button>
           </div>
