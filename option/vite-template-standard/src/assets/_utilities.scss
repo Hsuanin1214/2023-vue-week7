@@ -46,3 +46,12 @@ img {
 .fs-7 {
     font-size : 0.8125rem;
 }
+
+//border
+.border-primary-bottom {
+    width:9%;
+    border-bottom: 1px solid $primary;
+}
+.border-primary-left {
+    border-left: 3px solid $primary;
+}

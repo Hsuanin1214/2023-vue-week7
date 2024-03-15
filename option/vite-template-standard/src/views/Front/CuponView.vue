@@ -1,6 +1,6 @@
 <template>
     <div class="container px-5">
-    <h2 class="my-4 text-primary">優惠券列表</h2>
+      <h2 class="my-4 text-primary border-primary-left ps-2">優惠券列表</h2>
     <div>
       <div>
         <span>目前共有兩張優惠券</span>

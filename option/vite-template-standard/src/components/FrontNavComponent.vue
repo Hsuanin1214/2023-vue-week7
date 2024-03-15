@@ -11,7 +11,7 @@
                 <RouterLink class="nav-item nav-link me-4 text-warning" to="/about">關於嗜甜</RouterLink>
                 <RouterLink class="nav-item nav-link me-4 active text-warning" to="/products">甜點列表</RouterLink>
                 <RouterLink class="nav-item nav-link me-4 active text-warning" to="/news">最新消息</RouterLink>
-                <RouterLink class="nav-item nav-link me-4 active text-warning" to="/questions">問題參考</RouterLink>
+                <RouterLink class="nav-item nav-link me-4 active text-warning" to="/questions">Q&A</RouterLink>
                 <RouterLink class="nav-item nav-link me-4 active text-warning" to="/cart">我的購物</RouterLink>
                 <RouterLink class="nav-item nav-link me-4 active text-warning" to="/orders">訂單進度</RouterLink>
                 <RouterLink class="nav-item nav-link me-4 text-warning" to="/login">前往後台</RouterLink>

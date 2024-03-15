@@ -1,6 +1,6 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary">所有甜點</h2>
+    <h2 class="my-4 text-primary border-primary-left ps-2">所有甜點</h2>
     <div class="row my-2">
       <div class="col-6">
         <div class="dropdown">

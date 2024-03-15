@@ -1,56 +1,7 @@
 <template>
-  <div class="container">
-    <h2>查看商品</h2>
+  <div class="container px-5">
+    <h2 class="my-4 text-primary border-primary-left ps-2">查看商品</h2>
     <div class="row align-items-center">
-      <div class="col-md-7">
-        <div
-          id="carouselExampleControls"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
       <div class="col-md-5">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-white px-0 mb-0 py-3">
@@ -105,7 +56,7 @@
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
             >
-              Toggle right offcanvas
+              加入購物車
             </button>
             <!-- <a
               href="./checkout.html"
@@ -113,6 +64,55 @@
               >Lorem ipsum</a
             > -->
           </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+                class="d-block w-100"
+                alt="..."
+              />
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
     </div>
@@ -133,16 +133,6 @@
     </div>
     <!-- 加入購物車 -->
     <div>
-      <!-- <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight"
-      aria-controls="offcanvasRight"
-    >
-      Toggle right offcanvas
-    </button> -->
-
       <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
@@ -150,8 +140,11 @@
         aria-labelledby="offcanvasRightLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            Offcanvas right
+          <h5
+            class="offcanvas-title text-secondary fw-bold"
+            id="offcanvasRightLabel"
+          >
+            購物車內容
           </h5>
           <button
             type="button"
@@ -160,26 +153,17 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">...</div>
+        <div class="offcanvas-body">
+          <ul>
+            <li>甜點名稱 :  售價 : 數量: </li>
+            <li>甜點名稱 :  售價 : 數量: </li>
+          </ul>
+          <button class="btn btn-secondary">直接結帳</button>
+        </div>
       </div>
     </div>
     <!-- 保存方式、預留甜點 -->
-    <div class="row">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
+    <front-ship-nav-component></front-ship-nav-component>
     <h3 class="fw-bold">更多甜點</h3>
     <!-- <div class="swiper-container mt-4 mb-5">
       <div class="swiper-wrapper">
@@ -274,7 +258,18 @@
 </template>
 
 <script>
-export default {}
+import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
+export default {
+  data () {
+    return {
+    }
+  },
+  components: {
+    FrontShipNavComponent
+  },
+  methods: {},
+  created () {}
+}
 </script>
 
 <style scoped></style>
