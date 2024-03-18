@@ -1,6 +1,6 @@
 <template>
     <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-2">相關問題</h2>
+    <h2 class="my-4 text-primary border-primary-left ps-3">相關問題</h2>
     <div class="row">
       <div class="accordion mb-4 col-12" id="accordionExample">
         <div class="accordion-item">
