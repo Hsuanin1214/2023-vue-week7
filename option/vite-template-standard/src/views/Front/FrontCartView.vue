@@ -3,6 +3,11 @@
     <h2 class="my-4 text-primary border-primary-left ps-3">我的購物</h2>
     <div class="mt-3">
       <div class="row">
+        <div class="col-12 text-end">
+          <button class="btn btn-outline-primary" type="button" @click="removeAllCart()">
+              清空購物車
+          </button>
+        </div>
         <div class="col-12">
           <table class="table">
             <thead>
@@ -17,11 +22,11 @@
               <tr class="border-bottom border-top" v-for="cart in carts.carts" :key="cart.id">
                 <th scope="row" class="border-0 px-0 font-weight-normal py-4">
                   <img
-                    src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+                    :src="cart.product.imageUrl"
                     alt=""
                     style="width: 72px; height: 72px; object-fit: cover"
                   />
-                  <p class="mb-0 fw-bold ms-3 d-inline-block">Lorem ipsum</p>
+                  <p class="mb-0 fw-bold ms-3 d-inline-block">{{cart.product.title}}</p>
                 </th>
                 <td class="border-0 align-middle" style="max-width: 160px">
                   <div class="input-group pe-5">
@@ -30,23 +35,29 @@
                         class="btn btn-outline-dark border-0 py-2"
                         type="button"
                         id="button-addon1"
+                        @click="cart.qty--; changeCartQty(cart,cart.qty)" :disabled="cart.qty === 1"
                       >
                         <i class="fas fa-minus"></i>
                       </button>
                     </div>
                     <input
-                      type="text"
+                    min="1"
+                      type="number"
                       class="form-control border-0 text-center my-auto shadow-none"
                       placeholder=""
                       aria-label="Example text with button addon"
                       aria-describedby="button-addon1"
+                      v-model="cart.qty"
                       value="1"
+                      readonly
                     />
+                      <!-- :disabled="cart.id === status.cartQtyLoading" -->
                     <div class="input-group-append">
                       <button
                         class="btn btn-outline-dark border-0 py-2"
                         type="button"
                         id="button-addon2"
+                        @click="cart.qty++; changeCartQty(cart,cart.qty)"
                       >
                         <i class="fas fa-plus"></i>
                       </button>
@@ -54,58 +65,12 @@
                   </div>
                 </td>
                 <td class="border-0 align-middle">
-                  <p class="mb-0 ms-auto">NT$12,000</p>
+                  <p class="mb-0 ms-auto">NT${{cart.final_total}}</p>
                 </td>
                 <td class="border-0 align-middle">
                   <i class="fas fa-times"></i>
                 </td>
               </tr>
-              <!-- <tr class="border-bottom">
-                <th scope="row" class="border-0 px-0 font-weight-normal py-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                    alt=""
-                    style="width: 72px; height: 72px; object-fit: cover"
-                  />
-                  <p class="mb-0 fw-bold ms-3 d-inline-block">Lorem ipsum</p>
-                </th>
-                <td class="border-0 align-middle" style="max-width: 160px">
-                  <div class="input-group pe-5">
-                    <div class="input-group-prepend">
-                      <button
-                        class="btn btn-outline-dark border-0 py-2"
-                        type="button"
-                        id="button-addon1"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control border-0 text-center my-auto shadow-none"
-                      placeholder=""
-                      aria-label="Example text with button addon"
-                      aria-describedby="button-addon1"
-                      value="1"
-                    />
-                    <div class="input-group-append">
-                      <button
-                        class="btn btn-outline-dark border-0 py-2"
-                        type="button"
-                        id="button-addon2"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                </td>
-                <td class="border-0 align-middle">
-                  <p class="mb-0 ms-auto">NT$12,000</p>
-                </td>
-                <td class="border-0 align-middle">
-                  <i class="fas fa-times"></i>
-                </td>
-              </tr> -->
             </tbody>
           </table>
           <div class="input-group w-50 mb-3">
@@ -121,6 +86,7 @@
                 class="btn btn-outline-dark border-bottom border-top-0 border-start-0 border-end-0 rounded-0"
                 type="button"
                 id="button-addon2"
+                @click="removeCartItem(cart.id)"
               >
                 <i class="fas fa-paper-plane"></i>
               </button>
@@ -136,30 +102,43 @@
                   <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
                     Subtotal
                   </th>
-                  <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
+                  <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
                 </tr>
                 <tr>
                   <th
                     scope="row"
                     class="border-0 px-0 pt-0 pb-4 font-weight-normal"
                   >
-                    Payment
+                    優惠券折扣
                   </th>
-                  <td class="text-end border-0 px-0 pt-0 pb-4">ApplePay</td>
+                  <td class="text-end border-0 px-0 pt-0 pb-4">－NT${{carts.total}}</td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-0 px-0 pt-0 pb-4 font-weight-normal"
+                  >
+                    支付方式
+                  </th>
+                  <td class="text-end border-0 px-0 pt-0 pb-4">本店目前只提供自取或貨到付款</td>
                 </tr>
               </tbody>
             </table>
             <div class="d-flex justify-content-between mt-4">
               <p class="mb-0 h4 fw-bold">Total</p>
-              <p class="mb-0 h4 fw-bold">NT$24,000</p>
+              <p class="mb-0 h4 fw-bold">NT${{carts.total}}</p>
             </div>
-            <a href="./checkout.html" class="btn btn-dark w-100 mt-4"
-              >Lorem ipsum</a
-            >
+            <!-- <a href="./checkout.html" class="btn btn-secondary w-100 mt-4"
+              >立即結帳</a> -->
+              <router-link
+            class="btn btn-secondary w-100 mt-4"
+            to="/checkout"
+            >立即結帳</router-link
+          >
           </div>
         </div>
       </div>
-      <div class="my-5">
+      <!-- <div class="my-5">
         <h3 class="fw-bold">Lorem ipsum dolor sit amet</h3>
         <div class="swiper-container mt-4 mb-5">
           <div class="swiper-wrapper">
@@ -265,9 +244,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="bg-light py-4">
+    <!-- <div class="bg-light py-4">
       <div class="container">
         <div
           class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"
@@ -283,7 +262,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -306,7 +285,7 @@ export default {
     ...mapState(cartStore, ['carts'])
   },
   methods: {
-    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
     ...mapActions(productStore, ['getProducts'])
   },
   mounted () {
