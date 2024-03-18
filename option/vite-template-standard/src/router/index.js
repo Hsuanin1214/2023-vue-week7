@@ -39,6 +39,14 @@ const routes = [
         component: () => import('../views/Front/QusetionView.vue')
       },
       {
+        path: 'checkout',
+        component: () => import('../views/Front/FrontCheckout.vue')
+      },
+      {
+        path: 'checkOrder',
+        component: () => import('../views/Front/FinishOrder.vue')
+      },
+      {
         path: 'orders',
         component: () => import('../views/Front/FrontOrderView.vue')
       }
