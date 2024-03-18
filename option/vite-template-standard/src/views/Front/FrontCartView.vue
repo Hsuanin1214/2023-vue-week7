@@ -14,7 +14,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-bottom border-top">
+              <tr class="border-bottom border-top" v-for="cart in carts.carts" :key="cart.id">
                 <th scope="row" class="border-0 px-0 font-weight-normal py-4">
                   <img
                     src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
@@ -60,7 +60,7 @@
                   <i class="fas fa-times"></i>
                 </td>
               </tr>
-              <tr class="border-bottom">
+              <!-- <tr class="border-bottom">
                 <th scope="row" class="border-0 px-0 font-weight-normal py-4">
                   <img
                     src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
@@ -105,7 +105,7 @@
                 <td class="border-0 align-middle">
                   <i class="fas fa-times"></i>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
           <div class="input-group w-50 mb-3">
@@ -288,7 +288,32 @@
 </template>
 
 <script>
-export default {}
+import { mapActions, mapState } from 'pinia'
+import cartStore from '../../stores/cartStore.js'
+import productStore from '../../stores/productStore.js'
+// import PaginationComponent from '../../components/PaginationComponent.vue'
+export default {
+  // components: {
+  // PaginationComponent
+  // LoadingComponent
+  // },
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapState(cartStore, ['carts'])
+  },
+  methods: {
+    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(productStore, ['getProducts'])
+  },
+  mounted () {
+    this.getProducts()
+    this.getCart()
+  }
+}
 </script>
 
 <style scoped></style>
