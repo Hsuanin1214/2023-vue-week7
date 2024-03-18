@@ -11,7 +11,8 @@
       <div class="position-absolute" style="bottom: 5%; right: 3%;">
         <div class="intro text-end pe-1 d-flex flex-column align-items-end">
           <p class="text-light mb-0 fs-5 text-end border-2 border-warning">匠心製作，法日融合，每一口都是不可複製的藝術品</p>
-          <button class="btn btn-outline-warning rounded-3 mt-4 px-3">更多甜點</button>
+          <!-- <button class="btn btn-outline-warning rounded-3 mt-4 px-3">更多甜點</button> -->
+          <router-link class="btn btn-outline-warning rounded-3 mt-4 px-3" to="/products">更多甜點</router-link>
         </div>
       </div>
     </div>
@@ -43,7 +44,7 @@
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
                     <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
                     <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
@@ -52,7 +53,7 @@
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
                     <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
                     <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
@@ -61,7 +62,7 @@
                 <div class="row justify-content-center py-7">
                   <div class="col-md-6 text-center">
                     <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
                     <p><small>— Pierre Hermé —</small></p>
                   </div>
                 </div>
@@ -86,7 +87,8 @@
               <div class="col-6">
                 <h4 class="mt-4 fs-4 text-primary fw-bold">蛋糕類</h4>
                 <p class="text-primary fs-6">戚風蛋糕、乳酪蛋糕、慶生蛋糕、海綿蛋糕</p>
-                <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button>
+                <!-- <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button> -->
+                <router-link class="btn btn-secondary rounded-4 px-4 fs-7 fw-light" to="/products">看更多</router-link>
               </div>
               <div class="col-6 w-50 img-fluid-test">
                 <img src="https://imgur.com/0c3DFrq.jpg" alt="蛋糕類" class="img-fluid rounded-2">
@@ -98,7 +100,8 @@
               <div class="col-6">
                 <h4 class="mt-4 fs-4 text-light fw-bold">慕斯類</h4>
                 <p class="text-light fs-6">巧克力慕斯、草莓立方慕斯、焦糖起司慕斯</p>
-                <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button>
+                <!-- <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button> -->
+                <router-link class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7" to="/products">看更多</router-link>
               </div>
               <div class="col-6 w-50 img-fluid-test">
                 <img src="https://imgur.com/Czk6ihe.jpg" alt="法式慕斯" class="img-fluid rounded-2">
@@ -112,7 +115,8 @@
               <div class="col-6">
                 <h4 class="mt-4 fs-4 text-light fw-bold">法式小點</h4>
                 <p class="text-light fs-6">費南雪、馬卡龍、瑪德蓮</p>
-                <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button>
+                <!-- <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button> -->
+                <router-link class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7" to="/products">看更多</router-link>
               </div>
               <div class="col-6 w-50 img-fluid-test">
                 <img src="https://imgur.com/gakeQvo.jpg" alt="法式小點" class="img-fluid rounded-2">
@@ -124,7 +128,8 @@
               <div class="col-6">
                 <h4 class="mt-4 fs-4 text-primary fw-bold">塔類</h4>
                 <p class="text-primary fs-6">草莓塔、檸檬塔、抹茶塔</p>
-                <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button>
+                <!-- <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button> -->
+                <router-link class="btn btn-secondary rounded-4 px-4 fs-7 fw-light" to="/products">看更多</router-link>
               </div>
               <div class="col-6 w-50 img-fluid-test">
                 <img src="https://imgur.com/bEO0eg4.jpg" alt="草莓塔類" class="img-fluid rounded-2">
@@ -141,7 +146,7 @@
             <p  class="fs-6 mb-3">
               本店更新的最新產品、活動資訊、營業時間等，或是關於甜點的小知識。
             </p>
-            <button class="btn btn-primary rounded-2 mt-4 px-3 fs-7">了解更多</button>
+            <router-link class="btn btn-primary rounded-2 mt-4 px-3 fs-7" to="/news">了解更多</router-link>
           </div>
           <div class="col-8 py-4 bg-primary-subtle">
             <div class="row">
