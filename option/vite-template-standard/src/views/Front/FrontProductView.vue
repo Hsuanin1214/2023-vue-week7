@@ -1,45 +1,45 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-2">查看商品</h2>
+    <h2 class="my-4 text-primary border-primary-left ps-3">查看商品</h2>
     <div class="row align-items-center">
       <div class="col-md-5">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-white px-0 mb-0 py-3">
             <li class="breadcrumb-item">
-              <a class="text-muted" href="./index.html">Home</a>
+              <router-link class="text-muted" to="/">首頁</router-link>
             </li>
             <li class="breadcrumb-item">
-              <a class="text-muted" href="./product.html">Product</a>
+              <router-link class="text-muted" to="/products">甜點列表</router-link>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Detail</li>
+            <li class="breadcrumb-item active" aria-current="page">{{productSelect.category}}</li>
           </ol>
         </nav>
-        <h2 class="fw-bold h1 mb-1">Lorem ipsum</h2>
-        <p class="mb-0 text-muted text-end"><del>NT$1,200</del></p>
-        <p class="h4 fw-bold text-end">NT$1,080</p>
+        <h2 class="fw-bold h4 mb-1">{{productSelect.title}}</h2>
+        <p class="h5 mb-0 text-muted text-end"><del>NT${{productSelect.origin_price}}</del></p>
+        <p class="h5 fw-bold text-end">NT${{productSelect.price}} / <span>{{ productSelect.unit }}</span></p>
         <div class="row align-items-center">
-          <div class="col-6">
-            <div class="input-group my-3 bg-light rounded">
+          <div class="col-8">
+            <div class="input-group my-3 bg-light rounded-2 d-flex align-items-center">
               <div class="input-group-prepend">
                 <button
-                  class="btn btn-outline-dark border-0 py-2"
+                  class="btn btn-outline-info border-0 py-2"
                   type="button"
                   id="button-addon1"
                 >
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
-              <input
-                type="text"
-                class="form-control border-0 text-center my-auto shadow-none bg-light"
-                placeholder=""
-                aria-label="Example text with button addon"
-                aria-describedby="button-addon1"
-                value="1"
-              />
+                <input
+                  type="text"
+                  class="form-control border-0 text-center my-auto shadow-none bg-light w-50"
+                  placeholder=""
+                  aria-label="Example text with button addon"
+                  aria-describedby="button-addon1"
+                  value="1"
+                />
               <div class="input-group-append">
                 <button
-                  class="btn btn-outline-dark border-0 py-2"
+                  class="btn btn-outline-info border-0 py-2"
                   type="button"
                   id="button-addon2"
                 >
@@ -48,9 +48,9 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <button
-              class="btn btn-primary text-nowrap w-100 py-2"
+              class="btn btn-primary text-nowrap py-2 text-center"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
@@ -58,79 +58,48 @@
             >
               加入購物車
             </button>
-            <!-- <a
-              href="./checkout.html"
-              class="text-nowrap btn btn-dark w-100 py-2"
-              >Lorem ipsum</a
-            > -->
           </div>
         </div>
+        <p class="fs-6">
+          {{productSelect.description}}
+        </p>
       </div>
       <div class="col-md-7">
-        <div
-          id="carouselExampleControls"
-          class="carousel slide"
-          data-ride="carousel"
-        >
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators" v-if="productSelect && productSelect.imagesUrl">
+            <!-- Always show the first indicator for the first image -->
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <!-- Dynamically generate indicators for the rest of the images -->
+            <button v-for="index in productSelect.imagesUrl.length" :key="index" type="button" data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index" :aria-label="'Slide ' + (index + 1)" :class="{ 'active': index === 0 }"></button>
+          </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
+            <!-- Display the first image -->
+            <div class="carousel-item active h-75vh">
+              <img :src="productSelect.imageUrl" class="d-block h-100 w-100 carousel-img" :alt="productSelect.title">
             </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                class="d-block w-100"
-                alt="..."
-              />
+            <!-- Dynamically display the rest of the images -->
+            <div class="carousel-item h-75vh" v-for="(image, index) in productSelect.imagesUrl" :key="index+1">
+              <img :src="image" class="d-block h-100 w-100 carousel-img" :alt="productSelect.title">
             </div>
           </div>
-          <a
-            class="carousel-control-prev"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="prev"
-          >
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="next"
-          >
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
-    <div class="row my-5">
-      <div class="col-md-4">
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et
+    <!-- <div class="row my-5">
+      <div class="col-md-5">
+        <p class="fs-6">
+          {{productSelect.description}}
         </p>
       </div>
-      <div class="col-md-3">
-        <p class="text-muted">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor
-        </p>
-      </div>
-    </div>
+    </div> -->
     <!-- 加入購物車 -->
     <div>
       <div
@@ -163,7 +132,7 @@
       </div>
     </div>
     <!-- 保存方式、預留甜點 -->
-    <front-ship-nav-component></front-ship-nav-component>
+    <front-ship-nav-component :content="productSelect.content"></front-ship-nav-component>
     <h3 class="fw-bold">更多甜點</h3>
     <!-- <div class="swiper-container mt-4 mb-5">
       <div class="swiper-wrapper">
@@ -258,18 +227,33 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia'
+import productStore from '../../stores/productStore.js'
 import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
 export default {
   data () {
     return {
+      tempProduct: {}
     }
   },
   components: {
     FrontShipNavComponent
   },
-  methods: {},
-  created () {}
+  computed: {
+    ...mapState(productStore, ['productSelect', 'pagination'])
+  },
+  methods: {
+    ...mapActions(productStore, ['getProduct'])
+  },
+  mounted () {
+    const productId = this.$route.params.id
+    this.getProduct(productId)
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.h-75vh{
+  height: 75vh;
+}
+</style>

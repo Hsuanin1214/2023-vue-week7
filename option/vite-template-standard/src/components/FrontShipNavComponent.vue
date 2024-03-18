@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="row my-4">
+  <div class="container my-4">
+    <div class="row">
       <ul class=" col-12 nav nav-tabs">
         <li
           class="nav-item"
@@ -19,7 +19,7 @@
     </div>
     <div v-if="selectedTab.name === '商品介紹'">
       <h5 class="text-primary mt-3 fw-bold">商品介紹</h5>
-      <p>請見上方商品說明。</p>
+      <pre class="fs-6" style="line-height:  1.25em;">{{formattedContent}}</pre>
     </div>
     <div v-if="selectedTab.name === '規格說明'">
       <h5 class="text-primary mt-3 fw-bold">規格說明</h5>
@@ -88,9 +88,21 @@ export default {
       selectedTab: { name: '商品介紹' } // 預設選中的標籤
     }
   },
-  components: {},
-  methods: {},
-  created () {}
+  props: ['content'],
+  computed: {
+    formattedContent () {
+      if (!this.content) {
+        return ''
+      }
+      // 首先，用換行符分割原始字串，得到一個項目數組
+      const items = this.content.split('\n')
+      // 然後，處理每個項目，移除其中的多餘空格
+      const formattedItems = items.map(item => item.trim())
+      // 最後，將處理後的項目用兩個換行符連接，確保每個項目之間空出一行
+      return formattedItems.join('\n\n')
+    }
+  },
+  methods: {}
 }
 </script>
 

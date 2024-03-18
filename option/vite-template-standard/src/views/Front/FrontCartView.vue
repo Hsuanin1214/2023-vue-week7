@@ -1,6 +1,6 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-2">我的購物</h2>
+    <h2 class="my-4 text-primary border-primary-left ps-3">我的購物</h2>
     <div class="mt-3">
       <div class="row">
         <div class="col-12">
