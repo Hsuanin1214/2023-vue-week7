@@ -19,10 +19,6 @@ const routes = [
         component: () => import('../views/Front/FrontProductsView.vue')
       },
       {
-        path: 'cart',
-        component: () => import('../views/Front/FrontCartView.vue')
-      },
-      {
         path: 'product/:id',
         component: () => import('../views/Front/FrontProductView.vue')
       },
@@ -37,6 +33,14 @@ const routes = [
       {
         path: 'questions',
         component: () => import('../views/Front/QusetionView.vue')
+      },
+      {
+        path: 'cupon',
+        component: () => import('../views/Front/FrontCuponView.vue')
+      },
+      {
+        path: 'cart',
+        component: () => import('../views/Front/FrontCartView.vue')
       },
       {
         path: 'checkout',

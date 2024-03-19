@@ -12,17 +12,17 @@
               <i
                 class="fas fa-check-circle d-md-inline d-block text-center"
               ></i>
-              <span class="text-nowrap">Lorem ipsum</span>
+              <span class="text-nowrap">商品確認</span>
             </li>
             <li class="me-md-6 me-3 position-relative custom-step-line">
               <i
                 class="fas fa-check-circle d-md-inline d-block text-center"
               ></i>
-              <span class="text-nowrap">Lorem ipsum</span>
+              <span class="text-nowrap">訂購人填寫</span>
             </li>
             <li>
               <i class="fas fa-dot-circle d-md-inline d-block text-center"></i>
-              <span class="text-nowrap">Lorem ipsum</span>
+              <span class="text-nowrap">訂單確認</span>
             </li>
           </ul>
         </nav>
@@ -30,7 +30,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-10">
-        <h3 class="fw-bold mb-4 pt-3">Checkout</h3>
+        <h3 class="fw-bold mb-4 pt-3">訂購人資訊</h3>
       </div>
     </div>
     <div class="row flex-row-reverse justify-content-center pb-5">
@@ -70,32 +70,42 @@
             <tbody>
               <tr>
                 <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
-                  Subtotal
+                  小計
                 </th>
                 <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
               </tr>
+              <tr>
+                  <th
+                    scope="row"
+                    class="border-0 px-0 pt-0 pb-4 font-weight-normal"
+                  >
+                    優惠券折扣
+                  </th>
+                  <td class="text-end border-0 px-0 pt-0 pb-4">－NT$</td>
+                </tr>
               <tr>
                 <th
                   scope="row"
                   class="border-0 px-0 pt-0 pb-4 font-weight-normal"
                 >
-                  Payment
+                支付方式
                 </th>
-                <td class="text-end border-0 px-0 pt-0 pb-4">ApplePay</td>
+                <td class="text-end border-0 px-0 pt-0 pb-4">本店目前只提供自取或貨到付款
+                </td>
               </tr>
             </tbody>
           </table>
           <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 fw-bold">Total</p>
+            <p class="mb-0 h4 fw-bold">總金額</p>
             <p class="mb-0 h4 fw-bold">NT$24,000</p>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <form>
-          <p>Contact information</p>
+          <p>聯絡人資訊</p>
           <div class="mb-0">
-            <label for="ContactMail" class="text-muted mb-0">Email</label>
+            <label for="ContactMail" class="text-muted mb-0">信箱</label>
             <input
               type="email"
               class="form-control"
@@ -104,9 +114,9 @@
               placeholder="example@gmail.com"
             />
           </div>
-          <p class="mt-4">Shipping address</p>
+          <p class="mt-4">收貨地址</p>
           <div class="mb-2">
-            <label for="ContactName" class="text-muted mb-0">Name</label>
+            <label for="ContactName" class="text-muted mb-0">收貨人姓名</label>
             <input
               type="text"
               class="form-control"
@@ -115,7 +125,7 @@
             />
           </div>
           <div class="mb-2">
-            <label for="ContactPhone" class="text-muted mb-0">Phone</label>
+            <label for="ContactPhone" class="text-muted mb-0">聯絡電話</label>
             <input
               type="text"
               class="form-control"
@@ -124,7 +134,7 @@
             />
           </div>
           <div class="mb-2">
-            <label for="ContactMessage" class="text-muted mb-0">Message</label>
+            <label for="ContactMessage" class="text-muted mb-0">備註</label>
             <textarea
               class="form-control"
               rows="3"
@@ -144,7 +154,7 @@
               aria-controls="collapseOne"
             >
               <p class="mb-0 position-relative custom-checkout-label">
-                Lorem ipsum
+                自取
               </p>
             </div>
             <div
@@ -156,7 +166,7 @@
               <div class="card-body bg-light ps-5 py-4">
                 <div class="mb-2">
                   <label for="Lorem ipsum1" class="text-muted mb-0"
-                    >Lorem ipsum</label
+                    >12：00前</label
                   >
                   <input
                     type="text"
@@ -167,7 +177,7 @@
                 </div>
                 <div class="mb-0">
                   <label for="Lorem ipsum2" class="text-muted mb-0"
-                    >Lorem ipsum</label
+                    >20：00 店面結束前</label
                   >
                   <input
                     type="text"
@@ -189,7 +199,7 @@
               aria-controls="collapseTwo"
             >
               <p class="mb-0 position-relative custom-checkout-label">
-                Lorem ipsum
+                宅配
               </p>
             </div>
             <div

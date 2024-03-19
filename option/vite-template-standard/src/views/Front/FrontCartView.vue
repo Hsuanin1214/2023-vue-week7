@@ -68,7 +68,14 @@
                   <p class="mb-0 ms-auto">NT${{cart.final_total}}</p>
                 </td>
                 <td class="border-0 align-middle">
-                  <i class="fas fa-times"></i>
+                  <button
+                    class="btn btn-outline-dark border-0 py-2"
+                    type="button"
+                    id="button-addon2"
+                    @click="removeCartItem(cart.id)"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -86,7 +93,6 @@
                 class="btn btn-outline-dark border-bottom border-top-0 border-start-0 border-end-0 rounded-0"
                 type="button"
                 id="button-addon2"
-                @click="removeCartItem(cart.id)"
               >
                 <i class="fas fa-paper-plane"></i>
               </button>
@@ -95,12 +101,12 @@
         </div>
         <div class="col-12">
           <div class="border p-4 mb-4">
-            <h4 class="fw-bold mb-4">Order Detail</h4>
+            <h4 class="fw-bold mb-4">訂單確認</h4>
             <table class="table text-muted border-bottom">
               <tbody>
                 <tr>
                   <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
-                    Subtotal
+                    小計
                   </th>
                   <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
                 </tr>
@@ -138,9 +144,40 @@
           </div>
         </div>
       </div>
-      <!-- <div class="my-5">
+      <div class="my-5">
         <h3 class="fw-bold">Lorem ipsum dolor sit amet</h3>
-        <div class="swiper-container mt-4 mb-5">
+        <div>
+          <swiper
+            :modules="modules"
+            :slidesPerView="3"
+            :centeredSlides="true"
+            :spaceBetween="30"
+            :pagination="{
+              type: 'fraction',
+            }"
+            :navigation="true"
+            :virtual="true"
+            class="mySwiper"
+            @swiper="setSwiperRef"
+          >
+            <swiper-slide
+              v-for="(slideContent, index) in slides"
+              :key="index"
+              :virtualIndex="index"
+              >{{ slideContent }}</swiper-slide
+            >
+          </swiper>
+          <p class="append-buttons">
+            <button @click="prepend()" class="prepend-2-slides">
+              Prepend 2 Slides
+            </button>
+            <button @click="slideTo(1)" class="prepend-slide">Slide 1</button>
+            <button @click="slideTo(250)" class="slide-250">Slide 250</button>
+            <button @click="slideTo(500)" class="slide-500">Slide 500</button>
+            <button @click="append()" class="append-slides">Append Slide</button>
+          </p>
+        </div>
+        <!-- <div class="swiper-container mt-4 mb-5">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div
@@ -243,8 +280,8 @@
               </div>
             </div>
           </div>
-        </div>
-      </div> -->
+        </div> -->
+      </div>
     </div>
     <!-- <div class="bg-light py-4">
       <div class="container">
@@ -271,14 +308,23 @@ import { mapActions, mapState } from 'pinia'
 import cartStore from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 // import PaginationComponent from '../../components/PaginationComponent.vue'
+// 導入Swiper core和所需模塊
+// import SwiperCore, { Pagination, Navigation, Virtual } from 'swiper'
 export default {
   // components: {
   // PaginationComponent
   // LoadingComponent
   // },
+  // components: {
+  //   Swiper,
+  //   SwiperSlide
+  // },
   data () {
     return {
-
+      slides: Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`),
+      swiperRef: null,
+      appendNumber: 500,
+      prependNumber: 1
     }
   },
   computed: {
@@ -286,7 +332,22 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
-    ...mapActions(productStore, ['getProducts'])
+    ...mapActions(productStore, ['getProducts']),
+    setSwiperRef (swiper) {
+      this.swiperRef = swiper
+    },
+    slideTo (index) {
+      this.swiperRef.slideTo(index - 1, 0)
+    },
+    append () {
+      this.appendNumber += 1
+      this.slides.push('Slide ' + this.appendNumber)
+    },
+    prepend () {
+      this.prependNumber -= 2
+      this.slides.unshift(`Slide ${this.prependNumber + 1}`, `Slide ${this.prependNumber + 2}`)
+      this.swiperRef.slideTo(this.swiperRef.activeIndex + 2, 0)
+    }
   },
   mounted () {
     this.getProducts()

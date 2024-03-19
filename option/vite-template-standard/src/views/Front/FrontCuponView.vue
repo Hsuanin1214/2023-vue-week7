@@ -1,12 +1,9 @@
 <template>
-    <div class="container px-5">
-      <h2 class="my-4 text-primary border-primary-left ps-3">優惠券列表</h2>
-    <div>
+  <div class="container px-5">
+    <h2 class="my-4 text-primary border-primary-left ps-3">優惠券列表</h2>
+    <div class="row">
       <div>
         <span>目前共有兩張優惠券</span>
-      </div>
-      <div>
-        <button type="button" class="btn">新增優惠券</button>
       </div>
       <div class="box d-flex">
         <div class="coupon">
