@@ -192,17 +192,20 @@
               v-for="(product, index) in products"
               :key="index"
               :virtualIndex="index"
-              ><div class="card border-0 mb-4 position-relative">
-                <div class="h-25vh">
-                    <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
-                </div>
-              <div class="card-body p-0">
-                <h5 class="mb-0 mt-3">{{ product.title }}</h5>
-                <p class="card-text mb-0">
-                  NT${{ product.price }}
-                  <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
-                </p>
-              </div>
+              >
+                <div class="card border-0 mb-4 position-relative">
+                  <router-link :to="`product/${product.id}`">
+                    <div class="h-25vh">
+                        <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
+                    </div>
+                    <div class="card-body p-0">
+                      <h5 class="mb-0 mt-3">{{ product.title }}</h5>
+                      <p class="card-text mb-0">
+                        NT${{ product.price }}
+                        <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
+                      </p>
+                    </div>
+                  </router-link>
             </div>
           </swiper-slide>
           </swiper>
