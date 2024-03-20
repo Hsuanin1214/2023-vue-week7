@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 const { VITE_API, VITE_PATH } = import.meta.env
 
-export default defineStore('carttStore', {
+export const useCartStore = defineStore('cartStore', {
   state: () => ({
     products: [],
     selectedProduct: [],

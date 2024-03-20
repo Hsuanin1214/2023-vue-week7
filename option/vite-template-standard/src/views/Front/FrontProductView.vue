@@ -130,10 +130,10 @@
           <ul class="scrollable-div">
             <li v-for="cart in carts.carts" :key="cart.id" class="my-3">
               <span class="d-block fw-bold mb-2">甜點名稱 : <span class="border-bottom-info">
-                {{ cart.product.title }}  </span></span>
-              <span class="me-3">售價 : NT$ {{ cart.product.price }}  </span>
-              <span>數量: {{ cart.qty }}   </span>
-              <span class="d-block">總價 : NT$ {{cart.final_total}}   </span>
+                {{ cart.product.title }}</span></span>
+              <span class="me-3">售價 : NT$ {{ cart.product.price }}</span>
+              <span>數量: {{ cart.qty }}</span>
+              <span class="d-block">總價 : NT$ {{cart.final_total}}</span>
             </li>
           </ul>
           <router-link
@@ -241,7 +241,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cartStore.js'
+import { useCartStore } from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
 export default {
@@ -255,11 +255,11 @@ export default {
     FrontShipNavComponent
   },
   computed: {
-    ...mapState(cartStore, ['carts']),
+    ...mapState(useCartStore, ['carts']),
     ...mapState(productStore, ['productSelect', 'pagination'])
   },
   methods: {
-    ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart', 'addToCart']),
+    ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart', 'addToCart']),
     ...mapActions(productStore, ['getProduct']),
     changeNum (step) {
       this.tempNum += step
