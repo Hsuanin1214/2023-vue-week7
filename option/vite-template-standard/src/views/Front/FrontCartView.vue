@@ -2,6 +2,33 @@
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left ps-3">我的購物</h2>
     <div class="mt-3">
+      <div class="row justify-content-center align-items-md-center">
+      <div class="col-md-6">
+        <h3 class="fw-bold mb-4 pt-3 h4 text-primary">訂購人資訊</h3>
+      </div>
+      <div class="col-md-6">
+          <ul
+            class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
+          >
+            <li class="me-md-6 me-3 position-relative custom-step-line">
+              <i
+                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+              ></i>
+              <span class="text-nowrap text-secondary  border-bottom-primary-light">商品確認</span>
+            </li>
+            <li class="me-md-6 me-3 position-relative custom-step-line">
+              <i
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2"
+              ></i>
+              <span class="text-nowrap">訂購人填寫</span>
+            </li>
+            <li>
+              <i class="fas fa-dot-circle d-md-inline d-block text-center me-2"></i>
+              <span class="text-nowrap">訂單完成</span>
+            </li>
+          </ul>
+      </div>
+    </div>
       <div class="row">
         <div class="col-12 text-end">
           <button class="btn btn-outline-primary" type="button" @click="removeAllCart()">
@@ -9,7 +36,7 @@
           </button>
         </div>
         <div class="col-12">
-          <table class="table bg-light">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col" class="border-0 ps-0">商品項目</th>
@@ -101,7 +128,7 @@
         </div>
         <div class="col-12">
           <div class="border p-4 mb-4">
-            <h4 class="fw-bold mb-4">訂單確認</h4>
+            <h4 class="fw-bold mb-4 h4 text-primary">訂單明細</h4>
             <table class="table text-muted border-bottom">
               <tbody>
                 <tr>
@@ -165,7 +192,7 @@
               v-for="(product, index) in products"
               :key="index"
               :virtualIndex="index"
-              >{{ slideContent }} <div class="card border-0 mb-4 position-relative">
+              ><div class="card border-0 mb-4 position-relative">
                 <div class="h-25vh">
                     <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
                 </div>
@@ -204,7 +231,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import cartStore from '../../stores/cartStore.js'
+import { useCartStore } from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 // import PaginationComponent from '../../components/PaginationComponent.vue'
 // 導入Swiper core和所需模塊
@@ -235,11 +262,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(cartStore, ['carts']),
+    ...mapState(useCartStore, ['carts']),
     ...mapState(productStore, ['products'])
   },
   methods: {
-    ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
+    ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
     ...mapActions(productStore, ['getProducts']),
     setSwiperRef (swiper) {
       this.swiperRef = swiper
