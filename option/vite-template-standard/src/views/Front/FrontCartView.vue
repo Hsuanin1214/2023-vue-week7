@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="col-12">
-          <table class="table">
+          <table class="table bg-light">
             <thead>
               <tr>
                 <th scope="col" class="border-0 ps-0">商品項目</th>
@@ -145,7 +145,7 @@
         </div>
       </div>
       <div class="my-5">
-        <h3 class="fw-bold">Lorem ipsum dolor sit amet</h3>
+        <h4 class="text-primary mb-4">其他相關甜點商品</h4>
         <div>
           <swiper
             :modules="modules"
@@ -158,129 +158,28 @@
             :navigation="true"
             :virtual="true"
             class="mySwiper"
+            ref="swiperRef"
             @swiper="setSwiperRef"
           >
             <swiper-slide
-              v-for="(slideContent, index) in slides"
+              v-for="(product, index) in products"
               :key="index"
               :virtualIndex="index"
-              >{{ slideContent }}</swiper-slide
-            >
+              >{{ slideContent }} <div class="card border-0 mb-4 position-relative">
+                <div class="h-25vh">
+                    <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
+                </div>
+              <div class="card-body p-0">
+                <h5 class="mb-0 mt-3">{{ product.title }}</h5>
+                <p class="card-text mb-0">
+                  NT${{ product.price }}
+                  <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
+                </p>
+              </div>
+            </div>
+          </swiper-slide>
           </swiper>
-          <p class="append-buttons">
-            <button @click="prepend()" class="prepend-2-slides">
-              Prepend 2 Slides
-            </button>
-            <button @click="slideTo(1)" class="prepend-slide">Slide 1</button>
-            <button @click="slideTo(250)" class="slide-250">Slide 250</button>
-            <button @click="slideTo(500)" class="slide-500">Slide 500</button>
-            <button @click="append()" class="append-slides">Append Slide</button>
-          </p>
         </div>
-        <!-- <div class="swiper-container mt-4 mb-5">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark"> </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                  <p class="card-text mb-0">
-                    NT$1,080
-                    <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark"> </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                  <p class="card-text mb-0">
-                    NT$1,080
-                    <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark"> </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                  <p class="card-text mb-0">
-                    NT$1,080
-                    <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark"> </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                  <p class="card-text mb-0">
-                    NT$1,080
-                    <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark"> </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-                  <p class="card-text mb-0">
-                    NT$1,080
-                    <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
     <!-- <div class="bg-light py-4">
@@ -309,26 +208,35 @@ import cartStore from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 // import PaginationComponent from '../../components/PaginationComponent.vue'
 // 導入Swiper core和所需模塊
-// import SwiperCore, { Pagination, Navigation, Virtual } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Navigation, Virtual } from 'swiper/modules'
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/virtual'
+
 export default {
   // components: {
   // PaginationComponent
   // LoadingComponent
   // },
-  // components: {
-  //   Swiper,
-  //   SwiperSlide
-  // },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data () {
     return {
-      slides: Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`),
+      slides: Array.from({ length: 5 }).map((_, index) => `Slide ${index + 1}`),
       swiperRef: null,
-      appendNumber: 500,
-      prependNumber: 1
+      appendNumber: 5,
+      prependNumber: 1,
+      modules: [Pagination, Navigation, Virtual]
     }
   },
   computed: {
-    ...mapState(cartStore, ['carts'])
+    ...mapState(cartStore, ['carts']),
+    ...mapState(productStore, ['products'])
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
@@ -340,12 +248,10 @@ export default {
       this.swiperRef.slideTo(index - 1, 0)
     },
     append () {
-      this.appendNumber += 1
-      this.slides.push('Slide ' + this.appendNumber)
+      this.slides.push(`Slide ${++this.appendNumber}`)
     },
     prepend () {
-      this.prependNumber -= 2
-      this.slides.unshift(`Slide ${this.prependNumber + 1}`, `Slide ${this.prependNumber + 2}`)
+      this.slides.unshift(`Slide ${this.prependNumber -= 2}`, `Slide ${this.prependNumber - 1}`)
       this.swiperRef.slideTo(this.swiperRef.activeIndex + 2, 0)
     }
   },
@@ -356,4 +262,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.h-25vh{
+  height: 25vh;
+}
+</style>
