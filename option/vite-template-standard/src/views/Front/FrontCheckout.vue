@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <v-form ref="form" v-slot="{ errors }" @submit.prevent="addOrder">
+        <v-form ref="form" v-slot="{ errors }" @submit="addOrder">
           <div class="mb-2">
             <label for="name" class="form-label text-info mb-0">收貨人姓名</label>
             <v-field
@@ -138,7 +138,7 @@
             <label for="message" class="text-muted mb-0">備註</label>
             <textarea id="message" class="form-control" cols="30" rows="5" v-model="form.message" placeholder="甜點相關備註或有甚麼悄悄話想跟我們說"></textarea>
           </div>
-        </v-form>
+        <!-- </v-form> -->
         <label for="text" class="form-label text-muted mb-0">取貨方式</label>
         <div class="accordion" id="accordionExample">
           <div class="card rounded-0">
@@ -300,11 +300,11 @@
             to="/cart"
             ><i class="fas fa-chevron-left me-2"></i>返回購物車</router-link
           >
-          <router-link
-            to="/checkOrder"
-            > <button type="submit" class="text-muted btn btn-secondary py-3 px-7">確認結帳</button></router-link
-          >
+          <!-- <router-link to="/checkOrder"> -->
+            <button type="submit" class="text-muted btn btn-secondary py-3 px-7">確認結帳</button>
+            <!-- </router-link> -->
         </div>
+      </v-form>
       </div>
     </div>
   </div>
@@ -349,6 +349,7 @@ export default {
         alert(response.data.message)
         this.$refs.form.resetForm()
         this.getCart()
+        this.$router.push('/checkOrder')
       } catch (error) {
         alert(error.response ? error.response.data.message : '提交訂單時發生錯誤')
         console.error(error) // 打印錯誤以便於調試
