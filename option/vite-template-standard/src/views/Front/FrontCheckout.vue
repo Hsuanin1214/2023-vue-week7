@@ -69,7 +69,7 @@
           <table class="table mt-4 border-top border-bottom text-muted">
             <tbody>
               <tr>
-                <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
+                <th scope="row" class="border-0 px-0 pt-4">
                   小計
                 </th>
                 <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
@@ -77,7 +77,7 @@
               <tr>
                   <th
                     scope="row"
-                    class="border-0 px-0 pt-0 pb-4 font-weight-normal"
+                    class="border-0 px-0 pt-0 pb-4"
                   >
                     優惠券折扣
                   </th>
@@ -86,7 +86,7 @@
               <tr>
                 <th
                   scope="row"
-                  class="border-0 px-0 pt-0 pb-4 font-weight-normal"
+                  class="border-0 px-0 pt-0 pb-4 fw-normal"
                 >
                 支付方式
                 </th>
@@ -165,26 +165,23 @@
             >
               <div class="card-body bg-light ps-5 py-4">
                 <div class="mb-2">
-                  <label for="Lorem ipsum1" class="text-muted mb-0"
+                  <input
+                    type="radio"
+                    id="selfTakeNoon"
+                    checked
+                  />
+                  <label for="selfTakeNoon" class="text-dark mb-0"
                     >12：00前</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="Lorem ipsum1"
-                    placeholder="Lorem ipsum"
-                  />
                 </div>
                 <div class="mb-0">
-                  <label for="Lorem ipsum2" class="text-muted mb-0"
+                  <input
+                    type="radio"
+                    id="selfTakeNight"
+                  />
+                  <label for="selfTakeNight" class="text-dark mb-0"
                     >20：00 店面結束前</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="Lorem ipsum2"
-                    placeholder="Lorem ipsum"
-                  />
                 </div>
               </div>
             </div>
@@ -210,26 +207,23 @@
             >
               <div class="card-body bg-light ps-5 py-4">
                 <div class="mb-2">
-                  <label for="Lorem ipsum1" class="text-muted mb-0"
-                    >Lorem ipsum</label
-                  >
                   <input
-                    type="text"
-                    class="form-control"
-                    id="Lorem ipsum1"
-                    placeholder="Lorem ipsum"
+                    type="radio"
+                    id="shipTakeNoon"
+                    checked
                   />
+                  <label for="shipTakeNoon" class="text-dark mb-0"
+                    >中午12：00前</label
+                  >
                 </div>
                 <div class="mb-0">
-                  <label for="Lorem ipsum2" class="text-muted mb-0"
-                    >Lorem ipsum</label
-                  >
                   <input
-                    type="text"
-                    class="form-control"
-                    id="Lorem ipsum2"
-                    placeholder="Lorem ipsum"
+                    type="radio"
+                    id="shipTakeNight"
                   />
+                  <label for="shipTakeNight" class="text-dark mb-0"
+                    >中午12：00後</label
+                  >
                 </div>
               </div>
             </div>
@@ -244,7 +238,7 @@
               aria-controls="collapseThree"
             >
               <p class="mb-0 position-relative custom-checkout-label">
-                Lorem ipsum
+                確認以詳閱以下訊息，並打勾
               </p>
             </div>
             <div
