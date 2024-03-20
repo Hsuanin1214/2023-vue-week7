@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans+TC:wght@100..900&display=swap');
 //vee-validate error message
 .invalid-feedback,.form-control.is-invalid{
@@ -13,16 +13,19 @@
 }
 body {
     font-family: 'Noto Sans TC', 'Merriweather', serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 .en-text {
     font-family: 'Merriweather', serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 img {
     object-fit: cover;
     max-width: 100%;
+}
+table {
+    background-color: $pimary-container !important;
 }
 .bg-surface-variant {
     background-color: $surface-variant;
@@ -49,6 +52,9 @@ img {
 }
 .border-primary-left {
     border-left: 5px solid $primary;
+}
+.border-bottom-info {
+    border-bottom: 3px solid $outline-color;
 }
 .w-40 {
     width:40%;
