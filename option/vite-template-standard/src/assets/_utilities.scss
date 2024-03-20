@@ -24,9 +24,6 @@ img {
     object-fit: cover;
     max-width: 100%;
 }
-table {
-    background-color: $pimary-container !important;
-}
 .bg-surface-variant {
     background-color: $surface-variant;
 }
@@ -55,6 +52,9 @@ table {
 }
 .border-bottom-info {
     border-bottom: 3px solid $outline-color;
+}
+.border-bottom-primary-light {
+    border-bottom: 1px solid $primary;
 }
 .w-40 {
     width:40%;

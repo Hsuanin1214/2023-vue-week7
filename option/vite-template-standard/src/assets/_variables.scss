@@ -755,7 +755,7 @@ $table-cell-padding-x-sm:     .25rem !default;
 $table-cell-vertical-align:   top !default;
 
 $table-color:                 var(--#{$prefix}emphasis-color) !default;
-$table-bg:                    var(--#{$prefix}body-bg) !default;
+$table-bg:                    $light;
 $table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
@@ -916,7 +916,7 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg !default;
 $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
-$input-bg:                              var(--#{$prefix}body-bg) !default;
+$input-bg: $light;
 $input-disabled-color:                  null !default;
 $input-disabled-bg:                     var(--#{$prefix}secondary-bg) !default;
 $input-disabled-border-color:           null !default;
