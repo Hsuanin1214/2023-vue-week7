@@ -14,9 +14,9 @@
             <li class="breadcrumb-item active" aria-current="page">{{productSelect.category}}</li>
           </ol>
         </nav>
-        <h2 class="fw-bold h4 mb-1">{{productSelect.title}}</h2>
+        <h2 class="fw-bold text-secondary-emphasis h4 mb-1">{{productSelect.title}}</h2>
         <p class="h5 mb-0 text-muted text-end"><del>NT${{productSelect.origin_price}}</del></p>
-        <p class="h5 fw-bold text-end">NT${{productSelect.price}} / <span>{{ productSelect.unit }}</span></p>
+        <p class="h5 text-end">NT${{productSelect.price}} / <span>{{ productSelect.unit }}</span></p>
         <div class="row align-items-center">
           <div class="col-8">
             <div class="input-group my-3 bg-light rounded-2 d-flex align-items-center">
@@ -25,23 +25,26 @@
                   class="btn btn-outline-info border-0 py-2"
                   type="button"
                   id="button-addon1"
+                  @click="changeNum(-1)"
+                  :disabled="tempNum === 1"
                 >
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control border-0 text-center my-auto shadow-none bg-light w-50"
-                  placeholder=""
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
-                  value="1"
+                  v-model="tempNum"
+                  readonly
                 />
               <div class="input-group-append">
                 <button
                   class="btn btn-outline-info border-0 py-2"
                   type="button"
                   id="button-addon2"
+                  @click="changeNum(1)"
                 >
                   <i class="fas fa-plus"></i>
                 </button>
@@ -55,6 +58,7 @@
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
+              @click="addToCart(productSelect.id , tempNum)"
             >
               加入購物車
             </button>
@@ -110,7 +114,7 @@
       >
         <div class="offcanvas-header">
           <h5
-            class="offcanvas-title text-secondary fw-bold"
+            class="h5 offcanvas-title text-secondary fw-bold"
             id="offcanvasRightLabel"
           >
             購物車內容
@@ -123,11 +127,20 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <ul>
-            <li>甜點名稱 :  售價 : 數量: </li>
-            <li>甜點名稱 :  售價 : 數量: </li>
+          <ul class="scrollable-div">
+            <li v-for="cart in carts.carts" :key="cart.id" class="my-3">
+              <span class="d-block fw-bold mb-2">甜點名稱 : <span class="border-bottom-info">
+                {{ cart.product.title }}  </span></span>
+              <span class="me-3">售價 : NT$ {{ cart.product.price }}  </span>
+              <span>數量: {{ cart.qty }}   </span>
+              <span class="d-block">總價 : NT$ {{cart.final_total}}   </span>
+            </li>
           </ul>
-          <button class="btn btn-secondary">直接結帳</button>
+          <router-link
+            class="btn btn-secondary w-100 mt-4"
+            to="/cart"
+            >直接結帳</router-link
+          >
         </div>
       </div>
     </div>
@@ -228,26 +241,34 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
+import cartStore from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
 export default {
   data () {
     return {
-      tempProduct: {}
+      tempProduct: {},
+      tempNum: 1
     }
   },
   components: {
     FrontShipNavComponent
   },
   computed: {
+    ...mapState(cartStore, ['carts']),
     ...mapState(productStore, ['productSelect', 'pagination'])
   },
   methods: {
-    ...mapActions(productStore, ['getProduct'])
+    ...mapActions(cartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart', 'addToCart']),
+    ...mapActions(productStore, ['getProduct']),
+    changeNum (step) {
+      this.tempNum += step
+    }
   },
   mounted () {
     const productId = this.$route.params.id
     this.getProduct(productId)
+    this.getCart()
   }
 }
 </script>
@@ -255,5 +276,10 @@ export default {
 <style scoped>
 .h-75vh{
   height: 75vh;
+}
+.scrollable-div {
+  height: 375px; /* 定義 div 的高度 */
+  overflow: auto; /* 當內容超出時自動顯示滾動條 */
+  border: 1px solid #ccc; /* 為 div 添加邊框，使其更容易被看到 */
 }
 </style>

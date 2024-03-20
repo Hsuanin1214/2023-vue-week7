@@ -27,7 +27,7 @@ export default defineStore('carttStore', {
   actions: {
     addToCart (productId, qty = 1) {
       const order = {
-        productId,
+        product_id: productId,
         qty
       }
       console.log(order)
@@ -38,6 +38,7 @@ export default defineStore('carttStore', {
         .then((res) => {
           console.log(res)
           this.status.addCartLoading = ''
+          alert('已加入購物車')
           // this.$refs.userModal.closeModal()
           this.getCart()
         })
