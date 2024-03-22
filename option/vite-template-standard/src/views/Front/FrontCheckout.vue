@@ -316,6 +316,12 @@
                     <p>再次感謝您的支持與理解，我們期待為您提供優質的產品與服務。</p>
                 </div>
                 <div class="mb-2">
+                  <input
+                    type="checkbox"
+                    id="agreeBuy"
+                    class="me-2"
+                    v-model="form.agreeToTerms"
+                  />
                   <!-- <input
                     type="checkbox"
                     id="agreeBuy"
@@ -326,9 +332,10 @@
                     name="agreeToTerms"
                     v-model="form.agreeToTerms"
                     rules="required"
+                    class="d-none"
                   ></v-field>
                   <error-message name="agreeToTerms" class="invalid-feedback"></error-message>
-                  <label for="agreeToTerms"  class="text-muted mb-0"
+                  <label for="agreeBuy"  class="text-muted mb-0"
                     >我已閱讀訂購須知，並願意跟尋店家規則。</label>
                 </div>
               </div>
