@@ -151,15 +151,15 @@
               aria-controls="collapseOne"
             >
             <div>
-              <input
+              <v-field
                 type="radio"
                 id="selfTake"
                 name="takeType"
                 class="me-2"
                 value="selfTake"
                 v-model="takeType"
-                checked
-              />
+                :rules="'required|takeTypeSelected'"
+              ></v-field>
               <label for="selfTake" class="mb-0 position-relative custom-checkout-label"
                 >自取</label
               >
@@ -179,7 +179,6 @@
                     id="selfTakeNoon"
                     name="selfTakeTime"
                     class="me-2"
-                    checked
                     :disabled="takeType !== 'selfTake'"
                   />
                   <label for="selfTakeNoon" class="text-dark mb-0"
@@ -211,14 +210,15 @@
               aria-controls="collapseTwo"
             >
             <div>
-              <input
+              <v-field
                 type="radio"
                 id="shipTake"
                 name="takeType"
                 class="me-2"
                 value="shipTake"
                 v-model="takeType"
-              />
+                :rules="'required|takeTypeSelected'"
+              ></v-field>
               <label for="shipTake" class="mb-0 position-relative custom-checkout-label"
                 >宅配</label
               >
@@ -238,7 +238,6 @@
                     id="shipTakeNoon"
                     name="shipTakeTime"
                     class="me-2"
-                    checked
                     :disabled="takeType !== 'shipTake'"
                   />
                   <label for="shipTakeNoon" class="text-dark mb-0"
@@ -279,13 +278,57 @@
               aria-labelledby="headingThree"
               data-bs-parent="#accordionExample">
               <div class="card-body bg-light ps-5 py-4">
+                <h4>訂購須知</h4>
+                <div>
+                  <h6>商品訂購與出貨</h6>
+                  <p>訂單確認：訂單一經確認，將於1-2個工作天內處理並出貨。</p>
+                  <p>出貨時間：正常情況下，商品將於訂單確認後的3-5個工作天內送達。</p>
+                  <p>配送範圍：目前僅限台灣本島地區，離島或偏遠地區可能需額外運費，詳情請見運費說明。</p>
+                </div>
+                <div>
+                    <h6>退換貨政策</h6>
+                    <p>七天猶豫期：依據消保法規定，除特殊商品外，消費者享有商品到貨後七天猶豫期權益，期間內可申請退換貨。</p>
+                    <p>食品類商品：由於衛生考量，食品類商品一經開封，除非產品本身存在瑕疵或送達時已過期，否則不予退換。</p>
+                    <p>瑕疵品處理：若商品在運送過程中受損或有其他非人為因素導致的瑕疵，請於收貨後七天內聯繫我們，我們將提供退換服務。</p>
+                </div>
+                <div>
+                    <h6>無法辦理退換貨之商品</h6>
+                    <ul>
+                        <li>商品一經使用或開封。</li>
+                        <li>商品銷售頁面已明確說明不接受退換的情況。</li>
+                        <li>未依照正確流程或未事先聯繫即自行寄回的商品。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h6>退款流程</h6>
+                    <p>退款時間：確認收到退貨商品後，我們將在14個工作天內完成退款，退款將通過原付款方式退回。</p>
+                </div>
+                <div>
+                    <h6>客戶服務</h6>
+                    <p>如有任何訂購、商品或服務上的問題，歡迎隨時聯繫我們的客戶服務中心，我們將竭誠為您服務。</p>
+                    <p>客服時間為週一至週日，上午10:00至晚上8:00。</p>
+                    <p>客服專線：02-12345678</p>
+                </div>
+                <div>
+                    <h6>特別聲明</h6>
+                    <p>本公司保留隨時修改訂購須知的權利，任何修改將於本網站公布，恕不另行通知。</p>
+                    <p>若消費者因不當行為對本公司或本網站服務造成損害，本公司有權取消其購買資格，並追究法律責任。</p>
+                    <p>再次感謝您的支持與理解，我們期待為您提供優質的產品與服務。</p>
+                </div>
                 <div class="mb-2">
-                  <input
+                  <!-- <input
                     type="checkbox"
                     id="agreeBuy"
                     class="me-2"
-                  />
-                  <label for="agreeBuy"  class="text-muted mb-0"
+                  /> -->
+                  <v-field
+                    type="checkbox"
+                    name="agreeToTerms"
+                    v-model="form.agreeToTerms"
+                    rules="required"
+                  ></v-field>
+                  <error-message name="agreeToTerms" class="invalid-feedback"></error-message>
+                  <label for="agreeToTerms"  class="text-muted mb-0"
                     >我已閱讀訂購須知，並願意跟尋店家規則。</label>
                 </div>
               </div>
@@ -300,9 +343,7 @@
             to="/cart"
             ><i class="fas fa-chevron-left me-2"></i>返回購物車</router-link
           >
-          <!-- <router-link to="/checkOrder"> -->
-            <button type="submit" class="text-muted btn btn-secondary py-3 px-7">確認結帳</button>
-            <!-- </router-link> -->
+          <button type="submit" class="text-muted btn btn-secondary py-3 px-7">確認結帳</button>
         </div>
       </v-form>
       </div>
@@ -326,13 +367,13 @@ export default {
           tel: '',
           address: ''
         },
-        message: ''
+        message: '',
+        agreeToTerms: false
       }
     }
   },
   computed: {
     ...mapState(useCartStore, ['carts'])
-    // ...mapState(orderStore, ['form'])
   },
   methods: {
     ...mapActions(useCartStore, ['getCart']),

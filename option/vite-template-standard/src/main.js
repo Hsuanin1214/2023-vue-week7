@@ -36,7 +36,21 @@ configure({
 
 setLocale('zhTW')
 
-//
+// 定義必選規則
+defineRule('required', value => {
+  if (!value || value.length === 0) {
+    return '請選擇一個取貨方式'
+  }
+  return true
+})
+
+// 如果有更特別的規則，可以這樣添加
+defineRule('takeTypeSelected', value => {
+  if (value === 'selfTake' || value === 'shipTake') {
+    return true
+  }
+  return '請選擇一個取貨方式'
+})
 // Swiper.use([Navigation, Pagination, Virtual, SwiperSlide])
 //
 
