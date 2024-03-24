@@ -19,7 +19,7 @@
               <i
                 class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
-              <span class="text-nowrap text-secondary  border-bottom-primary-light">訂購人填寫</span>
+              <span class="text-nowrap text-secondary">訂購人填寫</span>
             </li>
             <li>
               <i class="fas fa-dot-circle d-md-inline d-block text-center me-2"></i>
@@ -30,7 +30,7 @@
     </div>
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-md-6">
-        <div class="border p-4 mb-4 scrollable-div">
+        <div class="border p-4 mb-4 scrollable-div-500">
           <div class="d-flex mt-2" v-for="cart in carts.carts" :key="cart.id">
             <img
               :src="cart.product.imageUrl"
@@ -158,7 +158,7 @@
                 class="me-2"
                 value="selfTake"
                 v-model="takeType"
-                :rules="'required|takeTypeSelected'"
+                rules="takeTypeSelected|required"
               ></v-field>
               <label for="selfTake" class="mb-0 position-relative custom-checkout-label"
                 >自取</label
@@ -179,6 +179,8 @@
                     id="selfTakeNoon"
                     name="selfTakeTime"
                     class="me-2"
+                    v-model="takeTime"
+                    value="12：00前"
                     :disabled="takeType !== 'selfTake'"
                   />
                   <label for="selfTakeNoon" class="text-dark mb-0"
@@ -191,10 +193,12 @@
                     id="selfTakeNight"
                     name="selfTakeTime"
                     class="me-2"
+                    v-model="takeTime"
+                    value="20：00 店面關店前"
                     :disabled="takeType !== 'selfTake'"
                   />
                   <label for="selfTakeNight" class="text-dark mb-0"
-                    >20：00 店面結束前</label
+                    >20：00 店面關店前</label
                   >
                 </div>
               </div>
@@ -217,7 +221,7 @@
                 class="me-2"
                 value="shipTake"
                 v-model="takeType"
-                :rules="'required|takeTypeSelected'"
+                rules="takeTypeSelected|required"
               ></v-field>
               <label for="shipTake" class="mb-0 position-relative custom-checkout-label"
                 >宅配</label
@@ -238,6 +242,8 @@
                     id="shipTakeNoon"
                     name="shipTakeTime"
                     class="me-2"
+                    v-model="takeTime"
+                    value="中午12：00前"
                     :disabled="takeType !== 'shipTake'"
                   />
                   <label for="shipTakeNoon" class="text-dark mb-0"
@@ -250,6 +256,8 @@
                     id="shipTakeNight"
                     name="shipTakeTime"
                     class="me-2"
+                    v-model="takeTime"
+                    value="中午12：00後"
                     :disabled="takeType !== 'shipTake'"
                   />
                   <label for="shipTakeNight" class="text-dark mb-0"
@@ -277,66 +285,58 @@
               class="collapse"
               aria-labelledby="headingThree"
               data-bs-parent="#accordionExample">
-              <div class="card-body bg-light ps-5 py-4">
+              <div class="card-body bg-light ps-3 py-2">
                 <h4>訂購須知</h4>
-                <div>
-                  <h6>商品訂購與出貨</h6>
-                  <p>訂單確認：訂單一經確認，將於1-2個工作天內處理並出貨。</p>
-                  <p>出貨時間：正常情況下，商品將於訂單確認後的3-5個工作天內送達。</p>
-                  <p>配送範圍：目前僅限台灣本島地區，離島或偏遠地區可能需額外運費，詳情請見運費說明。</p>
+                <div class="scrollable-div p-3">
+                  <div>
+                    <h6>商品訂購與出貨</h6>
+                    <p>訂單確認：訂單一經確認，將於1-2個工作天內處理並出貨。</p>
+                    <p>出貨時間：正常情況下，商品將於訂單確認後的3-5個工作天內送達。</p>
+                    <p>配送範圍：目前僅限台灣本島地區，離島或偏遠地區可能需額外運費，詳情請見運費說明。</p>
+                  </div>
+                  <div>
+                      <h6>退換貨政策</h6>
+                      <p>七天猶豫期：依據消保法規定，除特殊商品外，消費者享有商品到貨後七天猶豫期權益，期間內可申請退換貨。</p>
+                      <p>食品類商品：由於衛生考量，食品類商品一經開封，除非產品本身存在瑕疵或送達時已過期，否則不予退換。</p>
+                      <p>瑕疵品處理：若商品在運送過程中受損或有其他非人為因素導致的瑕疵，請於收貨後七天內聯繫我們，我們將提供退換服務。</p>
+                  </div>
+                  <div>
+                      <h6>無法辦理退換貨之商品</h6>
+                      <ul>
+                          <li>商品一經使用或開封。</li>
+                          <li>商品銷售頁面已明確說明不接受退換的情況。</li>
+                          <li>未依照正確流程或未事先聯繫即自行寄回的商品。</li>
+                      </ul>
+                  </div>
+                  <div>
+                      <h6>退款流程</h6>
+                      <p>退款時間：確認收到退貨商品後，我們將在14個工作天內完成退款，退款將通過原付款方式退回。</p>
+                  </div>
+                  <div>
+                      <h6>客戶服務</h6>
+                      <p>如有任何訂購、商品或服務上的問題，歡迎隨時聯繫我們的客戶服務中心，我們將竭誠為您服務。</p>
+                      <p>客服時間為週一至週日，上午10:00至晚上8:00。</p>
+                      <p>客服專線：02-12345678</p>
+                  </div>
+                  <div>
+                      <h6>特別聲明</h6>
+                      <p>本公司保留隨時修改訂購須知的權利，任何修改將於本網站公布，恕不另行通知。</p>
+                      <p>若消費者因不當行為對本公司或本網站服務造成損害，本公司有權取消其購買資格，並追究法律責任。</p>
+                      <p>再次感謝您的支持與理解，我們期待為您提供優質的產品與服務。</p>
+                  </div>
                 </div>
-                <div>
-                    <h6>退換貨政策</h6>
-                    <p>七天猶豫期：依據消保法規定，除特殊商品外，消費者享有商品到貨後七天猶豫期權益，期間內可申請退換貨。</p>
-                    <p>食品類商品：由於衛生考量，食品類商品一經開封，除非產品本身存在瑕疵或送達時已過期，否則不予退換。</p>
-                    <p>瑕疵品處理：若商品在運送過程中受損或有其他非人為因素導致的瑕疵，請於收貨後七天內聯繫我們，我們將提供退換服務。</p>
-                </div>
-                <div>
-                    <h6>無法辦理退換貨之商品</h6>
-                    <ul>
-                        <li>商品一經使用或開封。</li>
-                        <li>商品銷售頁面已明確說明不接受退換的情況。</li>
-                        <li>未依照正確流程或未事先聯繫即自行寄回的商品。</li>
-                    </ul>
-                </div>
-                <div>
-                    <h6>退款流程</h6>
-                    <p>退款時間：確認收到退貨商品後，我們將在14個工作天內完成退款，退款將通過原付款方式退回。</p>
-                </div>
-                <div>
-                    <h6>客戶服務</h6>
-                    <p>如有任何訂購、商品或服務上的問題，歡迎隨時聯繫我們的客戶服務中心，我們將竭誠為您服務。</p>
-                    <p>客服時間為週一至週日，上午10:00至晚上8:00。</p>
-                    <p>客服專線：02-12345678</p>
-                </div>
-                <div>
-                    <h6>特別聲明</h6>
-                    <p>本公司保留隨時修改訂購須知的權利，任何修改將於本網站公布，恕不另行通知。</p>
-                    <p>若消費者因不當行為對本公司或本網站服務造成損害，本公司有權取消其購買資格，並追究法律責任。</p>
-                    <p>再次感謝您的支持與理解，我們期待為您提供優質的產品與服務。</p>
-                </div>
-                <div class="mb-2">
-                  <input
-                    type="checkbox"
-                    id="agreeBuy"
-                    class="me-2"
-                    v-model="form.agreeToTerms"
-                  />
-                  <!-- <input
-                    type="checkbox"
-                    id="agreeBuy"
-                    class="me-2"
-                  /> -->
+                <div class="my-2 d-flex justify-content-start">
                   <v-field
+                  id="agreeToTerms"
                     type="checkbox"
-                    name="agreeToTerms"
-                    v-model="form.agreeToTerms"
-                    rules="required"
-                    class="d-none"
+                    name="請閱讀後確認打勾"
+                    :value="true"
+                    :class="{ 'is-invalid': errors['請閱讀後確認打勾'] }"
+                    rules="agreeToTerms|required"
                   ></v-field>
-                  <error-message name="agreeToTerms" class="invalid-feedback"></error-message>
-                  <label for="agreeBuy"  class="text-muted mb-0"
-                    >我已閱讀訂購須知，並願意跟尋店家規則。</label>
+                  <error-message name="請閱讀後確認打勾" class="invalid-feedback"></error-message>
+                  <label for="agreeToTerms"  class="text-muted mb-0 ms-3"
+                    >我已閱讀並同意訂購須知！</label>
                 </div>
               </div>
             </div>
@@ -366,7 +366,7 @@ const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
     return {
-      takeType: 'selfTake',
+      originalMessage: '',
       form: {
         user: {
           name: '',
@@ -374,9 +374,23 @@ export default {
           tel: '',
           address: ''
         },
-        message: '',
-        agreeToTerms: false
-      }
+        message: ''
+      },
+      takeType: 'selfTake',
+      takeTime: ''
+    }
+  },
+  watch: {
+    // 監聽原始訊息的變化，每當原始訊息更新時，重新組合訊息
+    originalMessage (newVal) {
+      this.combineMessage()
+    },
+    // 監聽取貨方式和時間的變化，每當它們更新時，重新組合訊息
+    takeType () {
+      this.combineMessage()
+    },
+    takeTime () {
+      this.combineMessage()
     }
   },
   computed: {
@@ -385,6 +399,15 @@ export default {
   methods: {
     ...mapActions(useCartStore, ['getCart']),
     ...mapActions(orderStore, ['isPhone']),
+    combineMessage () {
+      // 組合原始訊息與取貨資訊
+      let pickupInfo = ''
+      if (this.takeType || this.takeTime) {
+        console.log(this.takeTime)
+        pickupInfo = `取貨方式：${this.takeType === 'selfTake' ? '自取' : '宅配'}，時間：${this.takeTime}`
+      }
+      this.form.message = `${this.originalMessage}${this.originalMessage ? '。' : ''}${pickupInfo}`
+    },
     async addOrder () {
       try {
         console.log('addOrder method called') // 確認方法被調用

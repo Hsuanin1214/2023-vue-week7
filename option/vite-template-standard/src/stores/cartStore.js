@@ -38,7 +38,7 @@ export const useCartStore = defineStore('cartStore', {
         .then((res) => {
           console.log(res)
           this.status.addCartLoading = ''
-          alert('已加入購物車')
+          // alert('已加入購物車')
           // this.$refs.userModal.closeModal()
           this.getCart()
         })

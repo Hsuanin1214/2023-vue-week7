@@ -37,19 +37,43 @@ configure({
 setLocale('zhTW')
 
 // 定義必選規則
-defineRule('required', value => {
-  if (!value || value.length === 0) {
-    return '請選擇一個取貨方式'
-  }
-  return true
+// defineRule('required', value => {
+//   if (!value || value.length === 0) {
+//     return '請選擇一個取貨方式'
+//   }
+//   return true
+// })
+
+// 特別的規則，可以添加
+defineRule('agreeToTerms', value => {
+  return value || '請閱讀後確認打勾' // 直接返回自訂錯誤訊息
 })
 
-// 如果有更特別的規則，可以這樣添加
 defineRule('takeTypeSelected', value => {
   if (value === 'selfTake' || value === 'shipTake') {
     return true
   }
   return '請選擇一個取貨方式'
+})
+
+configure({
+  generateMessage: (context) => {
+    // 預設錯誤訊息
+    const defaultMessage = `${context.field}為必填`
+
+    // 自訂錯誤訊息
+    const customMessages = {
+      required: '必填',
+      name: '請填寫姓名',
+      email: '請輸入有效的電子郵件地址',
+      phone: '請填寫正確的手機號碼',
+      agreeToTerms: '請閱讀後確認打勾',
+      takeTypeSelected: '請選擇一個取貨方式'
+    }
+
+    // 從自訂訊息中找到匹配，找不到則使用預設訊息(需要將自訂訊息放在前面  EX.rules="takeTypeSelected|required")
+    return customMessages[context.field] || defaultMessage
+  }
 })
 // Swiper.use([Navigation, Pagination, Virtual, SwiperSlide])
 //
