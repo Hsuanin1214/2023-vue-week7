@@ -1,0 +1,1 @@
+const n={methods:{formatDate(e){const a=e*1e3,t=new Date(a);return`${t.getFullYear()}-${("0"+(t.getMonth()+1)).slice(-2)}-${("0"+t.getDate()).slice(-2)}`},parseDate(e){return new Date(e).getTime()/1e3}}};export{n as d};
