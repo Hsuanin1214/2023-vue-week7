@@ -146,7 +146,7 @@
     </div>
     <!-- 保存方式、預留甜點 -->
     <front-ship-nav-component :content="productSelect.content"></front-ship-nav-component>
-    <h3 class="fw-bold">更多甜點</h3>
+    <!-- <h3 class="fw-bold">更多甜點</h3> -->
     <!-- <div class="swiper-container mt-4 mb-5">
       <div class="swiper-wrapper">
         <div class="swiper-slide">

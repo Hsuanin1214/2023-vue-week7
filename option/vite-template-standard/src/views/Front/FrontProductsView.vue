@@ -4,7 +4,7 @@
     <div class="row my-2">
       <div class="col-6">
         <div class="dropdown">
-          <button
+          <!-- <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
@@ -25,22 +25,22 @@
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li>
-          </ul>
+          </ul> -->
           <!-- rwd -->
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li v-for="(tab) in tabs" :key="tab"><a class="dropdown-item" :class="{ active: selectedTab === tab }" href="#">tab</a></li>
+          <!-- <ul class="dropdown-menu dropdown-menu-dark">
+            <li v-for="tab in tabs" :key="tab"><a class="dropdown-item" :class="{ active: selectedTab === tab }" href="#">tab</a></li> -->
             <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#">Separated link</a></li> -->
-          </ul>
+          <!-- </ul> -->
         </div>
         <pagination-component :pages="pagination" :get-items="getProducts" class="mt-2"></pagination-component>
       </div>
-      <div class="col-6">
+      <!-- <div class="col-6">
         <label for="" class="me-3">搜尋 : </label>
         <input type="text" />
-      </div>
+      </div> -->
     </div>
     <div class="row">
       <div class="col-md-6" v-for="product in products" :key="product.id">
@@ -97,6 +97,7 @@ export default {
   mounted () {
     this.getProducts()
     this.getAllProducts()
+    console.log(this.tabs)
   }
 }
 </script>
