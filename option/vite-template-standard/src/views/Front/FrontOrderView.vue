@@ -1,8 +1,8 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">訂單進度</h2>
+    <h2 class="my-4 text-primary border-primary-left ps-3">訂單查詢</h2>
     <div class="row justify-content-center pb-5">
-      <h3 class="fw-bold mb-4 pt-3">訂單進度查詢</h3>
+      <h3 class="fw-bold mb-4 pt-3 h5">訂單相關資訊</h3>
       <div class="col-12">
         <div class="accordion" id="accordionExample">
           <div class="card rounded-0" v-for="order in orders" :key="order.id">
@@ -14,7 +14,7 @@
             aria-expanded="true"
             :aria-controls="'collapse' + order.id"
             >
-              <p class="mb-0 position-relative custom-checkout-label">
+              <p class="mb-0 position-relative custom-checkout-label text-info fw-bold">
                 訂單編號 : {{ order.id }}
               </p>
             </div>
@@ -24,16 +24,16 @@
             :aria-labelledby="'heading' + order.id"
             data-bs-parent="#accordionExample"
             >
-              <div class="card-body bg-light ps-5 py-4">
-                <div class="mb-2" style="margin: 0 auto; max-width: 900px; padding: 50px">
+              <div class="card-body bg-light ps-3 py-4">
+                <div class="mb-2" style="margin: 0 auto; max-width: 900px;">
                 <div class="woocommerce-order">
-                    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">{{order.user.name}}的訂單明細</p>
+                    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">{{order.user.name}}您好，此為你這次的訂單明細</p>
                     <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
                       <li class="woocommerce-order-overview__order order">
                         訂單編號 : <strong>{{ order.id }}</strong>
                       </li>
                       <li class="woocommerce-order-overview__date date">
-                        訂購時間 :<strong>{{order.create_at}}</strong>
+                        訂購時間 :<strong>{{formatDate(order.create_at)}}</strong>
                       </li>
                       <li class="woocommerce-order-overview__total total">
                         訂單金額 :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{order.total}}</span></strong>
@@ -43,20 +43,21 @@
                       </li>
                     </ul>
                     <section class="woocommerce-order-details">
-                      <h2 class="woocommerce-order-details__title">商品明細</h2>
+                      <h5 class="woocommerce-order-details__title h5 text-info">訂購明細</h5>
+                      <div class="d-flex d-flex justify-content-center justify-content-md-start">
                         <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
-                          <thead>
+                          <thead class="p-3">
                             <tr>
-                              <th class="woocommerce-table__product-name product-name">Product</th>
-                              <th class="woocommerce-table__product-table product-total">Total</th>
+                              <th class="woocommerce-table__product-name product-name px-2 py-1">訂購商品</th>
+                              <th class="woocommerce-table__product-table product-total px-2 py-1">金額</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr class="woocommerce-table__line-item order_item" v-for="product in order.products" :key="product.id">
-                              <td class="woocommerce-table__product-name product-name">
-                                <a href="https://demo.woothemes.com/storefront/product/standard-colander/">{{product.product.title}}</a> <strong class="product-quantity">×
+                              <td class="woocommerce-table__product-name product-name px-2 py-1">
+                                <router-link :to="`product/${product.product.id}`">{{product.product.title}}</router-link> <strong class="product-quantity">×
                                   {{product.qty}}</strong> </td>
-                              <td class="woocommerce-table__product-total product-total">
+                              <td class="woocommerce-table__product-total product-total px-2 py-1">
                                 <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{product.final_total}}</span>
                               </td>
                             </tr>
@@ -71,46 +72,51 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <th scope="row">訊息留言：</th>
-                              <td><span class="woocommerce-Price-amount amount">{{order.message}}</span>
+                              <th scope="row" class="px-2 py-1">總金額：</th>
+                              <td><span class="woocommerce-Price-amount amount px-2 py-1"><span class="woocommerce-Price-currencySymbol">NT$</span>{{order.total}}</span>
+                              </td>
+                            </tr>
+                            <tr class="mt-3">
+                              <th scope="row" class="px-2 py-1">訊息留言：</th>
+                              <td><span class="woocommerce-Price-amount amount px-2 py-1">{{order.message}}</span>
                               </td>
                             </tr>
                             <!-- <tr>
                               <th scope="row">Payment method:</th>
                               <td>Check payments</td>
                             </tr> -->
-                            <tr>
-                              <th scope="row">總金額：</th>
-                              <td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{order.total}}</span>
-                              </td>
-                            </tr>
                           </tfoot>
                         </table>
-                        <section class="woocommerce-customer-details">
-                          <h2>訂購人明細</h2>
-                          <table class="woocommerce-table woocommerce-table--customer-details shop_table customer_details">
+                      </div>
+                      <section class="woocommerce-customer-details">
+                        <h5 class="h6 mt-3 text-info">訂購人明細</h5>
+                        <div class="d-flex justify-content-center justify-content-md-start">
+                          <table class="woocommerce-table woocommerce-table--customer-details shop_table customer_details d-flex flex-wrap">
                             <tbody>
-                              <tr>
-                                <th>姓名:</th>
+                              <tr class="w-100">
+                                <th class="px-2 py-1">姓名:</th>
                                 <td>{{ order.user.name }}</td>
                               </tr>
-                              <tr>
-                                <th>信箱:</th>
+                              <tr class="w-100">
+                                <th class="px-2 py-1">信箱:</th>
                                 <td>{{ order.user.email }}</td>
                               </tr>
-                              <tr>
-                                <th>電話:</th>
+                              <tr class="w-100">
+                                <th class="px-2 py-1">電話:</th>
                                 <td>{{ order.user.tel }}</td>
                               </tr>
                             </tbody>
                           </table>
-                          <h3 class="woocommerce-column__title">送貨地址 : </h3>
-                          <address>
-                            {{order.user.address}}</address>
-                            <h3 class="woocommerce-column__title">是否付款 : </h3>
-                          <address>
-                            {{order.is_paid}}</address>
-                        </section>
+                        </div>
+                        <h5 class="woocommerce-column__title h6 mt-3 text-info">送貨地址 : </h5>
+                        <p>
+                          {{order.user.address}}
+                        </p>
+                        <h5 class="woocommerce-column__title h6 mt-3 text-info">是否付款 : </h5>
+                        <p>
+                          {{order.is_paid? '已付款' : '未付款'}}
+                          </p>
+                      </section>
                     </section>
                   </div> <!-- woocommerce-order -->
                 </div>
@@ -124,6 +130,7 @@
 </template>
 <script>
 import axios from 'axios'
+import { dateMixin } from '../../mixins/dateMixin.js'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
@@ -131,6 +138,7 @@ export default {
       orders: {}
     }
   },
+  mixins: [dateMixin],
   methods: {
     async getOrders () {
       try {
@@ -150,7 +158,7 @@ export default {
 }
 </script>
 <style scoped>
-.woocommerce-order-overview {
+/* .woocommerce-order-overview {
   background: #f8f8f8;
   list-style: none;
   margin: 2rem 0;
@@ -233,11 +241,11 @@ export default {
 }
 
 /* TABLE ORDER DETAIL */
-.shop_table.woocommerce-table--order-details {
-  box-shadow: 0 0 5px rgba(57, 180, 74, 0.1);
+/* .shop_table.woocommerce-table--order-details {
+  box-shadow: 0 0 5px rgba(65, 35, 7, 0.5);
 }
 .shop_table.woocommerce-table--order-details thead {
-  background: #000;
+  background: #77574a;
   color: #fff;
 }
 .shop_table.woocommerce-table--order-details thead th {
@@ -250,5 +258,5 @@ export default {
 }
 .shop_table.woocommerce-table--order-details tbody td {
   border-color: #f0f2f7;
-}
+} */
 </style>

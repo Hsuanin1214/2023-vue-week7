@@ -62,3 +62,17 @@ img {
 .h-75vh{
     height: 75vh;
 }
+.left-0 {
+    left: 0;
+}
+.z-1000 {
+    z-index: 1000;
+}
+@media (min-width: 768px) {
+    .fs-md-2 {
+        font-size: calc(1.325rem + 0.9vw) !important;
+    }
+    .w-md-50 {
+        width: 50% !important;
+    }
+}
