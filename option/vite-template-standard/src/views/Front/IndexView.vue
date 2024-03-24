@@ -226,12 +226,21 @@
   height: 100%;
   object-fit: contain;
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 使內部元素居中 */
+}
 .img-container {
   width: 25vw; /* 根據視口寬度設定容器的寬度 */
   height: 25vw; /* 使高度等於寬度，保持正方形 */
   max-width: 178px; /* 設定最大寬度，避免在大屏幕上過大 */
   max-height: 120px; /* 設定最大高度，與最大寬度一致 */
   /* overflow: hidden; */
+  margin: auto; /* 自動計算上下左右邊距以居中 */
+  display: flex; /* 使用flex來容納圖片 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
 }
 .info-container {
   flex-grow: 1;
@@ -241,11 +250,6 @@
 @media (max-width: 1200px) {
   .intro {
     left: 23%;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 使內部元素居中 */
   }
   .img-container {
     width: 25vh; /* 根據視口寬度設定容器的寬度 */

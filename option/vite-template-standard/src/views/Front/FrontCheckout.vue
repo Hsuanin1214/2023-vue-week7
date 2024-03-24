@@ -54,7 +54,7 @@
                 </th>
                 <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
               </tr>
-              <tr>
+              <!-- <tr>
                   <th
                     scope="row"
                     class="border-0 px-0 pt-0 pb-4"
@@ -62,7 +62,7 @@
                     優惠券折扣
                   </th>
                   <td class="text-end border-0 px-0 pt-0 pb-4">－NT${{carts.total}}</td>
-                </tr>
+                </tr> -->
               <tr>
                 <th
                   scope="row"
@@ -325,18 +325,18 @@
                       <p>再次感謝您的支持與理解，我們期待為您提供優質的產品與服務。</p>
                   </div>
                 </div>
-                <div class="my-2 d-flex justify-content-start">
-                  <v-field
-                  id="agreeToTerms"
-                    type="checkbox"
-                    name="請閱讀後確認打勾"
-                    :value="true"
-                    :class="{ 'is-invalid': errors['請閱讀後確認打勾'] }"
-                    rules="agreeToTerms|required"
-                  ></v-field>
-                  <error-message name="請閱讀後確認打勾" class="invalid-feedback"></error-message>
-                  <label for="agreeToTerms"  class="text-muted mb-0 ms-3"
-                    >我已閱讀並同意訂購須知！</label>
+                <div class="my-2">
+                    <v-field
+                    id="agreeToTerms"
+                      type="checkbox"
+                      name="請閱讀後確認打勾"
+                      :value="true"
+                      :class="{ 'is-invalid': errors['請閱讀後確認打勾'] }"
+                      rules="agreeToTerms|required"
+                    ></v-field>
+                    <label for="agreeToTerms"  class="text-muted mb-0 ms-3"
+                      >我已閱讀並同意訂購須知！</label>
+                    <error-message message name="請閱讀後確認打勾" class="invalid-feedback d-block"></error-message>
                 </div>
               </div>
             </div>

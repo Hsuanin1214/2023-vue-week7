@@ -107,7 +107,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="input-group w-50 mb-3">
+          <!-- <div class="input-group w-50 mb-3">
             <input
               type="text"
               class="form-control rounded-0 border-bottom border-top-0 border-start-0 border-end-0 shadow-none"
@@ -124,7 +124,7 @@
                 <i class="fas fa-paper-plane"></i>
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="col-12">
           <div class="border p-4 mb-4">
@@ -137,7 +137,7 @@
                   </th>
                   <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <th
                     scope="row"
                     class="border-0 px-0 pt-0 pb-4 font-weight-normal"
@@ -145,7 +145,7 @@
                     優惠券折扣
                   </th>
                   <td class="text-end border-0 px-0 pt-0 pb-4">－NT${{carts.total}}</td>
-                </tr>
+                </tr> -->
                 <tr>
                   <th
                     scope="row"
