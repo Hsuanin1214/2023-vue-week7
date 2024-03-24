@@ -101,7 +101,4 @@ export default {
 }
 </script>
 <style scoped>
-.h-75vh{
-  height: 75vh;
-}
 </style>

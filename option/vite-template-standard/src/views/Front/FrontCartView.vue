@@ -14,7 +14,7 @@
               <i
                 class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
-              <span class="text-nowrap text-secondary  border-bottom-primary-light">商品確認</span>
+              <span class="text-nowrap text-secondary">商品確認</span>
             </li>
             <li class="me-md-6 me-3 position-relative custom-step-line">
               <i

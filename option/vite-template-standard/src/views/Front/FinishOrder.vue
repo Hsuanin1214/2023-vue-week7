@@ -23,7 +23,7 @@
             </li>
             <li>
               <i class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"></i>
-              <span class="text-nowrap text-secondary  border-bottom-primary-light">訂單完成</span>
+              <span class="text-nowrap text-secondary">訂單完成</span>
             </li>
           </ul>
       </div>

@@ -274,12 +274,4 @@ export default {
 </script>
 
 <style scoped>
-.h-75vh{
-  height: 75vh;
-}
-.scrollable-div {
-  height: 375px; /* 定義 div 的高度 */
-  overflow: auto; /* 當內容超出時自動顯示滾動條 */
-  border: 1px solid #ccc; /* 為 div 添加邊框，使其更容易被看到 */
-}
 </style>
