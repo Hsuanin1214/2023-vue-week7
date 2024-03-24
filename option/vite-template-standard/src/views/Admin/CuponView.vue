@@ -96,6 +96,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
+import { dateMixin } from '../../mixins/dateMixin.js'
 import couponStore from '../../stores/couponStore.js'
 import PaginationComponent from '../../components/PaginationComponent.vue'
 import LoadingComponent from '../../components/LoadingComponent.vue'
@@ -104,6 +105,7 @@ export default {
     PaginationComponent,
     LoadingComponent
   },
+  mixins: [dateMixin],
   data () {
     return {
       tempCoupon: {},
@@ -115,14 +117,16 @@ export default {
     ...mapState(couponStore, ['coupons', 'page', 'isLoading']),
     due_date: {
       get () {
-        const date = new Date(this.tempCoupon.due_date * 1000)
-        const year = date.getFullYear()
-        const month = ('0' + (date.getMonth() + 1)).slice(-2)
-        const day = ('0' + date.getDate()).slice(-2)
-        return `${year}-${month}-${day}`
+        // const date = new Date(this.tempCoupon.due_date * 1000)
+        // const year = date.getFullYear()
+        // const month = ('0' + (date.getMonth() + 1)).slice(-2)
+        // const day = ('0' + date.getDate()).slice(-2)
+        // return `${year}-${month}-${day}`
+        return this.formatDate(this.tempCoupon.due_date)
       },
       set (date) {
-        this.tempCoupon.due_date = new Date(date).getTime() / 1000
+        // this.tempCoupon.due_date = new Date(date).getTime() / 1000
+        this.tempCoupon.due_date = this.parseDate(date)
       }
     }
   },

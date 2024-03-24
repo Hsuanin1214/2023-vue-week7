@@ -44,18 +44,7 @@
                   </tr>
                   <tr>
                     <th>下單時間</th>
-                    <!-- <td>{{ $filters.date(tempOrder.create_at) }}</td> -->
-                    <td>{{ tempOrder.create_at }}</td>
-                  </tr>
-                  <tr>
-                    <th>付款時間</th>
-                    <td>
-                      <span v-if="tempOrder.paid_date">
-                        <!-- {{ $filters.date(tempOrder.paid_date) }} -->
-                        {{ tempOrder.paid_date }}
-                      </span>
-                      <span v-else>時間不正確</span>
-                    </td>
+                    <td>{{ formatDate(tempOrder.create_at) }}</td>
                   </tr>
                   <tr>
                     <th>付款狀態</th>
@@ -119,7 +108,8 @@
 </template>
 
 <script>
-import modalMixin from '@/mixins/modalMixin'
+import modalMixin from '@/mixins/modalMixin.js'
+import { dateMixin } from '../mixins/dateMixin.js'
 
 export default {
   props: {
@@ -138,7 +128,7 @@ export default {
     }
   },
   emits: ['update-paid'],
-  mixins: [modalMixin], // 可以使用modalMixin的關閉功能
+  mixins: [modalMixin, dateMixin], // 可以使用modalMixin的關閉功能
   watch: {
     order () {
       this.tempOrder = this.order // 重新賦值避免動到父層的資料

@@ -20,7 +20,7 @@
                 :class="{ 'text-secondary': !item.is_paid }"
               >
                 <!-- <td>{{ $filters.date(item.create_at) }}</td> -->
-                <td>{{ item.create_at }}</td>
+                <td>{{ formatDate(item.create_at) }}</td>
                 <td><span v-text="item.user.email" v-if="item.user"></span></td>
                 <td>
                   <ul class="list-unstyled">
@@ -79,6 +79,7 @@
 import axios from 'axios'
 import OrderModal from '../../components/OrderModal.vue'
 import DelModal from '../../components/DelModal.vue'
+import { dateMixin } from '../../mixins/dateMixin.js'
 
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
@@ -95,6 +96,7 @@ export default {
     OrderModal,
     DelModal
   },
+  mixins: [dateMixin],
   methods: {
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
