@@ -36,74 +36,77 @@
           </div>
         </div>
       </section>
-      <div class="bg-light mb-5">
-        <div class="container">
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row justify-content-center py-7">
-                  <div class="col-md-6 text-center">
-                    <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
-                    <p><small>— Pierre Hermé —</small></p>
+        <div class="bg-light mb-5">
+          <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <!-- <div class="carousel-inner">
+                <div v-for="(item, index) in items" :key="index" :class="['carousel-item', { active: index === 0 }]">
+                  <img :src="item.src" class="d-block w-100" :alt="`Slide ${index + 1}`">
+                </div>
+              </div> -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row justify-content-center py-7">
+                    <div class="col-md-6 text-center">
+                      <h3>鹹食養人，甜食悅人。</h3>
+                      <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
+                      <p><small>— Pierre Hermé —</small></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row justify-content-center py-7">
+                    <div class="col-md-6 text-center">
+                      <h3>創造甜點就像繪畫一幅畫，每一筆都充滿愛。</h3>
+                      <p class="my-5 en-text">“Creating desserts is like painting a picture, each stroke filled with love.”</p>
+                      <p><small>— 嗜甜闆娘-木子 —</small></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row justify-content-center py-7">
+                    <div class="col-md-6 text-center">
+                      <h3>甜點的魔力在於，最平凡的日子，也能創造出不平凡的快樂。</h3>
+                      <p class="my-5 en-text">“The magic of desserts lies in turning an ordinary day into an extraordinary moment of joy”</p>
+                      <p><small>— 嗜甜副廚-宣宣 —</small></p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="carousel-item">
-                <div class="row justify-content-center py-7">
-                  <div class="col-md-6 text-center">
-                    <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
-                    <p><small>— Pierre Hermé —</small></p>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row justify-content-center py-7">
-                  <div class="col-md-6 text-center">
-                    <h3>鹹食養人，甜食悅人。</h3>
-                    <p class="my-5 en-text">“Le sale nous nourrit, le sucre nous rejouit”</p>
-                    <p><small>— Pierre Hermé —</small></p>
-                  </div>
-                </div>
-              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls"  role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon text-primary rounded-5 " aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon text-primary rounded-5" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
         </div>
-      </div>
       <section class="container mb-5">
         <h4 class="fs-2 mb-1 fw-bolder text-secondary">甜點介紹</h4>
         <div class="row">
           <div class="col-md-6 py-3 p-4">
             <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-5">
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <h4 class="mt-4 fs-4 text-primary fw-bold">蛋糕類</h4>
                 <p class="text-primary fs-6">戚風蛋糕、乳酪蛋糕、慶生蛋糕、海綿蛋糕</p>
-                <!-- <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button> -->
                 <router-link class="btn btn-secondary rounded-4 px-4 fs-7 fw-light" to="/products">看更多</router-link>
               </div>
-              <div class="col-6 w-50 img-fluid-test">
+              <div class="col-12 col-md-6 w-100 w-md-50 mt-3 mt-md-0 img-fluid-test">
                 <img src="https://imgur.com/0c3DFrq.jpg" alt="蛋糕類" class="img-fluid rounded-2">
               </div>
             </div>
           </div>
           <div class="col-md-6 py-3 p-4">
             <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3 px-3 py-5">
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <h4 class="mt-4 fs-4 text-light fw-bold">慕斯類</h4>
                 <p class="text-light fs-6">巧克力慕斯、草莓立方慕斯、焦糖起司慕斯</p>
-                <!-- <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button> -->
                 <router-link class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7" to="/products">看更多</router-link>
               </div>
-              <div class="col-6 w-50 img-fluid-test">
+              <div class="col-12 col-md-6 w-100 w-md-50 mt-3 mt-md-0 img-fluid-test">
                 <img src="https://imgur.com/Czk6ihe.jpg" alt="法式慕斯" class="img-fluid rounded-2">
               </div>
             </div>
@@ -112,26 +115,24 @@
         <div class="row">
           <div class="col-md-6 py-3 p-4">
             <div class="row justify-content-center align-items-center rounded-2 bg-primary border border-primary border-3 px-3 py-5">
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <h4 class="mt-4 fs-4 text-light fw-bold">法式小點</h4>
                 <p class="text-light fs-6">費南雪、馬卡龍、瑪德蓮</p>
-                <!-- <button class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7">看更多</button> -->
                 <router-link class="btn btn-outline-warning rounded-4 px-4 fw-light fs-7" to="/products">看更多</router-link>
               </div>
-              <div class="col-6 w-50 img-fluid-test">
+              <div class="col-12 col-md-6 w-100 w-md-50 mt-3 mt-md-0 img-fluid-test">
                 <img src="https://imgur.com/gakeQvo.jpg" alt="法式小點" class="img-fluid rounded-2">
               </div>
             </div>
           </div>
           <div class="col-md-6 py-3 p-4">
             <div class="row justify-content-center align-items-center rounded-2 border border-primary border-3 px-3 py-5">
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <h4 class="mt-4 fs-4 text-primary fw-bold">塔類</h4>
                 <p class="text-primary fs-6">草莓塔、檸檬塔、抹茶塔</p>
-                <!-- <button class="btn btn-secondary rounded-4 px-4 fs-7 fw-light">看更多</button> -->
                 <router-link class="btn btn-secondary rounded-4 px-4 fs-7 fw-light" to="/products">看更多</router-link>
               </div>
-              <div class="col-6 w-50 img-fluid-test">
+              <div class="col-12 col-md-6 w-100 w-md-50 mt-3 mt-md-0 img-fluid-test">
                 <img src="https://imgur.com/bEO0eg4.jpg" alt="草莓塔類" class="img-fluid rounded-2">
               </div>
             </div>
@@ -140,7 +141,7 @@
       </section>
       <section class="container mb-5">
         <div class="row px-2 rounded-2">
-          <div class="col-4 p-4 bg-primary-subtle">
+          <div class="col-md-4 p-4 bg-primary-subtle">
             <h4 class="fs-2 mb-1 fw-bolder text-secondary">最新消息</h4>
             <h5 class="fs-6 mb-3 fw-bolder text-secondary">更多嗜甜最新消息、甜點小知識</h5>
             <p  class="fs-6 mb-3">
@@ -148,51 +149,53 @@
             </p>
             <router-link class="btn btn-primary rounded-2 mt-4 px-3 fs-7" to="/news">了解更多</router-link>
           </div>
-          <div class="col-8 py-4 bg-primary-subtle">
+          <div class="col-md-8 py-4 bg-primary-subtle">
             <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-4">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-4">
                 <div class="card border-0 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                    class="card-img-top rounded-0"
-                    alt="..."
-                  />
+                  <div class="mt-3 mt-xxl-0 me-xxl-2 img-container">
+                    <img
+                      src="https://imgur.com/56i4iC2.jpg"
+                      class="card-img-top rounded-0 h-100 w-100"
+                      alt="歡慶母親節"
+                    />
+                  </div>
                   <div class="card-body text-center">
-                    <h4>歡慶母親節活動</h4>
+                    <h4>歡慶母親節限時折扣</h4>
                     <div class="d-flex justify-content-between">
                       <p class="card-text text-muted mb-0">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod.
+                        歡慶母親節，獻上至誠至愛的祝福！
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-lg-4">
                 <div class="card border-0 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-                    class="card-img-top rounded-0"
-                    alt="..."
-                  />
+                  <div class="mt-3 mt-xxl-0 me-xxl-2 img-container">
+                    <img
+                      src="https://imgur.com/Y9ySCn9.jpg"
+                      class="card-img-top rounded-0 h-100 w-100"
+                      alt="櫻花祭禮盒"
+                    />
+                  </div>
                   <div class="card-body text-center">
-                    <h4>Lorem ipsum</h4>
+                    <h4>櫻花祭禮盒限定開賣</h4>
                     <div class="d-flex justify-content-between">
                       <p class="card-text text-muted mb-0">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod.
+                        人氣櫻花祭禮盒開賣，限量100盒！
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-2"></div>
+              <div class="col-lg-2"></div>
             </div>
           </div>
         </div>
       </section>
-      <div class="bg-light py-4">
+      <!-- <div class="bg-light py-4">
         <div class="container">
           <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start">
             <p class="mb-0 fw-bold">Lorem ipsum dolor sit amet.</p>
@@ -206,12 +209,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
   </div>
 </template>
-
-<script>
-</script>
 
 <style scoped>
 .text-vertical {
@@ -222,18 +222,54 @@
   left: 22%;
 }
 .img-fluid-test {
-  width: 100%;       /* 設定圖片寬度為容器的100% */
-  height: 100%;      /* 設定圖片高度為指定的值，依據div大小調整 */
-  object-fit: cover; /* 保持比例且完全覆蓋div，多餘的部分會被裁剪 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.img-container {
+  width: 25vw; /* 根據視口寬度設定容器的寬度 */
+  height: 25vw; /* 使高度等於寬度，保持正方形 */
+  max-width: 178px; /* 設定最大寬度，避免在大屏幕上過大 */
+  max-height: 120px; /* 設定最大高度，與最大寬度一致 */
+  /* overflow: hidden; */
+}
+.info-container {
+  flex-grow: 1;
+  /* width:70vw;
+  max-width: 70%; */
 }
 @media (max-width: 1200px) {
   .intro {
     left: 23%;
   }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 使內部元素居中 */
+  }
+  .img-container {
+    width: 25vh; /* 根據視口寬度設定容器的寬度 */
+    height: 25vh; /* 使高度等於寬度，保持正方形 */
+    margin: auto; /* 自動計算上下左右邊距以居中 */
+    display: flex; /* 使用flex來容納圖片 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+  }
 }
 @media (max-width: 1024px) {
   .intro {
     left: 24%;
+  }
+  .img-container {
+    width: 15vh;
+    height: 15vh;
+  }
+}
+
+@media (max-width: 992px) {
+  .img-container {
+    width: 50vh;
+    height:50vh;
   }
 }
 
