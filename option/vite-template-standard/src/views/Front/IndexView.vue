@@ -154,7 +154,7 @@
               <div class="col-lg-2"></div>
               <div class="col-lg-4">
                 <div class="card border-0 mb-4">
-                  <div class="mt-3 mt-xxl-0 me-xxl-2 img-container">
+                  <div class="mt-3 mt-xxl-0 img-container">
                     <img
                       src="https://imgur.com/56i4iC2.jpg"
                       class="card-img-top rounded-0 h-100 w-100"
@@ -173,7 +173,7 @@
               </div>
               <div class="col-lg-4">
                 <div class="card border-0 mb-4">
-                  <div class="mt-3 mt-xxl-0 me-xxl-2 img-container">
+                  <div class="mt-3 mt-xxl-0 img-container">
                     <img
                       src="https://imgur.com/Y9ySCn9.jpg"
                       class="card-img-top rounded-0 h-100 w-100"

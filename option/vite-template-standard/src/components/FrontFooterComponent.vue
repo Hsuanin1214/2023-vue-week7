@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-surface-variant py-5 rounded-bottom-2" style="margin-left: -0.9vw; margin-right: -0.9vw;">
+  <div class="bg-surface-variant py-5 rounded-bottom-2" style="margin-left: -0.8vw; margin-right: -0.8vw;">
     <div class="container">
       <div
         class="d-flex align-items-center justify-content-between text-pri mb-md-7 mb-4"
