@@ -61,7 +61,7 @@
           <div class="card-body p-0">
             <h4 class="mb-0 mt-3"><router-link :to="`product/${product.id}`">{{ product.title }}</router-link></h4>
             <p class="card-text mb-0">
-              NT${{product.origin_price}} <span class="text-muted"><del>NT$1,{{product.price}}</del></span>
+              NT${{formatNumber(product.origin_price)}} <span class="text-muted"><del>NT${{formatNumber(product.price)}}</del></span>
             </p>
             <p class="text-muted mt-3">{{ product.title }}</p>
           </div>
@@ -74,6 +74,7 @@
 import { mapActions, mapState } from 'pinia'
 import productStore from '../../stores/productStore.js'
 import PaginationComponent from '../../components/PaginationComponent.vue'
+import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 // import LoadingComponent from '../../components/LoadingComponent.vue'
 export default {
   components: {
@@ -88,6 +89,7 @@ export default {
       // isNoClick: true
     }
   },
+  mixins: [formatNumberMixin],
   computed: {
     ...mapState(productStore, ['products', 'pagination', 'tabs'])
   },

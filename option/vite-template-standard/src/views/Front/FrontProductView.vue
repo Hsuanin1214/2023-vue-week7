@@ -15,8 +15,8 @@
           </ol>
         </nav>
         <h2 class="fw-bold text-secondary-emphasis h4 mb-1">{{productSelect.title}}</h2>
-        <p class="h5 mb-0 text-muted text-end"><del>NT${{productSelect.origin_price}}</del></p>
-        <p class="h5 text-end">NT${{productSelect.price}} / <span>{{ productSelect.unit }}</span></p>
+        <p class="h5 mb-0 text-muted text-end"><del>NT${{formatNumber(productSelect.origin_price)}}</del></p>
+        <p class="h5 text-end">NT${{formatNumber(productSelect.price)}} / <span>{{ productSelect.unit }}</span></p>
         <div class="row align-items-center">
           <div class="col-8">
             <div class="input-group my-3 bg-light rounded-2 d-flex align-items-center">
@@ -131,9 +131,9 @@
             <li v-for="cart in carts.carts" :key="cart.id" class="my-3">
               <span class="d-block fw-bold mb-2">甜點名稱 : <span class="border-bottom-info">
                 {{ cart.product.title }}</span></span>
-              <span class="me-3">售價 : NT$ {{ cart.product.price }}</span>
+              <span class="me-3">售價 : NT$ {{ formatNumber(cart.product.price) }}</span>
               <span>數量: {{ cart.qty }}</span>
-              <span class="d-block">總價 : NT$ {{cart.final_total}}</span>
+              <span class="d-block">總價 : NT$ {{ formatNumber(cart.final_total)}}</span>
             </li>
           </ul>
           <router-link
@@ -244,6 +244,7 @@ import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
 import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
+import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 export default {
   data () {
     return {
@@ -254,6 +255,7 @@ export default {
   components: {
     FrontShipNavComponent
   },
+  mixins: [formatNumberMixin],
   computed: {
     ...mapState(useCartStore, ['carts']),
     ...mapState(productStore, ['productSelect', 'pagination'])

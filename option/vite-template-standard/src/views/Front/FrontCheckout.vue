@@ -41,7 +41,7 @@
             <div class="w-100">
               <div class="d-flex justify-content-between">
                 <p class="mb-0 fw-bold">{{cart.product.title}}</p>
-                <p class="mb-0">NT${{cart.final_total}}</p>
+                <p class="mb-0">NT${{formatNumber(cart.final_total)}}</p>
               </div>
               <p class="mb-0 fw-bold">x{{ cart.qty }}</p>
             </div>
@@ -52,7 +52,7 @@
                 <th scope="row" class="border-0 px-0 pt-4">
                   小計
                 </th>
-                <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
+                <td class="text-end border-0 px-0 pt-4">NT${{formatNumber(carts.total)}}</td>
               </tr>
               <!-- <tr>
                   <th
@@ -77,7 +77,7 @@
           </table>
           <div class="d-flex justify-content-between mt-4">
             <p class="mb-0 h4 fw-bold">總金額</p>
-            <p class="mb-0 h4 fw-bold">NT${{carts.total}}</p>
+            <p class="mb-0 h4 fw-bold">NT${{formatNumber(carts.total)}}</p>
           </div>
         </div>
       </div>
@@ -362,7 +362,9 @@ import axios from 'axios'
 import { mapActions, mapState } from 'pinia'
 import orderStore from '../../stores/orderStore.js'
 import { useCartStore } from '../../stores/cartStore.js'
+import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 const { VITE_API, VITE_PATH } = import.meta.env
+
 export default {
   data () {
     return {
@@ -393,6 +395,7 @@ export default {
       this.combineMessage()
     }
   },
+  mixins: [formatNumberMixin],
   computed: {
     ...mapState(useCartStore, ['carts'])
   },

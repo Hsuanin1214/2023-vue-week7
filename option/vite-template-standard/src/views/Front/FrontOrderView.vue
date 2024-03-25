@@ -36,7 +36,7 @@
                         訂購時間 :<strong>{{formatDate(order.create_at)}}</strong>
                       </li>
                       <li class="woocommerce-order-overview__total total">
-                        訂單金額 :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{order.total}}</span></strong>
+                        訂單金額 :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{formatNumber(order.total)}}</span></strong>
                       </li>
                       <li class="woocommerce-order-overview__payment-method method">
                         取貨時間及方式: <strong>{{order.message}}</strong>
@@ -58,7 +58,7 @@
                                 <router-link :to="`product/${product.product.id}`">{{product.product.title}}</router-link> <strong class="product-quantity">×
                                   {{product.qty}}</strong> </td>
                               <td class="woocommerce-table__product-total product-total px-2 py-1">
-                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{product.final_total}}</span>
+                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{formatNumber(product.final_total)}}</span>
                               </td>
                             </tr>
                             <!-- <tr class="woocommerce-table__line-item order_item">
@@ -73,7 +73,7 @@
                           <tfoot>
                             <tr>
                               <th scope="row" class="px-2 py-1">總金額：</th>
-                              <td><span class="woocommerce-Price-amount amount px-2 py-1"><span class="woocommerce-Price-currencySymbol">NT$</span>{{order.total}}</span>
+                              <td><span class="woocommerce-Price-amount amount px-2 py-1"><span class="woocommerce-Price-currencySymbol">NT$</span>{{formatNumber(order.total)}}</span>
                               </td>
                             </tr>
                             <tr class="mt-3">
@@ -131,14 +131,16 @@
 <script>
 import axios from 'axios'
 import { dateMixin } from '../../mixins/dateMixin.js'
+import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 const { VITE_API, VITE_PATH } = import.meta.env
+
 export default {
   data () {
     return {
       orders: {}
     }
   },
-  mixins: [dateMixin],
+  mixins: [dateMixin, formatNumberMixin],
   methods: {
     async getOrders () {
       try {

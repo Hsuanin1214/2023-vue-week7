@@ -92,7 +92,7 @@
                   </div>
                 </td>
                 <td class="border-0 align-middle">
-                  <p class="mb-0 ms-auto">NT${{cart.final_total}}</p>
+                  <p class="mb-0 ms-auto">NT${{formatNumber(cart.final_total)}}</p>
                 </td>
                 <td class="border-0 align-middle">
                   <button
@@ -135,7 +135,7 @@
                   <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
                     小計
                   </th>
-                  <td class="text-end border-0 px-0 pt-4">NT${{carts.total}}</td>
+                  <td class="text-end border-0 px-0 pt-4">NT${{formatNumber(carts.total)}}</td>
                 </tr>
                 <!-- <tr>
                   <th
@@ -144,7 +144,7 @@
                   >
                     優惠券折扣
                   </th>
-                  <td class="text-end border-0 px-0 pt-0 pb-4">－NT${{carts.total}}</td>
+                  <td class="text-end border-0 px-0 pt-0 pb-4">－NT${{formatNumber(carts.total)}}</td>
                 </tr> -->
                 <tr>
                   <th
@@ -159,7 +159,7 @@
             </table>
             <div class="d-flex justify-content-between mt-4">
               <p class="mb-0 h4 fw-bold">Total</p>
-              <p class="mb-0 h4 fw-bold">NT${{carts.total}}</p>
+              <p class="mb-0 h4 fw-bold">NT${{formatNumber(carts.total)}}</p>
             </div>
             <!-- <a href="./checkout.html" class="btn btn-secondary w-100 mt-4"
               >立即結帳</a> -->
@@ -236,6 +236,7 @@
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '../../stores/cartStore.js'
 import productStore from '../../stores/productStore.js'
+import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 // import PaginationComponent from '../../components/PaginationComponent.vue'
 // 導入Swiper core和所需模塊
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -255,6 +256,7 @@ export default {
     Swiper,
     SwiperSlide
   },
+  mixins: [formatNumberMixin],
   data () {
     return {
       slides: Array.from({ length: 5 }).map((_, index) => `Slide ${index + 1}`),
