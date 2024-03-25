@@ -104,7 +104,7 @@ export default {
 }
 </script>
 <style scoped>
-@media (max-width: 1400px) {
+@media (min-width: 992px) {
   .products-img-container{
     height: 60vh;
   }
