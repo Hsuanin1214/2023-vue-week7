@@ -36,77 +36,79 @@
           </button>
         </div>
         <div class="col-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col" class="border-0 ps-0">商品項目</th>
-                <th scope="col" class="border-0">商品數量</th>
-                <th scope="col" class="border-0">商品售價</th>
-                <th scope="col" class="border-0"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-bottom border-top" v-for="cart in carts.carts" :key="cart.id">
-                <th scope="row" class="border-0 px-0 font-weight-normal py-4">
-                  <img
-                    :src="cart.product.imageUrl"
-                    alt=""
-                    style="width: 72px; height: 72px; object-fit: cover"
-                  />
-                  <p class="mb-0 fw-bold ms-3 d-inline-block">{{cart.product.title}}</p>
-                </th>
-                <td class="border-0 align-middle" style="max-width: 160px">
-                  <div class="input-group pe-5">
-                    <div class="input-group-prepend">
-                      <button
-                        class="btn btn-outline-dark border-0 py-2"
-                        type="button"
-                        id="button-addon1"
-                        @click="cart.qty--; changeCartQty(cart,cart.qty)" :disabled="cart.qty === 1"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-                    </div>
-                    <input
-                    min="1"
-                      type="number"
-                      class="form-control border-0 text-center my-auto shadow-none"
-                      placeholder=""
-                      aria-label="Example text with button addon"
-                      aria-describedby="button-addon1"
-                      v-model="cart.qty"
-                      value="1"
-                      readonly
+          <div class="table-container">
+            <table class="table table-cart-product">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 ps-0">商品項目</th>
+                  <th scope="col" class="border-0">商品數量</th>
+                  <th scope="col" class="border-0">商品售價</th>
+                  <th scope="col" class="border-0"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-bottom border-top" v-for="cart in carts.carts" :key="cart.id">
+                  <th scope="row" class="border-0 px-0 font-weight-normal py-4">
+                    <img
+                      :src="cart.product.imageUrl"
+                      alt=""
+                      style="width: 72px; height: 72px; object-fit: cover"
                     />
-                      <!-- :disabled="cart.id === status.cartQtyLoading" -->
-                    <div class="input-group-append">
-                      <button
-                        class="btn btn-outline-dark border-0 py-2"
-                        type="button"
-                        id="button-addon2"
-                        @click="cart.qty++; changeCartQty(cart,cart.qty)"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
+                    <p class="mb-0 fw-bold ms-3 d-inline-block">{{cart.product.title}}</p>
+                  </th>
+                  <td class="border-0 align-middle" style="max-width: 160px">
+                    <div class="input-group pe-5">
+                      <div class="input-group-prepend">
+                        <button
+                          class="btn btn-outline-dark border-0 py-2"
+                          type="button"
+                          id="button-addon1"
+                          @click="cart.qty--; changeCartQty(cart,cart.qty)" :disabled="cart.qty === 1"
+                        >
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+                      <input
+                      min="1"
+                        type="number"
+                        class="form-control border-0 text-center my-auto shadow-none"
+                        placeholder=""
+                        aria-label="Example text with button addon"
+                        aria-describedby="button-addon1"
+                        v-model="cart.qty"
+                        value="1"
+                        readonly
+                      />
+                        <!-- :disabled="cart.id === status.cartQtyLoading" -->
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-dark border-0 py-2"
+                          type="button"
+                          id="button-addon2"
+                          @click="cart.qty++; changeCartQty(cart,cart.qty)"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td class="border-0 align-middle">
-                  <p class="mb-0 ms-auto">NT${{formatNumber(cart.final_total)}}</p>
-                </td>
-                <td class="border-0 align-middle">
-                  <button
-                    class="btn btn-outline-dark border-0 py-2"
-                    type="button"
-                    id="button-addon2"
-                    @click="removeCartItem(cart.id)"
-                  >
-                    <i class="fas fa-times"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                  <td class="border-0 align-middle">
+                    <p class="mb-0 ms-auto">NT${{formatNumber(cart.final_total)}}</p>
+                  </td>
+                  <td class="border-0 align-middle">
+                    <button
+                      class="btn btn-outline-dark border-0 py-2"
+                      type="button"
+                      id="button-addon2"
+                      @click="removeCartItem(cart.id)"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <!-- <div class="input-group w-50 mb-3">
             <input
               type="text"
@@ -128,7 +130,7 @@
         </div>
         <div class="col-12">
           <div class="border p-4 mb-4">
-            <h4 class="fw-bold mb-4 h4 text-primary">訂單明細</h4>
+            <h4 class="fw-bold mb-4 fs-md-4 text-primary">訂單明細</h4>
             <table class="table text-muted border-bottom">
               <tbody>
                 <tr>
@@ -158,8 +160,8 @@
               </tbody>
             </table>
             <div class="d-flex justify-content-between mt-4">
-              <p class="mb-0 h4 fw-bold">Total</p>
-              <p class="mb-0 h4 fw-bold">NT${{formatNumber(carts.total)}}</p>
+              <p class="mb-0 fs-md-4 fw-bold">總金額 : </p>
+              <p class="mb-0 fs-md-4 fw-bold">NT${{formatNumber(carts.total)}}</p>
             </div>
             <!-- <a href="./checkout.html" class="btn btn-secondary w-100 mt-4"
               >立即結帳</a> -->
@@ -172,7 +174,7 @@
         </div>
       </div>
       <div class="my-5">
-        <h4 class="text-primary mb-4">其他相關甜點商品</h4>
+        <h4 class="text-primary fs-md-4 mb-4">其他相關甜點商品</h4>
         <div>
           <swiper
             :modules="modules"
@@ -195,11 +197,11 @@
               >
                 <div class="card border-0 mb-4 position-relative">
                   <router-link :to="`product/${product.id}`">
-                    <div class="h-25vh">
+                    <div class="h-25vh scroll-img-container">
                         <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
                     </div>
                     <div class="card-body p-0">
-                      <h5 class="mb-0 mt-3">{{ product.title }}</h5>
+                      <h5 class="mb-0 mt-3 fs-6 fs-md-5">{{ product.title }}</h5>
                       <p class="card-text mb-0">
                         NT${{ product.price }}
                         <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
@@ -297,5 +299,58 @@ export default {
 <style scoped>
 .h-25vh{
   height: 25vh;
+}
+.table-container {
+    overflow-x: auto; /* 啟用橫向滾動條 */
+    width: 100%; /* 或者其他指定的寬度 */
+    /* margin: 0 auto; */
+}
+.table-cart-product {
+    width: 100%; /* 讓表格寬度適應容器寬度 */
+    /* 或者設置具體的最小寬度，例如 min-width: 600px; 以確保表格在較窄的螢幕上也能正常顯示 */
+}
+@media (max-width: 992px) {
+    .table-container {
+        /* 在螢幕寬度小於或等於375px時，可能需要設置容器的最小寬度來保持表格內部元素的一致性 */
+        min-width: 200px; /* 這將確保容器有足夠的寬度來顯示表格，即使在較小的螢幕上也能通過滾動條查看 */
+    }
+    .table-cart-product {
+        min-width: 800px; /* 或根據你的表格設計設定一個合適的最小寬度 */
+        /* 這確保了表格即使在狹窄的視窗中也不會壓縮其內容 */
+    }
+}
+
+/* @media (min-width: 992px) {
+  .custom-flex-desktop-remove {
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+    flex-direction: row !important;
+  }
+} */
+/* @media (min-width: 992px) {
+  .scroll-img-container{
+    height: 60vh;
+  }
+}
+@media (max-width: 991px) {
+  .scroll-img-container{
+    height: 40vh;
+  }
+}
+@media (max-width: 767px) {
+  .scroll-img-container{
+    height: 40vh;
+  }
+}
+@media (max-width: 575px) {
+  .scroll-img-container{
+    height: 25vm;
+  }
+} */
+@media (max-width: 375px) {
+  .scroll-img-container{
+    height: 40vm;
+  }
 }
 </style>
