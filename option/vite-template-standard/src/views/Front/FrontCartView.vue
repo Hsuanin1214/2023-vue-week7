@@ -179,7 +179,7 @@
           <swiper
             :modules="modules"
             :slidesPerView="3"
-            :centeredSlides="true"
+            :centeredSlides="false"
             :spaceBetween="30"
             :pagination="{
               type: 'fraction',
@@ -189,6 +189,20 @@
             class="mySwiper"
             ref="swiperRef"
             @swiper="setSwiperRef"
+            :breakpoints="{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+              }
+            }"
           >
             <swiper-slide
               v-for="(product, index) in products"
