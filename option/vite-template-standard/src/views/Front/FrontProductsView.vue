@@ -45,7 +45,7 @@
     <div class="row">
       <div class="col-md-6" v-for="product in products" :key="product.id">
         <div class="card border-0 mb-4 position-relative">
-          <div class="h-75vh">
+          <div class="products-img-container">
             <img
               :src="product.imageUrl"
               class="card-img-top rounded-2 h-100 w-100 img-fluid"
@@ -104,4 +104,29 @@ export default {
 }
 </script>
 <style scoped>
+@media (max-width: 1400px) {
+  .products-img-container{
+    height: 60vh;
+  }
+}
+@media (max-width: 991px) {
+  .products-img-container{
+    height: 40vh;
+  }
+}
+@media (max-width: 767px) {
+  .products-img-container{
+    height: 40vh;
+  }
+}
+@media (max-width: 575px) {
+  .products-img-container{
+    height: 25vm;
+  }
+}
+@media (max-width: 399px) {
+  .products-img-container{
+    height: 25vm;
+  }
+}
 </style>
