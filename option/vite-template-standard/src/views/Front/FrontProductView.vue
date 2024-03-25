@@ -2,7 +2,7 @@
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left ps-3">查看商品</h2>
     <div class="row align-items-center">
-      <div class="col-md-5">
+      <div class="col-lg-5">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-white px-0 mb-0 py-3">
             <li class="breadcrumb-item">
@@ -17,8 +17,8 @@
         <h2 class="fw-bold text-secondary-emphasis h4 mb-1">{{productSelect.title}}</h2>
         <p class="h5 mb-0 text-muted text-end"><del>NT${{formatNumber(productSelect.origin_price)}}</del></p>
         <p class="h5 text-end">NT${{formatNumber(productSelect.price)}} / <span>{{ productSelect.unit }}</span></p>
-        <div class="row align-items-center">
-          <div class="col-8">
+        <div class="d-xl-flex align-items-xl-center">
+          <div>
             <div class="input-group my-3 bg-light rounded-2 d-flex align-items-center">
               <div class="input-group-prepend">
                 <button
@@ -51,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="text-end text-xl-center">
             <button
               class="btn btn-primary text-nowrap py-2 text-center"
               type="button"
@@ -68,7 +68,7 @@
           {{productSelect.description}}
         </p>
       </div>
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div id="carouselExampleIndicators" class="carousel slide">
           <div class="carousel-indicators" v-if="productSelect && productSelect.imagesUrl">
             <!-- Always show the first indicator for the first image -->
