@@ -39,7 +39,7 @@
                         訂單金額 :<strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{formatNumber(order.total)}}</span></strong>
                       </li>
                       <li class="woocommerce-order-overview__payment-method method">
-                        取貨時間及方式: <strong>{{order.message}}</strong>
+                        取貨時間及方式: <strong>{{extractInfo(order.message)}}</strong>
                       </li>
                     </ul>
                     <section class="woocommerce-order-details">
@@ -78,7 +78,7 @@
                             </tr>
                             <tr class="mt-3">
                               <th scope="row" class="px-2 py-1">訊息留言：</th>
-                              <td><span class="woocommerce-Price-amount amount px-2 py-1">{{order.message}}</span>
+                              <td><span class="woocommerce-Price-amount amount px-2 py-1">{{replaceInfo(order.message)}}</span>
                               </td>
                             </tr>
                             <!-- <tr>
@@ -137,7 +137,9 @@ const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
     return {
-      orders: {}
+      orders: {},
+      pickupMethod: '', // 取貨方式
+      pickupTime: '' // 時間
     }
   },
   mixins: [dateMixin, formatNumberMixin],
@@ -146,11 +148,67 @@ export default {
       try {
         const orderUrl = `${VITE_API}/api/${VITE_PATH}/orders`
         const response = await axios.get(orderUrl)
-        console.log(response.data.orders)
+        // console.log(response.data.orders)
         this.orders = response.data.orders
       } catch (error) {
         alert(error.response ? error.response.data.message : '訂單查詢時發生錯誤')
         console.error(error) // 打印錯誤以便於調試
+      }
+    },
+    extractInfo (order) {
+      // console.log(order)
+      if (order === undefined) {
+        return '無'
+      } else {
+        // 匹配取貨方式，考慮到可能直接以"取貨方式："開頭或包含在訊息中
+        const methodMatch = order.match(/取貨方式：(.*?)(，|。|,|\s|$)/)
+        // 匹配時間，可能位於字串任何位置
+        const timeMatch = order.match(/時間：(.*?)(，|。|,|\s|$)/)
+        // 重設顯示變數
+        this.pickupMethod = ''
+        this.pickupTime = ''
+        // console.log(methodMatch)
+        // 如果匹配成功，從正則表達式匹配結果中提取資訊
+        if (methodMatch && methodMatch.length > 1) {
+          this.pickupMethod = methodMatch[1].trim(',')
+        }
+        if (timeMatch && timeMatch.length > 1) {
+          this.pickupTime = timeMatch[1].trim(' ')
+        }
+        // 組合提取的資訊並返回
+        let result = ''
+        if (this.pickupMethod) result += `取貨方式：${this.pickupMethod}`
+        if (this.pickupTime) result += `，時間：${this.pickupTime}`
+        return result || '無'
+      }
+    },
+    replaceInfo (order) {
+      if (!order) {
+        return '無'
+      } else {
+        // 定義正則表達式
+        const methodPattern = /取貨方式：(.*?)(，|。|,|\s|$)/
+        const timePattern = /時間：(.*?)(，|。|,|\s|$)/
+
+        // 提取「取貨方式」和「時間」
+        // const methodMatch = order.match(methodPattern)
+        // const timeMatch = order.match(timePattern)
+
+        // let pickupMethod = ''
+        // let pickupTime = ''
+
+        // if (methodMatch && methodMatch.length > 1) {
+        //   pickupMethod = methodMatch[0]
+        // }
+        // if (timeMatch && timeMatch.length > 1) {
+        //   pickupTime = timeMatch[0]
+        // }
+        // // 從原始訊息中移除「取貨方式」和「時間」
+        // const messageWithoutMethodAndTime = order.replace(methodPattern, '').replace(timePattern, '')
+        const remainingMessage = order.replace(methodPattern, '').replace(timePattern, '')
+        console.log(remainingMessage)
+        // 返回結果
+        return remainingMessage.trim() || '無'
       }
     }
   },
