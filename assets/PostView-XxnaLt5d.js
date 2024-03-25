@@ -1,0 +1,1 @@
+import{_ as o,c as e,o as s,a as t}from"./index-tRoiU0ZJ.js";const c={},r={class:"row bg-background rounded-3 py-3"},a=t("h2",{class:"col-12 pt-3 text-primary fw-bolder"},"貼文管理",-1),n=[a];function _(d,p,i,l,f,u){return s(),e("div",r,n)}const m=o(c,[["render",_]]);export{m as default};
