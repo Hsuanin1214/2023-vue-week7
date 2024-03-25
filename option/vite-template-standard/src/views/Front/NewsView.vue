@@ -96,6 +96,13 @@
         </div>
       </div>
     </div>
+    <div v-if="selectedTab.name === '本店消息'">
+      <p class="my-4 text-center">近期無本店相關新消息</p>
+    </div>
+    <div v-if="selectedTab.name === '甜點知識'">
+      <p class="my-4 text-center">敬請期待分享新甜點知識，也歡迎與我們交流。
+      </p>
+    </div>
   </div>
 </template>
 

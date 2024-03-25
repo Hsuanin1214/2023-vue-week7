@@ -6,6 +6,7 @@
 .scrollable-div-500 {
     height: 500px; /* 定義 div 的高度 */
     overflow: auto; /* 當內容超出時自動顯示滾動條 */
+    border: 1px solid #ccc; /* 為 div 添加邊框，使其更容易被看到 */
 }
 .scrollable-div-w-362 {
     width: 360px; /* 定義 div 的寬度 */
@@ -14,5 +15,8 @@
 @media (max-width: 992px) {
     .scrollable-div-w-362 {
         overflow-x: auto; /* 當內容寬度超出 div 寬度時，於橫向顯示滾動條 */
+    }
+    .scrollable-div-500 {
+        overflow-x: auto;
     }
 }

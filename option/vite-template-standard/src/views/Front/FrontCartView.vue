@@ -8,29 +8,29 @@
       </div>
       <div class="col-md-6">
           <ul
-            class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
+            class="list-unstyled mb-0 ms-md-auto d-flex flex-wrap align-items-center justify-content-start justify-content-md-end w-100 mt-md-0 mt-4"
           >
-            <li class="me-md-6 me-3 position-relative custom-step-line">
+            <li class="me-md-6 me-3 position-relative custom-step-line d-flex justify-content-center align-items-center">
               <i
                 class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
               <span class="text-nowrap text-secondary">商品確認</span>
             </li>
-            <li class="me-md-6 me-3 position-relative custom-step-line">
+            <li class="me-md-6 me-3 position-relative custom-step-line d-flex justify-content-center align-items-center">
               <i
                 class="fas fa-dot-circle d-md-inline d-block text-center me-2"
               ></i>
               <span class="text-nowrap">訂購人填寫</span>
             </li>
-            <li>
+            <li class="me-md-6 me-3 position-relative d-flex justify-content-center align-items-center">
               <i class="fas fa-dot-circle d-md-inline d-block text-center me-2"></i>
               <span class="text-nowrap">訂單完成</span>
             </li>
           </ul>
       </div>
     </div>
-      <div class="row">
-        <div class="col-12 text-end">
+      <div class="row mt-2 mt-md-0">
+        <div class="col-12 text-start text-md-end">
           <button class="btn btn-outline-primary" type="button" @click="removeAllCart()">
               清空購物車
           </button>

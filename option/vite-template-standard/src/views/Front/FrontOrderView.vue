@@ -44,8 +44,8 @@
                     </ul>
                     <section class="woocommerce-order-details">
                       <h5 class="woocommerce-order-details__title h5 text-info">訂購明細</h5>
-                      <div class="d-flex d-flex justify-content-center justify-content-md-start">
-                        <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+                      <div class="d-flex d-flex justify-content-center justify-content-md-start table-container">
+                        <table class="woocommerce-table woocommerce-table--order-details shop_table order_details table-cart-product">
                           <thead class="p-3">
                             <tr>
                               <th class="woocommerce-table__product-name product-name px-2 py-1">訂購商品</th>
@@ -90,8 +90,8 @@
                       </div>
                       <section class="woocommerce-customer-details">
                         <h5 class="h6 mt-3 text-info">訂購人明細</h5>
-                        <div class="d-flex justify-content-center justify-content-md-start">
-                          <table class="woocommerce-table woocommerce-table--customer-details shop_table customer_details d-flex flex-wrap">
+                        <div class="d-flex justify-content-center justify-content-md-start table-container">
+                          <table class="woocommerce-table woocommerce-table--customer-details shop_table customer_details d-flex flex-wrap table-cart-product">
                             <tbody>
                               <tr class="w-100">
                                 <th class="px-2 py-1">姓名:</th>
@@ -160,6 +160,25 @@ export default {
 }
 </script>
 <style scoped>
+.table-container {
+    overflow-x: auto; /* 啟用橫向滾動條 */
+    width: 100%; /* 或者其他指定的寬度 */
+    /* margin: 0 auto; */
+}
+.table-cart-product {
+    width: 100%; /* 讓表格寬度適應容器寬度 */
+    /* 或者設置具體的最小寬度，例如 min-width: 600px; 以確保表格在較窄的螢幕上也能正常顯示 */
+}
+@media (max-width: 768px) {
+    .table-container {
+        /* 在螢幕寬度小於或等於375px時，可能需要設置容器的最小寬度來保持表格內部元素的一致性 */
+        min-width: 100px; /* 這將確保容器有足夠的寬度來顯示表格，即使在較小的螢幕上也能通過滾動條查看 */
+    }
+    .table-cart-product {
+        min-width: 100px; /* 或根據你的表格設計設定一個合適的最小寬度 */
+        /* 這確保了表格即使在狹窄的視窗中也不會壓縮其內容 */
+    }
+}
 /* .woocommerce-order-overview {
   background: #f8f8f8;
   list-style: none;
