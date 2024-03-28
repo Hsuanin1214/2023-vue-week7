@@ -409,7 +409,7 @@ export default {
         console.log(this.takeTime)
         pickupInfo = `取貨方式：${this.takeType === 'selfTake' ? '自取' : '宅配'}，時間：${this.takeTime}`
       }
-      this.form.message = `${this.originalMessage}${this.originalMessage ? '。' : ''}${pickupInfo}`
+      this.form.message = `${this.originalMessage}${this.originalMessage && pickupInfo ? '。' : ''}${pickupInfo}`
     },
     async addOrder () {
       try {
