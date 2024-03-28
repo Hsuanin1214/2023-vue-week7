@@ -61,7 +61,7 @@
           <div class="card-body p-0">
             <h4 class="mb-0 mt-3"><router-link :to="`product/${product.id}`">{{ product.title }}</router-link></h4>
             <p class="card-text mb-0">
-              NT${{formatNumber(product.origin_price)}} <span class="text-muted"><del>NT${{formatNumber(product.price)}}</del></span>
+              <span class="text-muted"><del>NT${{formatNumber(product.origin_price)}}</del></span>NT${{formatNumber(product.price)}}
             </p>
             <p class="text-muted mt-3">{{ product.title }}</p>
           </div>
