@@ -369,6 +369,7 @@ export default {
   data () {
     return {
       originalMessage: '',
+      pickupMessage: '', // 存取貨方式和時間的訊息
       form: {
         user: {
           name: '',
@@ -409,17 +410,17 @@ export default {
         console.log(this.takeTime)
         pickupInfo = `取貨方式：${this.takeType === 'selfTake' ? '自取' : '宅配'}，時間：${this.takeTime}`
       }
-      this.form.message = `${this.originalMessage}${this.originalMessage && pickupInfo ? '。' : ''}${pickupInfo}`
+      // 更新 pickupMessage
+      this.pickupMessage = pickupInfo
+      this.form.message = `${this.originalMessage}${this.originalMessage && this.pickupMessage ? '。' : ''}${this.pickupMessage}`
     },
     async addOrder () {
       try {
-        console.log('addOrder method called') // 確認方法被調用
         const addOrderUrl = `${VITE_API}/api/${VITE_PATH}/order`
         const order = this.form
         console.log(addOrderUrl, order) // 顯示訂單信息和URL
 
         const response = await axios.post(addOrderUrl, { data: order })
-        console.log(response)// 打印響應以確認成功
         alert(response.data.message)
         this.$refs.form.resetForm()
         this.getCart()
