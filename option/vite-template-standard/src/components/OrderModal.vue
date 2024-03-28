@@ -60,6 +60,12 @@
                       {{ tempOrder.total }}
                     </td>
                   </tr>
+                  <tr>
+                    <th>留言</th>
+                    <td>
+                      {{ tempOrder.message }}
+                    </td>
+                  </tr>
                 </tbody>
               </table>
               <h3>選購商品</h3>

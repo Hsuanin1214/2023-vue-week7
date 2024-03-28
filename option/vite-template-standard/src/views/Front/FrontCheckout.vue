@@ -194,11 +194,11 @@
                     name="selfTakeTime"
                     class="me-2"
                     v-model="takeTime"
-                    value="20：00 店面關店前"
+                    value="20：00店面關店前"
                     :disabled="takeType !== 'selfTake'"
                   />
                   <label for="selfTakeNight" class="text-dark mb-0"
-                    >20：00 店面關店前</label
+                    >20：00店面關店前</label
                   >
                 </div>
               </div>
@@ -385,15 +385,32 @@ export default {
   },
   watch: {
     // 監聽原始訊息的變化，每當原始訊息更新時，重新組合訊息
-    originalMessage (newVal) {
-      this.combineMessage()
-    },
+    // originalMessage (newVal,oldVal) {
+    //   if (newVal !== oldVal) {
+    //     this.combineMessage()
+    //   }
+    // },
     // 監聽取貨方式和時間的變化，每當它們更新時，重新組合訊息
-    takeType () {
-      this.combineMessage()
+    takeType (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.combineMessage()
+      }
     },
-    takeTime () {
-      this.combineMessage()
+    takeTime (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.combineMessage()
+      }
+    },
+    'form.message' (newVal) {
+      // 檢查當前的留言是否包含由選擇取貨方式和時間產生的信息
+      if (!this.pickupMessage || newVal.endsWith(this.pickupMessage)) {
+        // 如果不包含，或者留言以取貨信息結尾（意味著用戶僅修改了原始留言部分）
+        // 更新原始留言為當前的 form.message，並從中移除取貨信息
+        this.originalMessage = newVal.replace(this.pickupMessage, '').trim()
+        if (this.originalMessage && this.pickupMessage) {
+          this.originalMessage = this.originalMessage.slice(0, -1) // 移除可能的分隔符
+        }
+      }
     }
   },
   mixins: [formatNumberMixin],
@@ -404,15 +421,23 @@ export default {
     ...mapActions(useCartStore, ['getCart']),
     ...mapActions(orderStore, ['isPhone']),
     combineMessage () {
-      // 組合原始訊息與取貨資訊
-      let pickupInfo = ''
+      // 定義新的取貨資訊
+      let newPickupInfo = ''
       if (this.takeType || this.takeTime) {
-        console.log(this.takeTime)
-        pickupInfo = `取貨方式：${this.takeType === 'selfTake' ? '自取' : '宅配'}，時間：${this.takeTime}`
+        newPickupInfo = `取貨方式：${this.takeType === 'selfTake' ? '自取' : '宅配'}，時間：${this.takeTime}`
       }
-      // 更新 pickupMessage
-      this.pickupMessage = pickupInfo
-      this.form.message = `${this.originalMessage}${this.originalMessage && this.pickupMessage ? '。' : ''}${this.pickupMessage}`
+      // 如果原始留言已經包含了舊的取貨資訊，首先移除它
+      if (this.originalMessage.endsWith(this.pickupMessage) && this.pickupMessage) {
+        this.originalMessage = this.originalMessage.slice(0, this.originalMessage.lastIndexOf(this.pickupMessage)).trim()
+        // 移除可能的分隔符
+        if (this.originalMessage.endsWith('。')) {
+          this.originalMessage = this.originalMessage.slice(0, -1)
+        }
+      }
+      // 組合原始留言與新的取貨資訊
+      this.form.message = `${this.originalMessage}${this.originalMessage && newPickupInfo ? '。' : ''}${newPickupInfo}`
+      // 更新 pickupMessage 為新的取貨資訊，供下次使用
+      this.pickupMessage = newPickupInfo
     },
     async addOrder () {
       try {

@@ -155,26 +155,42 @@ export default {
       }
     },
     extractMessageComponents (orderMessage) {
-      if (!orderMessage) return { pickupMethod: '', pickupTime: '', remainingMessage: '' }
+      // if (!orderMessage) return { pickupMethod: '', pickupTime: '', remainingMessage: '' }
 
+      // const methodPattern = /取貨方式：(.*?)(，|。|,|\s|$)/
+      // const timePattern = /時間：(.*?)(，|。|,|\s|$)/
+
+      // const pickupMethodMatch = orderMessage.match(methodPattern)
+      // const pickupTimeMatch = orderMessage.match(timePattern)
+
+      // const pickupMethod = pickupMethodMatch ? pickupMethodMatch[1].trim(',') : ''
+      // let pickupTime = ''
+      // let remainingMessage = orderMessage
+      // // 如果存在取貨時間，提取並調整剩餘訊息
+      // if (pickupTimeMatch) {
+      //   pickupTime = pickupTimeMatch[1].trim(' ')
+      //   const timeMatchIndex = orderMessage.indexOf(pickupTimeMatch[0])
+      //   remainingMessage = orderMessage.substring(0, timeMatchIndex).trim()
+      // }
+      // // 從剩餘訊息中移除取貨方式
+      // if (pickupMethodMatch) {
+      //   remainingMessage = remainingMessage.replace(pickupMethodMatch[0], '').trim()
+      // }
+      // return { pickupMethod, pickupTime, remainingMessage }
+      if (!orderMessage) return { pickupMethod: '', pickupTime: '', remainingMessage: '' }
       const methodPattern = /取貨方式：(.*?)(，|。|,|\s|$)/
       const timePattern = /時間：(.*?)(，|。|,|\s|$)/
-
       const pickupMethodMatch = orderMessage.match(methodPattern)
       const pickupTimeMatch = orderMessage.match(timePattern)
-
-      const pickupMethod = pickupMethodMatch ? pickupMethodMatch[1].trim(',') : ''
-      let pickupTime = ''
+      const pickupMethod = pickupMethodMatch ? pickupMethodMatch[1].trim(' ,。') : ''
+      const pickupTime = pickupTimeMatch ? pickupTimeMatch[1].trim(' ,。') : ''
       let remainingMessage = orderMessage
-      // 如果存在取貨時間，提取並調整剩餘訊息
-      if (pickupTimeMatch) {
-        pickupTime = pickupTimeMatch[1].trim(' ')
-        const timeMatchIndex = orderMessage.indexOf(pickupTimeMatch[0])
-        remainingMessage = orderMessage.substring(0, timeMatchIndex).trim()
-      }
-      // 從剩餘訊息中移除取貨方式
+      // 從剩餘訊息中移除取貨方式和時間的匹配部分
       if (pickupMethodMatch) {
         remainingMessage = remainingMessage.replace(pickupMethodMatch[0], '').trim()
+      }
+      if (pickupTimeMatch) {
+        remainingMessage = remainingMessage.replace(pickupTimeMatch[0], '').trim()
       }
       return { pickupMethod, pickupTime, remainingMessage }
     },
