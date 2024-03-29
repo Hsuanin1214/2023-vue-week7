@@ -125,30 +125,38 @@
           </div>
         </div>
       </div>
+      <pagination-component :pages="pagination" :get-items="getOrders" class="my-2"></pagination-component>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios'
 import { dateMixin } from '../../mixins/dateMixin.js'
+import PaginationComponent from '../../components/PaginationComponent.vue'
 import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 const { VITE_API, VITE_PATH } = import.meta.env
 
 export default {
+  components: {
+    PaginationComponent
+    // LoadingComponent
+  },
   data () {
     return {
       orders: {},
+      pagination: {},
       pickupMethod: '', // 取貨方式
       pickupTime: '' // 時間
     }
   },
   mixins: [dateMixin, formatNumberMixin],
   methods: {
-    async getOrders () {
+    async getOrders (page = 1) {
       try {
-        const orderUrl = `${VITE_API}/api/${VITE_PATH}/orders`
+        const orderUrl = `${VITE_API}/api/${VITE_PATH}/orders?page=${page}`
         const response = await axios.get(orderUrl)
         this.orders = response.data.orders
+        this.pagination = response.data.pagination
       } catch (error) {
         alert(error.response ? error.response.data.message : '訂單查詢時發生錯誤')
         console.error(error)
