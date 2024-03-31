@@ -8,19 +8,19 @@
           >
             <li class="me-md-6 me-3 position-relative custom-step-line">
               <i
-                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
               <span class="text-nowrap text-secondary">商品確認</span>
             </li>
             <li class="me-md-6 me-3 position-relative custom-step-line">
               <i
-                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
               <span class="text-nowrap text-secondary">訂購人填寫</span>
             </li>
             <li>
-              <i class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"></i>
-              <span class="text-nowrap text-secondary">訂單完成</span>
+              <i class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"></i>
+              <span class="text-nowrap text-secondary fw-bold">訂單完成</span>
             </li>
           </ul>
       </div>

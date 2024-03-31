@@ -7,22 +7,22 @@
       </div> -->
       <div class="col-12 mb-4">
           <ul
-            class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-start w-100 mt-md-0 mt-4"
+            class="list-unstyled mb-0 ms-md-auto d-flex flex-wrap align-items-center justify-content-start justify-content-md-center w-100 mt-md-0 mt-4"
           >
-            <li class="me-md-6 me-3 position-relative custom-step-line">
+            <li class="me-md-6 me-5 position-relative custom-step-line">
               <i
-                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
               <span class="text-nowrap text-secondary">商品確認</span>
             </li>
-            <li class="me-md-6 me-3 position-relative custom-step-line">
+            <li class="me-md-6 me-5 position-relative custom-step-line">
               <i
-                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
-              <span class="text-nowrap text-secondary">訂購人填寫</span>
+              <span class="text-nowrap text-secondary fw-bold">訂購人填寫</span>
             </li>
             <li>
-              <i class="fas fa-dot-circle d-md-inline d-block text-center me-2"></i>
+              <i class="far fa-circle d-md-inline d-block text-center me-2"></i>
               <span class="text-nowrap">訂單確認</span>
             </li>
           </ul>
@@ -346,11 +346,11 @@
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
           <router-link
-            class="text-dark mt-md-0 mt-3"
+            class="text-dark mt-md-0 mt-3 text-decoration-none"
             to="/cart"
             ><i class="fas fa-chevron-left me-2"></i>返回購物車</router-link
           >
-          <button type="submit" class="text-muted btn btn-secondary py-3 px-7">確認結帳</button>
+          <button type="submit" class="text-light btn btn-secondary py-2 px-5">確認結帳</button>
         </div>
       </v-form>
       </div>
