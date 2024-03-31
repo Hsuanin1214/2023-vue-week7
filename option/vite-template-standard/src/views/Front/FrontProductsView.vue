@@ -34,11 +34,13 @@
       <div class="col my-2" v-for="product in products" :key="product.id">
         <div class="card border-0 my-3 position-relative h-100">
           <div class="products-img-container">
+            <router-link :to="`product/${product.id}`" class="text-decoration-none">
             <img
               :src="product.imageUrl"
               class="card-img-top rounded-0 h-100 w-100 img-fluid"
               :alt="product.title"
             />
+          </router-link>
           </div>
           <a href="#" class="text-dark">
             <i
@@ -47,13 +49,17 @@
             ></i>
           </a>
           <div class="card-body p-0 text-center bg-light">
-            <h5 class="mb-0 mt-3 fs-6"><router-link :to="`product/${product.id}`">{{ product.title }}</router-link></h5>
+            <router-link :to="`product/${product.id}`" class="text-decoration-none">
+              <h5 class="mb-0 mt-3 fs-6">{{ product.title }}</h5>
+            </router-link>
             <p class="card-text mb-0 fs-6 mt-2">
               <span class="text-muted fs-6 me-3"><del>NT${{formatNumber(product.origin_price)}}</del></span><span>NT${{formatNumber(product.price)}}</span>
             </p>
           </div>
           <div class="card-footer bg-light d-flex justify-content-center border-top-0">
-            <button class="btn btn-outline-primary rounded-1 px-xl-3 py-2">加入購物車</button>
+            <button class="btn btn-outline-primary rounded-1 px-xl-3 py-2"              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight" @click="addToCart(product.id , 1)">加入購物車</button>
           </div>
         </div>
       </div>
@@ -63,18 +69,21 @@
         <pagination-component :pages="pagination" :get-items="getProducts"></pagination-component>
       </div>
     </div>
+    <front-side-cart-component :carts="carts"></front-side-cart-component>
   </div>
 </template>
 <script>
 import { mapActions, mapState } from 'pinia'
 import productStore from '../../stores/productStore.js'
-// import { useCartStore } from '../../stores/cartStore.js'
+import { useCartStore } from '../../stores/cartStore.js'
 import PaginationComponent from '../../components/PaginationComponent.vue'
+import FrontSideCartComponent from '../../components/FrontSideCartComponent.vue'
 import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 // import LoadingComponent from '../../components/LoadingComponent.vue'
 export default {
   components: {
-    PaginationComponent
+    PaginationComponent,
+    FrontSideCartComponent
     // LoadingComponent
   },
   data () {
@@ -87,9 +96,11 @@ export default {
   },
   mixins: [formatNumberMixin],
   computed: {
+    ...mapState(useCartStore, ['carts']),
     ...mapState(productStore, ['products', 'pagination', 'tabs'])
   },
   methods: {
+    ...mapActions(useCartStore, ['addToCart']),
     ...mapActions(productStore, ['getProducts', 'getAllProducts']),
     getTabProduct (tab) {
       this.selectedTab = tab
