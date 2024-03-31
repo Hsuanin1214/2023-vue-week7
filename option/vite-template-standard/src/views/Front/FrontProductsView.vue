@@ -30,7 +30,7 @@
         <input type="text" /> -->
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
       <div class="col my-2" v-for="product in products" :key="product.id">
         <div class="card border-0 my-3 position-relative h-100">
           <div class="products-img-container">

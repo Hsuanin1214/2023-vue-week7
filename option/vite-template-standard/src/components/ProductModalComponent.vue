@@ -136,7 +136,7 @@
                       v-model="editProduct.origin_price"
                       rules="required|integer|min_value:1"
                       ></v-field>
-                      <error-message name="甜點原價,必須是大於零的整數" class="invalid-feedback"></error-message>
+                      <error-message name="甜點原價" class="invalid-feedback"></error-message>
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="price" class="form-label">甜點售價</label>

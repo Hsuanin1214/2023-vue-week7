@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     openModal (status, item) {
-      console.log(item)
+      // console.log(item)
       if (status === 'new') {
         this.tempProduct = {
           imagesUrl: []
@@ -165,11 +165,13 @@ export default {
         })
     },
     confirmUpdate () {
-      if (this.tempProduct.id) {
-        this.updateProduct()
-      }
+      console.log('hi')
+      // if (this.tempProduct.id) {
+      this.updateProduct()
+      // }
     },
     updateProduct () {
+      console.log(this.isNew)
       let updateOrNewUrl = `${url}/api/${path}/admin/product/${this.tempProduct.id}`
       let http = 'put'
       if (this.isNew) {
