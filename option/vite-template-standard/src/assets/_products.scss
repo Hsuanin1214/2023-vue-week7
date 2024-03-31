@@ -1,0 +1,17 @@
+/* 普通狀態 */
+.nav-link-product {
+    transition: color 0.2s, background-color 0.2s; /* 平滑過渡效果 */
+}
+
+/* 鼠標懸停狀態 */
+.nav-link-product:hover {
+font-weight: 500;
+cursor: pointer;
+}
+
+/* 被選中狀態 */
+.nav-link-product.active {
+font-weight: 500;
+cursor: pointer;
+text-shadow: 2px 2px 0 $pimary-container;
+}

@@ -68,7 +68,16 @@ img {
 .z-1000 {
     z-index: 1000;
 }
+.div-md-block {
+    display: none;
+}
 @media (min-width: 768px) {
+    .div-md-block {
+        display: flex;
+    }
+    .d-md-none {
+        display: none;
+    }
     .fs-md-2 {
         font-size: calc(1.325rem + 0.9vw) !important;
     }

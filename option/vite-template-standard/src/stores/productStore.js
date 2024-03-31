@@ -22,19 +22,19 @@ export default defineStore('productStore', {
             return product.category
           })
           // 使用 Set 對象來過濾重複的值，並將 Set 轉換回 Array
-          this.tabs = [...new Set(categories)]
+          this.tabs = ['全部', ...new Set(categories)]
         })
         .catch((error) => {
           alert(error.response.data.message)
           console.log(error)
         })
     },
-    getProducts (page = 1) {
+    getProducts (page = 1, category = '') {
       // this.isLoading = !this.isLoading
-      // const categoryQuery = this.filter !== '全部' ? this.filter : ''
+      const categoryQuery = category !== '全部' ? category : ''
       // 給參數預設值
       // const getUrl = `${url}/api/${path}/admin/products?page=${page}&category=${categoryQuery}`
-      const getUrl = `${VITE_API}/api/${VITE_PATH}/products?page=${page}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
+      const getUrl = `${VITE_API}/api/${VITE_PATH}/products?page=${page}&category=${categoryQuery}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
       axios
         .get(getUrl)
         .then((res) => {

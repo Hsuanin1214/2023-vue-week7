@@ -2,53 +2,41 @@
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left ps-3">所有甜點</h2>
     <div class="row my-2">
-      <div class="col-6">
-        <div class="dropdown">
-          <!-- <button
+      <div class="col-9">
+        <ul class="nav div-md-block">
+          <li class="nav-item" v-for="tab in tabs" :key="tab">
+            <a class="nav-link nav-link-product" aria-current="page" :class="{ active: selectedTab === tab }" @click.prevent="getTabProduct(tab)">{{tab}}</a>
+          </li>
+        </ul>
+        <!-- rwd -->
+        <div class="dropdown d-md-none">
+          <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown button
+            選擇分類
           </button>
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li v-for="tab in tabs" :key="tab">
+              <a class="dropdown-item" :class="{ active: selectedTab === tab }" @click.prevent="getProducts(1,tab)">{{tab}}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul> -->
-          <!-- rwd -->
-          <!-- <ul class="dropdown-menu dropdown-menu-dark">
-            <li v-for="tab in tabs" :key="tab"><a class="dropdown-item" :class="{ active: selectedTab === tab }" href="#">tab</a></li> -->
-            <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li> -->
-          <!-- </ul> -->
+          </ul>
         </div>
-        <pagination-component :pages="pagination" :get-items="getProducts" class="mt-2"></pagination-component>
       </div>
-      <!-- <div class="col-6">
-        <label for="" class="me-3">搜尋 : </label>
-        <input type="text" />
-      </div> -->
+      <div class="col-3">
+        <!-- <label for="" class="me-3">搜尋 : </label>
+        <input type="text" /> -->
+      </div>
     </div>
-    <div class="row">
-      <div class="col-md-6" v-for="product in products" :key="product.id">
-        <div class="card border-0 mb-4 position-relative">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+      <div class="col my-2" v-for="product in products" :key="product.id">
+        <div class="card border-0 my-3 position-relative h-100">
           <div class="products-img-container">
             <img
               :src="product.imageUrl"
-              class="card-img-top rounded-2 h-100 w-100 img-fluid"
+              class="card-img-top rounded-0 h-100 w-100 img-fluid"
               :alt="product.title"
             />
           </div>
@@ -58,14 +46,21 @@
               style="right: 16px; top: 16px"
             ></i>
           </a>
-          <div class="card-body p-0">
-            <h4 class="mb-0 mt-3"><router-link :to="`product/${product.id}`">{{ product.title }}</router-link></h4>
-            <p class="card-text mb-0">
-              <span class="text-muted"><del>NT${{formatNumber(product.origin_price)}}</del></span>NT${{formatNumber(product.price)}}
+          <div class="card-body p-0 text-center bg-light">
+            <h5 class="mb-0 mt-3 fs-6"><router-link :to="`product/${product.id}`">{{ product.title }}</router-link></h5>
+            <p class="card-text mb-0 fs-6 mt-2">
+              <span class="text-muted fs-6 me-3"><del>NT${{formatNumber(product.origin_price)}}</del></span><span>NT${{formatNumber(product.price)}}</span>
             </p>
-            <p class="text-muted mt-3">{{ product.title }}</p>
+          </div>
+          <div class="card-footer bg-light d-flex justify-content-center border-top-0">
+            <button class="btn btn-outline-primary rounded-1 px-xl-3 py-2">加入購物車</button>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center mt-4 mb-1">
+        <pagination-component :pages="pagination" :get-items="getProducts"></pagination-component>
       </div>
     </div>
   </div>
@@ -73,6 +68,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import productStore from '../../stores/productStore.js'
+// import { useCartStore } from '../../stores/cartStore.js'
 import PaginationComponent from '../../components/PaginationComponent.vue'
 import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 // import LoadingComponent from '../../components/LoadingComponent.vue'
@@ -84,7 +80,7 @@ export default {
   data () {
     return {
       tempProduct: {},
-      selectedTab: '蛋糕'
+      selectedTab: '全部'
       // status: '',
       // isNoClick: true
     }
@@ -94,19 +90,22 @@ export default {
     ...mapState(productStore, ['products', 'pagination', 'tabs'])
   },
   methods: {
-    ...mapActions(productStore, ['getProducts', 'getAllProducts'])
+    ...mapActions(productStore, ['getProducts', 'getAllProducts']),
+    getTabProduct (tab) {
+      this.selectedTab = tab
+      this.getProducts(1, tab)
+    }
   },
   mounted () {
     this.getProducts()
     this.getAllProducts()
-    console.log(this.tabs)
   }
 }
 </script>
 <style scoped>
 @media (min-width: 992px) {
   .products-img-container{
-    height: 60vh;
+    height: 35vh;
   }
 }
 @media (max-width: 991px) {
