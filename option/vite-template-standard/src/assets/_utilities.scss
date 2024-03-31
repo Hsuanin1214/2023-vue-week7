@@ -71,6 +71,11 @@ img {
 .div-md-block {
     display: none;
 }
+@media (min-width: 435px) {
+    .mb-ssm-0 {
+        margin-bottom: 0 !important;
+    }
+}
 @media (min-width: 768px) {
     .div-md-block {
         display: flex;

@@ -1,10 +1,10 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">查看商品</h2>
-    <div class="row align-items-center">
+    <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">查看商品</h2>
+    <div class="row align-items-start">
       <div class="col-lg-5">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-white px-0 mb-0 py-3">
+          <ol class="breadcrumb bg-white px-0 mb-0 pb-3">
             <li class="breadcrumb-item">
               <router-link class="text-muted" to="/">首頁</router-link>
             </li>

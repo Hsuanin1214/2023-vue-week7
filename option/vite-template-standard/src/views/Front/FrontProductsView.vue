@@ -1,6 +1,6 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">所有甜點</h2>
+    <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">所有甜點</h2>
     <div class="row my-2">
       <div class="col-9">
         <ul class="nav div-md-block">

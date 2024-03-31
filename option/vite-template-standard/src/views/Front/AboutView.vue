@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container px-5">
-      <h2 class="my-4 text-primary border-primary-left ps-3">關於本店</h2>
+      <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">關於本店</h2>
       <div class="row">
         <section class="col-12 mb-4">
           <p>＂嗜甜＂，是一家專注於法國精緻甜點的奢華甜點店。自開業以來，＂嗜甜＂以其精緻藝術般的甜點，捕獲了眾多甜點愛好者的心。我們嚴選進口的法國頂級原料，從鮮奶油到頂級巧克力，每一項都是經過精挑細選，確保將最正宗的法式風味帶給每一位顧客。</p>

@@ -1,13 +1,13 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">訂單進度</h2>
+    <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">訂單進度</h2>
     <div class="row justify-content-center align-items-md-center">
-      <div class="col-md-6">
-        <h3 class="fw-bold mb-4 pt-3 h4 text-primary">訂購人資訊</h3>
-      </div>
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
+        <h3 class="mb-4 pt-3 fs-4 text-primary">訂購人資訊</h3>
+      </div> -->
+      <div class="col-12 mb-4">
           <ul
-            class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
+            class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-start w-100 mt-md-0 mt-4"
           >
             <li class="me-md-6 me-3 position-relative custom-step-line">
               <i

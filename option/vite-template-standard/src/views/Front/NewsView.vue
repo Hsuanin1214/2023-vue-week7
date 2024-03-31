@@ -1,6 +1,6 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">最新消息</h2>
+    <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">最新消息</h2>
     <div class="row">
       <div class="col-12">
         <ul class="nav nav-underline">

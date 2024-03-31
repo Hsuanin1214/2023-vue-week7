@@ -1,8 +1,8 @@
 <template>
   <div class="container px-5">
-    <h2 class="my-4 text-primary border-primary-left ps-3">訂單查詢</h2>
+    <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">訂單查詢</h2>
     <div class="row justify-content-center">
-      <h3 class="fw-bold mb-4 pt-3 h5">訂單相關資訊</h3>
+      <h3 class="mb-4 pt-3 h5">訂單相關資訊</h3>
       <div class="col-12">
         <div class="accordion" id="accordionExample">
           <div class="card rounded-0" v-for="order in orders" :key="order.id">
