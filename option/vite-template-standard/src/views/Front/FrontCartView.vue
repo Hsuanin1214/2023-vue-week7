@@ -8,22 +8,22 @@
       </div> -->
       <div class="col-12 mb-4">
           <ul
-            class="list-unstyled mb-0 ms-md-auto d-flex flex-wrap align-items-center justify-content-start justify-content-md-start w-100 mt-md-0 mt-4"
+            class="list-unstyled mb-0 ms-md-auto d-flex flex-wrap align-items-center justify-content-start justify-content-md-center w-100 mt-md-0 mt-4"
           >
-            <li class="me-md-6 me-3 position-relative custom-step-line d-flex justify-content-center align-items-center">
+            <li class="me-md-6 me-5 position-relative custom-step-line d-flex justify-content-center align-items-center">
               <i
-                class="fas fa-check-circle d-md-inline d-block text-center me-2 text-secondary"
+                class="fas fa-dot-circle d-md-inline d-block text-center me-2 text-secondary"
               ></i>
-              <span class="text-nowrap text-secondary">商品確認</span>
+              <span class="text-nowrap text-secondary fw-bold">商品確認</span>
             </li>
-            <li class="me-md-6 me-3 position-relative custom-step-line d-flex justify-content-center align-items-center">
+            <li class="me-md-6 me-5 position-relative custom-step-line d-flex justify-content-center align-items-center">
               <i
-                class="fas fa-dot-circle d-md-inline d-block text-center me-2"
+                class="far fa-circle d-md-inline d-block text-center me-2"
               ></i>
               <span class="text-nowrap">訂購人填寫</span>
             </li>
             <li class="me-md-6 me-3 position-relative d-flex justify-content-center align-items-center">
-              <i class="fas fa-dot-circle d-md-inline d-block text-center me-2"></i>
+              <i class="far fa-circle d-md-inline d-block text-center me-2"></i>
               <span class="text-nowrap">訂單完成</span>
             </li>
           </ul>
@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="my-5">
-        <h4 class="text-primary fs-md-4 mb-4">其他相關甜點商品</h4>
+        <h4 class="text-primary fs-md-4 mb-4">相關商品</h4>
         <div>
           <swiper
             :modules="modules"
@@ -210,11 +210,11 @@
               :virtualIndex="index"
               >
                 <div class="card border-0 mb-4 position-relative">
-                  <router-link :to="`product/${product.id}`">
+                  <router-link class="text-decoration-none" :to="`product/${product.id}`">
                     <div class="h-25vh scroll-img-container">
                         <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 text-center mb-2">
                       <h5 class="mb-0 mt-3 fs-6 fs-md-5">{{ product.title }}</h5>
                       <p class="card-text mb-0">
                         NT${{ product.price }}

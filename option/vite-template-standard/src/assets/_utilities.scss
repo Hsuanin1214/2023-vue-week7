@@ -24,6 +24,9 @@ img {
     object-fit: cover;
     max-width: 100%;
 }
+.accordion {
+    cursor: pointer;
+}
 .bg-surface-variant {
     background-color: $surface-variant;
 }

@@ -44,21 +44,23 @@
                     </ul>
                     <section class="woocommerce-order-details">
                       <h5 class="woocommerce-order-details__title h5 text-info">訂購明細</h5>
-                      <div class="d-flex d-flex justify-content-center justify-content-md-start table-container">
-                        <table class="woocommerce-table woocommerce-table--order-details shop_table order_details table-cart-product">
+                      <div class="d-flex justify-content-center justify-content-md-between table-container">
+                        <table class="woocommerce-table woocommerce-table--order-details shop_table order_details table-cart-product me-xl-5 mb-xl-2">
                           <thead class="p-3">
                             <tr>
                               <th class="woocommerce-table__product-name product-name px-2 py-1">訂購商品</th>
-                              <th class="woocommerce-table__product-table product-total px-2 py-1">金額</th>
+                              <th class="woocommerce-table__product-table product-total px-2 px-xl-5 py-1 text-end">金額</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody class="border-bottom">
                             <tr class="woocommerce-table__line-item order_item" v-for="product in order.products" :key="product.id">
-                              <td class="woocommerce-table__product-name product-name px-2 py-1">
-                                <router-link :to="`product/${product.product.id}`">{{product.product.title}}</router-link> <strong class="product-quantity">×
-                                  {{product.qty}}</strong> </td>
-                              <td class="woocommerce-table__product-total product-total px-2 py-1">
-                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">NT$</span>{{formatNumber(product.final_total)}}</span>
+                              <td class="woocommerce-table__product-name product-name px-xl-2 py-1">
+                                <router-link :to="`product/${product.product.id}`" class="text-decoration-none product-hover">{{product.product.title}}</router-link>
+                              <strong class="product-quantity">×
+                                {{product.qty}}</strong> </td>
+                              <td class="woocommerce-table__product-total product-total px-xl-5 py-1 d-flex justify-content-between">
+                                <span class="woocommerce-Price-currencySymbol text-end">NT$</span>
+                                <span class="woocommerce-Price-amount amount text-end">{{formatNumber(product.final_total)}}</span>
                               </td>
                             </tr>
                             <!-- <tr class="woocommerce-table__line-item order_item">
@@ -206,7 +208,7 @@ export default {
     /* margin: 0 auto; */
 }
 .table-cart-product {
-    width: 100%; /* 讓表格寬度適應容器寬度 */
+    width: 100%;
     /* 或者設置具體的最小寬度，例如 min-width: 600px; 以確保表格在較窄的螢幕上也能正常顯示 */
 }
 @media (max-width: 768px) {
