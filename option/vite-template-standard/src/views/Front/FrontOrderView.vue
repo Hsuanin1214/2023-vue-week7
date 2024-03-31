@@ -1,7 +1,7 @@
 <template>
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left ps-3">訂單查詢</h2>
-    <div class="row justify-content-center pb-5">
+    <div class="row justify-content-center">
       <h3 class="fw-bold mb-4 pt-3 h5">訂單相關資訊</h3>
       <div class="col-12">
         <div class="accordion" id="accordionExample">
@@ -125,7 +125,9 @@
           </div>
         </div>
       </div>
-      <pagination-component :pages="pagination" :get-items="getOrders" class="my-2"></pagination-component>
+      <div class="col-md-12 d-flex justify-content-center mt-4 mb-1">
+        <pagination-component :pages="pagination" :get-items="getOrders"></pagination-component>
+      </div>
     </div>
   </div>
 </template>
@@ -163,28 +165,6 @@ export default {
       }
     },
     extractMessageComponents (orderMessage) {
-      // if (!orderMessage) return { pickupMethod: '', pickupTime: '', remainingMessage: '' }
-
-      // const methodPattern = /取貨方式：(.*?)(，|。|,|\s|$)/
-      // const timePattern = /時間：(.*?)(，|。|,|\s|$)/
-
-      // const pickupMethodMatch = orderMessage.match(methodPattern)
-      // const pickupTimeMatch = orderMessage.match(timePattern)
-
-      // const pickupMethod = pickupMethodMatch ? pickupMethodMatch[1].trim(',') : ''
-      // let pickupTime = ''
-      // let remainingMessage = orderMessage
-      // // 如果存在取貨時間，提取並調整剩餘訊息
-      // if (pickupTimeMatch) {
-      //   pickupTime = pickupTimeMatch[1].trim(' ')
-      //   const timeMatchIndex = orderMessage.indexOf(pickupTimeMatch[0])
-      //   remainingMessage = orderMessage.substring(0, timeMatchIndex).trim()
-      // }
-      // // 從剩餘訊息中移除取貨方式
-      // if (pickupMethodMatch) {
-      //   remainingMessage = remainingMessage.replace(pickupMethodMatch[0], '').trim()
-      // }
-      // return { pickupMethod, pickupTime, remainingMessage }
       if (!orderMessage) return { pickupMethod: '', pickupTime: '', remainingMessage: '' }
       const methodPattern = /取貨方式：(.*?)(，|。|,|\s|$)/
       const timePattern = /時間：(.*?)(，|。|,|\s|$)/

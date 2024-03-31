@@ -1,7 +1,7 @@
 <template>
     <div class="h-100 top-0 left-0">
         <nav class="navbar navbar-expand-sm navbar-light flex-column me-lg-3 ms-lg-3">
-            <RouterLink class="navbar-brand text-light fs-4 fs-md-2 fw-bolder" to="/">嗜甜甜點</RouterLink>
+            <RouterLink class="navbar-brand text-light fs-4 fs-md-2" to="/">嗜甜甜點</RouterLink>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
