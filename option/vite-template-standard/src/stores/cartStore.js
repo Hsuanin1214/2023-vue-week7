@@ -10,6 +10,7 @@ export const useCartStore = defineStore('cartStore', {
     selectedProduct: [],
     // productModal: null,
     carts: { carts: [] },
+    cartsLength: 0,
     status: {
       addCartLoading: '',
       cartQtyLoading: ''
@@ -72,6 +73,7 @@ export const useCartStore = defineStore('cartStore', {
         .get(getCartUrl)
         .then((res) => {
           this.carts = res.data.data
+          this.cartsLength = this.carts.carts.length
         })
         .catch((error) => {
           alert(error.response.data.message)

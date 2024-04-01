@@ -12,7 +12,13 @@
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/products">甜點列表</RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/news">最新消息</RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/questions">Q&A</RouterLink>
-                <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/cart">我的購物</RouterLink>
+                <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning position-relative" to="/cart">
+                  我的購物
+                  <span v-if="cartsLength > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                    {{cartsLength}}
+                    <span class="visually-hidden">未讀訊息</span>
+                  </span>
+                </RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/orders">訂單進度</RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 text-warning" to="/login">前往後台</RouterLink>
                 <!-- <RouterLink class="nav-item nav-link" href="./cart.html"><i class="fas fa-shopping-cart"></i></RouterLink> -->
@@ -21,6 +27,19 @@
         </nav>
     </div>
 </template>
+<script>
+import { mapState } from 'pinia'
+import { useCartStore } from '../stores/cartStore.js'
+export default {
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapState(useCartStore, ['cartsLength'])
+  }
+}
+</script>
 <style scoped>
 @media (max-width:576px) {
   .navbar-brand{
