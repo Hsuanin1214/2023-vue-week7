@@ -29,7 +29,13 @@
           </ul>
       </div>
     </div>
-      <div class="row mt-2 mt-md-0">
+      <div class="row d-flex" v-if="carts.carts == undefined">
+            <span>購物車內目前沒有商品，回到</span>
+            <a class="" @click.prevent="returnProduct">
+              商品列表
+            </a>
+      </div>
+      <div class="row mt-2 mt-md-0" v-else>
         <div class="col-12 text-start text-md-end">
           <button class="btn btn-outline-primary" type="button" @click="removeAllCart()">
               清空購物車
@@ -289,6 +295,9 @@ export default {
   methods: {
     ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
     ...mapActions(productStore, ['getProducts']),
+    returnProduct () {
+      this.$router.push('/products')
+    },
     setSwiperRef (swiper) {
       this.swiperRef = swiper
     },
@@ -306,6 +315,11 @@ export default {
   mounted () {
     this.getProducts()
     this.getCart()
+    if (this.carts.carts.length === 0) {
+      console.log('hi')
+      alert('購物車內沒有商品')
+      // console.alert('購物車內沒有商品')
+    }
   }
 }
 </script>

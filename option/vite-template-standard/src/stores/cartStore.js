@@ -75,7 +75,6 @@ export const useCartStore = defineStore('cartStore', {
         .get(getCartUrl)
         .then((res) => {
           this.carts = res.data.data
-          console.log(this.carts)
         })
         .catch((error) => {
           alert(error.response.data.message)
