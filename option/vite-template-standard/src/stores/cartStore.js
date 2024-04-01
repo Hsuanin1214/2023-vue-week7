@@ -30,7 +30,6 @@ export const useCartStore = defineStore('cartStore', {
         product_id: productId,
         qty
       }
-      console.log(order)
       const postCartUrl = `${VITE_API}/api/${VITE_PATH}/cart`
       this.status.addCartLoading = productId
       axios
@@ -54,8 +53,6 @@ export const useCartStore = defineStore('cartStore', {
       }
       const postCartUrl = `${VITE_API}/api/${VITE_PATH}/cart/${item.id}`
       this.status.cartQtyLoading = item.id
-      // console.log(order,postCartUrl)
-
       axios
         .put(postCartUrl, { data: order })
         .then((res) => {
@@ -84,7 +81,6 @@ export const useCartStore = defineStore('cartStore', {
     removeCartItem (id) {
       const deleteCartUrl = `${VITE_API}/api/${VITE_PATH}/cart/${id}`
       this.status.cartQtyLoading = id
-      console.log(id)
       axios
         .delete(deleteCartUrl)
         .then((res) => {
@@ -100,7 +96,6 @@ export const useCartStore = defineStore('cartStore', {
     },
     removeAllCart () {
       const deleteCartsUrl = `${VITE_API}/api/${VITE_PATH}/carts`
-      console.log(deleteCartsUrl)
       axios
         .delete(deleteCartsUrl)
         .then((res) => {
@@ -119,7 +114,6 @@ export const useCartStore = defineStore('cartStore', {
     addOrder () {
       const addOrderUrl = `${VITE_API}/api/${VITE_PATH}/order`
       const order = this.form
-      console.log(addOrderUrl, order)
       axios
         .post(addOrderUrl, { data: order })
         .then((res) => {

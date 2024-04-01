@@ -31,14 +31,12 @@ export default defineStore('couponStore', {
         })
     },
     updateCoupons (status, data) {
-      console.log(status, data)
       let updateOrNewUrl = `${VITE_API}/api/${VITE_PATH}/admin/coupon/${data.id}`
       let http = 'put'
       if (status === 'new') {
         updateOrNewUrl = `${VITE_API}/api/${VITE_PATH}/admin/coupon`
         http = 'post'
       }
-      console.log(updateOrNewUrl, http)
       axios[http](updateOrNewUrl, { data })
         .then((res) => {
           alert(res.data.message)

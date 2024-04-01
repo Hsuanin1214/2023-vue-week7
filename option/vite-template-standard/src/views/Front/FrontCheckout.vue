@@ -443,8 +443,6 @@ export default {
       try {
         const addOrderUrl = `${VITE_API}/api/${VITE_PATH}/order`
         const order = this.form
-        console.log(addOrderUrl, order) // 顯示訂單信息和URL
-
         const response = await axios.post(addOrderUrl, { data: order })
         alert(response.data.message)
         this.$refs.form.resetForm()

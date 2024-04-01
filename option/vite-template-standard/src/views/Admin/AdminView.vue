@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     checkLogin (params) { // 驗證可以寫這邊，子路由都可以被驗證
-      console.log(this.url)
       axios
         .post(`${this.url}/api/user/check`)
         // 成功的結果
@@ -62,7 +61,6 @@ export default {
   mounted () {
     const token = document.cookie.replace(
       /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-    // console.log(token);
     axios.defaults.headers.common.Authorization = token
     this.checkLogin()
   }

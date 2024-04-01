@@ -119,7 +119,6 @@ export default {
   },
   methods: {
     openModal (status, item) {
-      // console.log(item)
       if (status === 'new') {
         this.tempProduct = {
           imagesUrl: []
@@ -147,7 +146,6 @@ export default {
       const categoryQuery = this.filter !== '全部' ? this.filter : ''
       // 給參數預設值
       const getUrl = `${url}/api/${path}/admin/products?page=${page}&category=${categoryQuery}` // (query)為網址參數寫法，page參數帶入，取得當前頁碼的產品資料
-      console.log(getUrl)
       axios
         .get(getUrl)
         .then((res) => {
@@ -156,7 +154,6 @@ export default {
           this.products = products
           this.pagination = pagination
           this.isLoading = !this.isLoading
-          console.log(this.products)
         })
         .catch((error) => {
           alert(error.response.data.message)
@@ -165,13 +162,11 @@ export default {
         })
     },
     confirmUpdate () {
-      console.log('hi')
       // if (this.tempProduct.id) {
       this.updateProduct()
       // }
     },
     updateProduct () {
-      console.log(this.isNew)
       let updateOrNewUrl = `${url}/api/${path}/admin/product/${this.tempProduct.id}`
       let http = 'put'
       if (this.isNew) {

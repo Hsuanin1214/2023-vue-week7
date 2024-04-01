@@ -39,7 +39,6 @@ export default defineStore('productStore', {
         .get(getUrl)
         .then((res) => {
           const { products, pagination } = res.data
-          console.log(products)
           this.products = products
           this.pagination = pagination
           // this.isLoading = !this.isLoading
@@ -60,7 +59,6 @@ export default defineStore('productStore', {
         .get(getUrl)
         .then((res) => {
           const { product } = res.data
-          console.log(product)
           this.productSelect = product
           // this.isLoading = !this.isLoading
         })

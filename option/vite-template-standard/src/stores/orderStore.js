@@ -34,7 +34,6 @@ export default defineStore('orderStore', {
       const cartStore = useCartStore()
       const addOrderUrl = `${VITE_API}/api/${VITE_PATH}/order`
       const order = this.form
-      console.log(addOrderUrl, order)
       axios
         .post(addOrderUrl, { data: order })
         .then((res) => {

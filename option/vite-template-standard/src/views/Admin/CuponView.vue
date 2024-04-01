@@ -145,10 +145,8 @@ export default {
     },
     confirmUpdate () {
       if (this.tempCoupon.id) {
-        console.log('edit')
         this.updateCoupons('edit', this.tempCoupon)
       } else {
-        console.log('new')
         this.updateCoupons('new', this.tempCoupon)
       }
     }
