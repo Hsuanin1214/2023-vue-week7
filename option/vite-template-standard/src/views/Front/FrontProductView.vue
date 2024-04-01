@@ -107,96 +107,60 @@
     <front-side-cart-component :carts="carts"></front-side-cart-component>
     <!-- 保存方式、預留甜點 -->
     <front-ship-nav-component :content="productSelect.content"></front-ship-nav-component>
-    <!-- <h3 class="fw-bold">更多甜點</h3> -->
-    <!-- <div class="swiper-container mt-4 mb-5">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
+    <div class="my-5">
+      <h4 class="text-primary fs-md-4 mb-4">相關商品</h4>
+      <div>
+        <swiper
+          :modules="modules"
+          :slidesPerView="3"
+          :centeredSlides="false"
+          :spaceBetween="30"
+          :pagination="{
+            type: 'fraction',
+          }"
+          :navigation="true"
+          :virtual="true"
+          class="mySwiper"
+          ref="swiperRef"
+          @swiper="setSwiperRef"
+          :breakpoints="{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            }
+          }"
+        >
+          <swiper-slide
+            v-for="(product, index) in products"
+            :key="index"
+            :virtualIndex="index"
+            >
+            <div class="card border-0 mb-4 position-relative">
+              <router-link class="text-decoration-none" :to="`product/${product.id}`">
+                <div class="h-25vh scroll-img-container">
+                    <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
+                </div>
+                <div class="card-body p-0 text-center mb-2">
+                  <h5 class="mb-0 mt-3 fs-6 fs-md-5">{{ product.title }}</h5>
+                  <p class="card-text mb-0">
+                    NT${{ product.price }}
+                    <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
+                  </p>
+                </div>
+              </router-link>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -207,32 +171,61 @@ import { useCartStore } from '../../stores/cartStore.js'
 import FrontShipNavComponent from '../../components/FrontShipNavComponent.vue'
 import FrontSideCartComponent from '../../components/FrontSideCartComponent.vue'
 import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
+// 導入Swiper core和所需模塊
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Navigation, Virtual } from 'swiper/modules'
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import 'swiper/css/virtual'
 export default {
   data () {
     return {
       tempProduct: {},
-      tempNum: 1
+      tempNum: 1,
+      slides: Array.from({ length: 5 }).map((_, index) => `Slide ${index + 1}`),
+      swiperRef: null,
+      appendNumber: 5,
+      prependNumber: 1,
+      modules: [Pagination, Navigation, Virtual]
     }
   },
   components: {
+    Swiper,
+    SwiperSlide,
     FrontShipNavComponent,
     FrontSideCartComponent
   },
   mixins: [formatNumberMixin],
   computed: {
     ...mapState(useCartStore, ['carts']),
-    ...mapState(productStore, ['productSelect', 'pagination'])
+    ...mapState(productStore, ['products', 'productSelect', 'pagination'])
   },
   methods: {
     ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart', 'addToCart']),
-    ...mapActions(productStore, ['getProduct']),
+    ...mapActions(productStore, ['getProduct', 'getProducts']),
     changeNum (step) {
       this.tempNum += step
+    },
+    setSwiperRef (swiper) {
+      this.swiperRef = swiper
+    },
+    slideTo (index) {
+      this.swiperRef.slideTo(index - 1, 0)
+    },
+    append () {
+      this.slides.push(`Slide ${++this.appendNumber}`)
+    },
+    prepend () {
+      this.slides.unshift(`Slide ${this.prependNumber -= 2}`, `Slide ${this.prependNumber - 1}`)
+      this.swiperRef.slideTo(this.swiperRef.activeIndex + 2, 0)
     }
   },
   mounted () {
     const productId = this.$route.params.id
     this.getProduct(productId)
+    this.getProducts()
     this.getCart()
   }
 }
