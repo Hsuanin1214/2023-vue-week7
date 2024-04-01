@@ -2,11 +2,11 @@
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">我的購物</h2>
     <div class="mt-3">
-      <div class="row justify-content-center align-items-md-center">
+      <div class="d-flex justify-content-center align-items-md-center">
       <!-- <div class="col-md-6">
         <h3 class="mb-4 pt-3 fs-4 text-primary">訂購商品資訊</h3>
       </div> -->
-      <div class="col-12 mb-4">
+      <div class="mb-4">
           <ul
             class="list-unstyled mb-0 ms-md-auto d-flex flex-wrap align-items-center justify-content-start justify-content-md-center w-100 mt-md-0 mt-4"
           >
@@ -29,13 +29,7 @@
           </ul>
       </div>
     </div>
-      <div class="row d-flex" v-if="carts.carts == undefined">
-            <span>購物車內目前沒有商品，回到</span>
-            <a class="" @click.prevent="returnProduct">
-              商品列表
-            </a>
-      </div>
-      <div class="row mt-2 mt-md-0" v-else>
+      <div class="row mt-2 mt-md-0" v-if="carts.carts.length > 0" v-cloak>
         <div class="col-12 text-start text-md-end">
           <button class="btn btn-outline-primary" type="button" @click="removeAllCart()">
               清空購物車
@@ -179,6 +173,10 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center align-items-center" v-else>
+            <span>購物車內目前沒有商品，到這裡</span>
+            <router-link class="ms-2 fw-bold text-decoration-none product-hover" to="/products"> 逛逛吧</router-link>
+      </div>
       <div class="my-5">
         <h4 class="text-primary fs-md-4 mb-4">相關商品</h4>
         <div>
@@ -295,9 +293,6 @@ export default {
   methods: {
     ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
     ...mapActions(productStore, ['getProducts']),
-    returnProduct () {
-      this.$router.push('/products')
-    },
     setSwiperRef (swiper) {
       this.swiperRef = swiper
     },
@@ -315,11 +310,6 @@ export default {
   mounted () {
     this.getProducts()
     this.getCart()
-    if (this.carts.carts.length === 0) {
-      console.log('hi')
-      alert('購物車內沒有商品')
-      // console.alert('購物車內沒有商品')
-    }
   }
 }
 </script>

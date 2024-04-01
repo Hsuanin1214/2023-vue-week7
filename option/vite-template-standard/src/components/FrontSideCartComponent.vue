@@ -21,7 +21,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body">
+      <div class="offcanvas-body" v-if="carts.carts.length > 0" v-cloak>
         <ul class="scrollable-div">
           <li v-for="cart in carts.carts" :key="cart.id" class="my-3">
             <span class="d-block fw-bold mb-2"
@@ -42,6 +42,10 @@
         <router-link class="btn btn-secondary w-100 mt-4" to="/cart"
           >直接結帳</router-link
         >
+      </div>
+      <div class="d-flex justify-content-center align-items-center" v-else>
+            <span>購物車內目前沒有商品，到這裡</span>
+            <router-link class="ms-2 fw-bold text-decoration-none product-hover" to="/products"> 逛逛吧</router-link>
       </div>
     </div>
   </div>

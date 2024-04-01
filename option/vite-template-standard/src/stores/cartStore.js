@@ -9,7 +9,7 @@ export const useCartStore = defineStore('cartStore', {
     products: [],
     selectedProduct: [],
     // productModal: null,
-    carts: {},
+    carts: { carts: [] },
     status: {
       addCartLoading: '',
       cartQtyLoading: ''
