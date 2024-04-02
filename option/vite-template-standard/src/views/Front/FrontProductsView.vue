@@ -25,13 +25,13 @@
           </ul>
         </div>
       </div>
-      <div class="col-3">
-        <!-- <label for="" class="me-3">搜尋 : </label>
-        <input type="text" /> -->
+      <div class="col-3 justify-content-center">
+        <label for="searchBar" class="me-3 text-primary fs-6">搜尋 : </label>
+        <input class="w-75" id="searchBar" type="text" v-model="searchQuery" placeholder="搜尋商品"/>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-      <div class="col my-2" v-for="product in products" :key="product.id">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4" v-if="filteredList.length > 0">
+      <div class="col my-2" v-for="product in filteredList" :key="product.id">
         <div class="card border-0 my-3 position-relative h-100">
           <div class="products-img-container">
             <router-link :to="`product/${product.id}`" class="text-decoration-none">
@@ -64,6 +64,9 @@
         </div>
       </div>
     </div>
+    <div class="row" v-else>
+      <p class="col text-center fw-bold fs-5 text-primary">沒有查詢到相關產品</p>
+    </div>
     <div class="row">
       <div class="col-md-12 d-flex justify-content-center mt-4 mb-1">
         <pagination-component :pages="pagination" :get-items="getProducts"></pagination-component>
@@ -89,7 +92,8 @@ export default {
   data () {
     return {
       tempProduct: {},
-      selectedTab: '全部'
+      selectedTab: '全部',
+      searchQuery: ''
       // status: '',
       // isNoClick: true
     }
@@ -97,7 +101,15 @@ export default {
   mixins: [formatNumberMixin],
   computed: {
     ...mapState(useCartStore, ['carts']),
-    ...mapState(productStore, ['products', 'pagination', 'tabs'])
+    ...mapState(productStore, ['products', 'pagination', 'tabs']),
+    filteredList () {
+      if (!this.searchQuery) { // 如果沒有搜尋條件，返回全部產品
+        return this.products
+      }
+      return this.products.filter(product =>
+        product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      )
+    }
   },
   methods: {
     ...mapActions(useCartStore, ['addToCart']),
