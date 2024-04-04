@@ -42,7 +42,7 @@
                 <tr>
                   <th scope="col" class="border-0 ps-0">商品項目</th>
                   <th scope="col" class="border-0">商品數量</th>
-                  <th scope="col" class="border-0">商品售價</th>
+                  <th scope="col" class="border-0 text-end">商品售價</th>
                   <th scope="col" class="border-0"></th>
                 </tr>
               </thead>
@@ -93,9 +93,9 @@
                     </div>
                   </td>
                   <td class="border-0 align-middle">
-                    <p class="mb-0 ms-auto">NT${{formatNumber(cart.final_total)}}</p>
+                    <p class="mb-0 ms-auto text-end">NT${{formatNumber(cart.final_total)}}</p>
                   </td>
-                  <td class="border-0 align-middle">
+                  <td class="border-0 align-middle text-center">
                     <button
                       class="btn btn-outline-dark border-0 py-2"
                       type="button"

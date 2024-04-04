@@ -221,8 +221,6 @@ export default {
     }
   },
   mounted () {
-    // const productId = this.$route.params.id
-    // this.getProduct(productId)
     this.initializePage()
     this.getProducts()
     this.getCart()
