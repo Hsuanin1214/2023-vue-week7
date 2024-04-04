@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav d-flex flex-column px-3">
+            <div class="navbar-nav d-flex flex-column px-3 px-sm-0">
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 text-warning d-sm-none" to="/">嗜甜甜點</RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 text-warning" to="/about">關於嗜甜</RouterLink>
                 <RouterLink class="nav-item nav-link m-1 me-0 me-sm-2 me-xl-4 active text-warning" to="/products">甜點列表</RouterLink>
