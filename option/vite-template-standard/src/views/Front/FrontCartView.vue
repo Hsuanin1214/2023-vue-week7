@@ -315,9 +315,6 @@ export default {
 </script>
 
 <style scoped>
-.h-25vh{
-  height: 25vh;
-}
 .table-container {
     overflow-x: auto; /* 啟用橫向滾動條 */
     width: 100%; /* 或者其他指定的寬度 */
