@@ -97,6 +97,13 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   linkActiveClass: 'active',
+  scrollBehavior (to, from, savedPosition) { // 滾動時會移到最上方
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
   routes
 })
 

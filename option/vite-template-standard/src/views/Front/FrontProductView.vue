@@ -71,17 +71,13 @@
       <div class="col-lg-7">
         <div id="carouselExampleIndicators" class="carousel slide">
           <div class="carousel-indicators" v-if="productSelect && productSelect.imagesUrl">
-            <!-- Always show the first indicator for the first image -->
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <!-- Dynamically generate indicators for the rest of the images -->
             <button v-for="index in productSelect.imagesUrl.length" :key="index" type="button" data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index" :aria-label="'Slide ' + (index + 1)" :class="{ 'active': index === 0 }"></button>
           </div>
           <div class="carousel-inner">
-            <!-- Display the first image -->
             <div class="carousel-item active h-75vh">
               <img :src="productSelect.imageUrl" class="d-block h-100 w-100 carousel-img" :alt="productSelect.title">
             </div>
-            <!-- Dynamically display the rest of the images -->
             <div class="carousel-item h-75vh" v-for="(image, index) in productSelect.imagesUrl" :key="index+1">
               <img :src="image" class="d-block h-100 w-100 carousel-img" :alt="productSelect.title">
             </div>
@@ -97,15 +93,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row my-5">
-      <div class="col-md-5">
-        <p class="fs-6">
-          {{productSelect.description}}
-        </p>
-      </div>
-    </div> -->
     <front-side-cart-component :carts="carts"></front-side-cart-component>
-    <!-- 保存方式、預留甜點 -->
     <front-ship-nav-component :content="productSelect.content"></front-ship-nav-component>
     <div class="my-5">
       <h4 class="text-primary fs-md-4 mb-4">相關商品</h4>
@@ -144,7 +132,7 @@
             :virtualIndex="index"
             >
             <div class="card border-0 mb-4 position-relative">
-              <router-link class="text-decoration-none" :to="`product/${product.id}`">
+              <router-link class="text-decoration-none" :to="`${product.id}`">
                 <div class="h-25vh scroll-img-container">
                     <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
                 </div>
@@ -198,6 +186,12 @@ export default {
     FrontSideCartComponent
   },
   mixins: [formatNumberMixin],
+  watch: {
+    '$route' (to, from) {
+      // 路由變化時的邏輯，比如重新初始化 Swiper
+      this.initializePage()
+    }
+  },
   computed: {
     ...mapState(useCartStore, ['carts']),
     ...mapState(productStore, ['products', 'productSelect', 'pagination'])
@@ -220,13 +214,25 @@ export default {
     prepend () {
       this.slides.unshift(`Slide ${this.prependNumber -= 2}`, `Slide ${this.prependNumber - 1}`)
       this.swiperRef.slideTo(this.swiperRef.activeIndex + 2, 0)
+    },
+    initializePage () {
+      const productId = this.$route.params.id
+      this.getProduct(productId)
     }
   },
   mounted () {
-    const productId = this.$route.params.id
-    this.getProduct(productId)
+    // const productId = this.$route.params.id
+    // this.getProduct(productId)
+    this.initializePage()
     this.getProducts()
     this.getCart()
   }
 }
 </script>
+<style scoped>
+@media (max-width: 375px) {
+  .scroll-img-container{
+    height: 40vm;
+  }
+}
+</style>

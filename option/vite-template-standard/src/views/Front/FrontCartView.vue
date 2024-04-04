@@ -177,60 +177,6 @@
             <span>購物車內目前沒有商品，到這裡</span>
             <router-link class="ms-2 fw-bold text-decoration-none product-hover" to="/products"> 逛逛吧</router-link>
       </div>
-      <div class="my-5">
-        <h4 class="text-primary fs-md-4 mb-4">相關商品</h4>
-        <div>
-          <swiper
-            :modules="modules"
-            :slidesPerView="3"
-            :centeredSlides="false"
-            :spaceBetween="30"
-            :pagination="{
-              type: 'fraction',
-            }"
-            :navigation="true"
-            :virtual="true"
-            class="mySwiper"
-            ref="swiperRef"
-            @swiper="setSwiperRef"
-            :breakpoints="{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 10
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 20
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30
-              }
-            }"
-          >
-            <swiper-slide
-              v-for="(product, index) in products"
-              :key="index"
-              :virtualIndex="index"
-              >
-                <div class="card border-0 mb-4 position-relative">
-                  <router-link class="text-decoration-none" :to="`product/${product.id}`">
-                    <div class="h-25vh scroll-img-container">
-                        <img :src="product.imageUrl" class="card-img-top rounded-0 w-100 h-100 img-fluid" :alt="product.title">
-                    </div>
-                    <div class="card-body p-0 text-center mb-2">
-                      <h5 class="mb-0 mt-3 fs-6 fs-md-5">{{ product.title }}</h5>
-                      <p class="card-text mb-0">
-                        NT${{ product.price }}
-                        <span class="text-info" v-if="product.originalPrice"><del>NT${{ product.originalPrice }}</del></span>
-                      </p>
-                    </div>
-                  </router-link>
-            </div>
-          </swiper-slide>
-          </swiper>
-        </div>
-      </div>
     </div>
     <!-- <div class="bg-light py-4">
       <div class="container">
@@ -255,60 +201,24 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '../../stores/cartStore.js'
-import productStore from '../../stores/productStore.js'
+// import productStore from '../../stores/productStore.js'
 import { formatNumberMixin } from '../../mixins/formatNumberMixin.js'
 // import PaginationComponent from '../../components/PaginationComponent.vue'
 // 導入Swiper core和所需模塊
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination, Navigation, Virtual } from 'swiper/modules'
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import 'swiper/css/virtual'
 
 export default {
-  // components: {
-  // PaginationComponent
-  // LoadingComponent
-  // },
-  components: {
-    Swiper,
-    SwiperSlide
-  },
   mixins: [formatNumberMixin],
   data () {
     return {
-      slides: Array.from({ length: 5 }).map((_, index) => `Slide ${index + 1}`),
-      swiperRef: null,
-      appendNumber: 5,
-      prependNumber: 1,
-      modules: [Pagination, Navigation, Virtual]
     }
   },
   computed: {
-    ...mapState(useCartStore, ['carts']),
-    ...mapState(productStore, ['products'])
+    ...mapState(useCartStore, ['carts'])
   },
   methods: {
-    ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart']),
-    ...mapActions(productStore, ['getProducts']),
-    setSwiperRef (swiper) {
-      this.swiperRef = swiper
-    },
-    slideTo (index) {
-      this.swiperRef.slideTo(index - 1, 0)
-    },
-    append () {
-      this.slides.push(`Slide ${++this.appendNumber}`)
-    },
-    prepend () {
-      this.slides.unshift(`Slide ${this.prependNumber -= 2}`, `Slide ${this.prependNumber - 1}`)
-      this.swiperRef.slideTo(this.swiperRef.activeIndex + 2, 0)
-    }
+    ...mapActions(useCartStore, ['getCart', 'changeCartQty', 'removeCartItem', 'removeAllCart'])
   },
   mounted () {
-    this.getProducts()
     this.getCart()
   }
 }

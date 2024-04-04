@@ -75,8 +75,6 @@ configure({
     return customMessages[context.field] || defaultMessage
   }
 })
-// Swiper.use([Navigation, Pagination, Virtual, SwiperSlide])
-//
 
 const app = createApp(App)
 const pinia = createPinia()
