@@ -2,7 +2,7 @@
   <div class="container px-5">
     <h2 class="my-4 text-primary border-primary-left fs-3 ps-3">所有甜點</h2>
     <div class="row my-2">
-      <div class="col-9">
+      <div class="col-12 col-xl-8">
         <ul class="nav div-md-block">
           <li class="nav-item" v-for="tab in tabs" :key="tab">
             <a class="nav-link nav-link-product" aria-current="page" :class="{ active: selectedTab === tab }" @click.prevent="getTabProduct(tab)">{{tab}}</a>
@@ -25,9 +25,9 @@
           </ul>
         </div>
       </div>
-      <div class="col-3 justify-content-center">
-        <label for="searchBar" class="me-3 text-primary fs-6">搜尋 : </label>
-        <input class="w-75" id="searchBar" type="text" v-model="searchQuery" placeholder="搜尋商品"/>
+      <div class="col-12 col-xl-4 mt-4 mt-xl-0 d-flex justify-content-start justify-content-xl-center align-items-center">
+        <label for="searchBar" class="me-3 text-primary fs-6 text-nowrap px-3 px-xl-0 fw-bold">搜尋：</label>
+        <input class="w-70 w-lg-75" id="searchBar" type="text" v-model="searchQuery" placeholder="搜尋商品"/>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4" v-if="filteredList.length > 0">
